@@ -1,0 +1,28 @@
+@startuml Admin
+
+abstract class BaseEntity {
+}
+
+interface UserDetails {
+}
+
+abstract class User {
+}
+
+class Admin {
+    - String userId
+    - User user
+
+    + getUserId(): String
+    + setUserId(String userId): void
+    + getUser(): User
+    + setUser(User user): void
+}
+
+
+BaseEntity <|-- User
+UserDetails <|.. User
+User *-r- Role
+User <|-- Admin
+
+@enduml

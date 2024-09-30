@@ -1,0 +1,47 @@
+@startuml User
+
+abstract class BaseEntity {
+}
+
+interface UserDetails {
+}
+
+enum Role {
+    STUDENT
+    SCHOOL
+    ADMIN
+}
+
+
+abstract class User {
+    - String username
+    - String password
+    - String email
+    - boolean emailVerified
+    - Role role
+    - LocalDateTime lastLoggedIn
+
+    + getUsername(): String
+    + setUsername(String username): void
+    + getPassword(): String
+    + setPassword(String password): void
+    + getEmail(): String
+    + setEmail(String email): void
+    + isEmailVerified(): boolean
+    + setEmailVerified(boolean emailVerified): void
+    + getRole(): Role
+    + setRole(Role role): void
+    + getLastLoggedIn(): LocalDateTime
+    + setLastLoggedIn(LocalDateTime lastLoggedIn): void
+    + getAuthorities(): Collection<? extends GrantedAuthority>
+    + isAccountNonExpired(): boolean
+    + isAccountNonLocked(): boolean
+    + isCredentialsNonExpired(): boolean
+    + isEnabled(): boolean
+}
+
+BaseEntity <|-- User
+UserDetails <|.. User
+User *-r- Role
+
+@enduml

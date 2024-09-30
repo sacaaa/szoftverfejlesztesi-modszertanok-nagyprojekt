@@ -1,0 +1,24 @@
+@startuml Address
+
+class Address {
+    - String houseNumber
+    - String street
+    - String city
+    - String postalCode
+    - String country
+
+    + getHouseNumber(): String
+    + setHouseNumber(String houseNumber): void
+    + getStreet(): String
+    + setStreet(String street): void
+    + getCity(): String
+    + setCity(String city): void
+    + getPostalCode(): String
+    + setPostalCode(String postalCode): void
+    + getCountry(): String
+    + setCountry(String country): void
+}
+
+Address "1" -d- "1" School : address
+
+@enduml

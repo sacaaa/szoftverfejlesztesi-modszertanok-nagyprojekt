@@ -1,0 +1,35 @@
+@startuml Teacher
+
+abstract class BaseEntity {
+}
+
+enum Title {
+    DR
+    PROF
+    PROF_DR
+}
+
+class Teacher {
+    - Title title
+    - String firstName
+    - String lastName
+    - String email
+    - Set<TeacherSubjectAtSchool> subjectAtSchools
+
+    + getTitle(): String
+    + setTitle(Title title): void
+    + getFirstName(): String
+    + setFirstName(String firstName): void
+    + getLastName(): String
+    + setLastName(String lastName): void
+    + getEmail(): String
+    + setEmail(String email): void
+    + getSubjectAtSchools(): Set<TeacherSubjectAtSchool>
+    + setSubjectAtSchools(Set<TeacherSubjectAtSchool> subjectAtSchools): void
+}
+
+BaseEntity <|-d- Teacher
+Teacher *-r- Title
+Teacher "1" -d- "0..*" TeacherSubjectAtSchool : subjectAtSchools
+
+@enduml

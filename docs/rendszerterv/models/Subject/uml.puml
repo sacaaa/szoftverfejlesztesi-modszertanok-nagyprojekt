@@ -1,0 +1,16 @@
+@startuml Subject
+
+abstract class BaseEntity {
+}
+
+class Subject {
+    - String name
+
+    + getName(): String
+    + setName(String name): void
+}
+
+BaseEntity <|-d- Subject
+Subject "1" -d- "0..*" TeacherSubjectAtSchool : teacherSubjectAtSchool
+
+@enduml

@@ -1,0 +1,16 @@
+@startuml BaseEntity
+
+abstract class BaseEntity {
+    - Long id
+    - LocalDateTime createdAt
+    - LocalDateTime updatedAt
+
+    + getId(): Long
+    + setId(Long id): void
+    + getCreatedAt(): LocalDateTime
+    + setCreatedAt(LocalDateTime createdAt): void
+    + getUpdatedAt(): LocalDateTime
+    + setUpdatedAt(LocalDateTime updatedAt): void
+}
+
+@enduml

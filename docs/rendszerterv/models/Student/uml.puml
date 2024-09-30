@@ -1,0 +1,44 @@
+@startuml Student
+
+abstract class BaseEntity {
+}
+
+interface UserDetails {
+}
+
+abstract class User {
+}
+
+class Student {
+    - String userId
+    - User user
+    - String firstName
+    - String lastName
+    - LocalDate birthDate
+    - School school
+    - Set<Review> reviewsGiven
+
+    + getUserId(): String
+    + setUserId(String userId): void
+    + getUser(): User
+    + setUser(User user): void
+    + getFirstName(): String
+    + setFirstName(String firstName): void
+    + getLastName(): String
+    + setLastName(String lastName): void
+    + getBirthDate(): LocalDate
+    + setBirthDate(LocalDate birthDate): void
+    + getSchool(): School
+    + setSchool(School school): void
+    + getReviewsGiven(): Set<Review>
+    + setReviewsGiven(Set<Review> reviewsGiven): void
+}
+
+BaseEntity <|-- User
+UserDetails <|.. User
+User *-r- Role
+User <|-- Student
+Student "0..*" -d- "1" School : school
+Student "1" -d- "0..*" Review : reviewsGiven
+
+@enduml

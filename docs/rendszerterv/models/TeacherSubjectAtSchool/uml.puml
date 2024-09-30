@@ -1,0 +1,27 @@
+@startuml TeacherSubjectAtSchool
+
+abstract class BaseEntity {
+}
+
+class TeacherSubjectAtSchool {
+    - Teacher teacher
+    - Subject subject
+    - School school
+    - Set<Review> reviewsReceived
+    + getTeacher(): Teacher
+    + setTeacher(Teacher teacher): void
+    + getSubject(): Subject
+    + setSubject(Subject subject): void
+    + getSchool(): School
+    + setSchool(School school): void
+    + getReviewsReceived(): Set<Review>
+    + setReviewsReceived(Set<Review> reviewsReceived): void
+}
+
+BaseEntity <|-d- TeacherSubjectAtSchool
+TeacherSubjectAtSchool "0..*" -d- "1" Teacher : teacher
+TeacherSubjectAtSchool "0..*" -d- "1" Subject : subject
+TeacherSubjectAtSchool "0..*" -d- "1" School : school
+TeacherSubjectAtSchool "1" -d- "0..*" Review : reviewsReceived
+
+@enduml

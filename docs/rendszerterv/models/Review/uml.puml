@@ -1,0 +1,26 @@
+@startuml Review
+
+abstract class BaseEntity {
+}
+
+class Review {
+    - Student student
+    - TeacherSubjectAtSchool teacherSubjectAtSchool
+    - int rating
+    - String comment
+
+    + getStudent(): Student
+    + setStudent(Student student): void
+    + getTeacherSubjectAtSchool(): TeacherSubjectAtSchool
+    + setTeacherSubjectAtSchool(TeacherSubjectAtSchool teacherSubjectAtSchool): void
+    + getRating(): int
+    + setRating(int rating): void
+    + getComment(): String
+    + setComment(String comment): void
+}
+
+BaseEntity <|-- Review
+Review "0..*" -d- "1" Student : student
+Review "0..*" -d- "1" TeacherSubjectAtSchool : teacherSubjectAtSchool
+
+@enduml
