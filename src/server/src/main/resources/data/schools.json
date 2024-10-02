@@ -1,0 +1,54 @@
+[
+  {
+    "type": "school",
+    "id": 1,
+    "username": "schooluser1",
+    "password": "hashedpassword1",
+    "email": "school1@example.com",
+    "emailVerified": true,
+    "role": "SCHOOL",
+    "lastLoggedIn": "2024-04-01T12:34:56",
+    "userId": "userId1",
+    "institutionId": "inst123",
+    "name": "Example School 1",
+    "title": "Best School 1",
+    "description": "A description of the first school.",
+    "address": {
+      "street": "Main St 2",
+      "city": "Debrecen",
+      "postalCode": "5678",
+      "country": "Hungary",
+      "houseNumber": "2"
+    },
+    "students": [
+    ],
+    "teachers": [
+    ]
+  },
+  {
+    "type": "school",
+    "id": 2,
+    "username": "schooluser2",
+    "password": "hashedpassword2",
+    "email": "school2@example.com",
+    "emailVerified": true,
+    "role": "SCHOOL",
+    "lastLoggedIn": "2024-05-01T10:20:30",
+    "userId": "userId2",
+    "institutionId": "inst456",
+    "name": "Example School 2",
+    "title": "Best School 2",
+    "description": "A description of the second school.",
+    "address": {
+      "street": "Main St 2",
+      "city": "Debrecen",
+      "postalCode": "5678",
+      "country": "Hungary",
+      "houseNumber": "2"
+    },
+    "students": [
+    ],
+    "teachers": [
+    ]
+  }
+]

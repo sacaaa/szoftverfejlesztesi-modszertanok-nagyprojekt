@@ -1,6 +1,5 @@
 package hu.unideb.inf.server.model.base;
 
-import hu.unideb.inf.server.model.base.BaseEntity;
 import hu.unideb.inf.server.model.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -65,6 +64,11 @@ public abstract class User extends BaseEntity implements UserDetails {
     @Override
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
+    }
+
+    @PrePersist
+    public void prePersist() {
+        super.setUpdatedAt(LocalDateTime.now());
     }
 
 }
