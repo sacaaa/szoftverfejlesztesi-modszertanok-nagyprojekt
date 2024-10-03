@@ -1,0 +1,28 @@
+[
+  {
+    "username": "studentuser1",
+    "password": "hashedpassword1",
+    "email": "student1@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-04-01T12:34:56",
+    "firstName": "Student",
+    "lastName": "User",
+    "birthDate": "2000-01-01",
+    "schoolId": 1,
+    "reviewsGiven": []
+  },
+  {
+    "username": "studentuser2",
+    "password": "hashedpassword2",
+    "email": "student2@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-04-01T12:34:56",
+    "firstName": "Student",
+    "lastName": "User",
+    "birthDate": "2000-01-01",
+    "schoolId": 2,
+    "reviewsGiven": []
+  }
+]
