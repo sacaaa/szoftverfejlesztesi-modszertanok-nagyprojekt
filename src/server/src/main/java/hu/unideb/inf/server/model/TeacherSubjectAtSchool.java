@@ -17,6 +17,11 @@ import java.util.Set;
 @AllArgsConstructor
 public class TeacherSubjectAtSchool extends BaseEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, updatable = false)
+    private Long id;
+
     @ManyToOne
     @JoinColumn(name = "teacher_id", nullable = false)
     private Teacher teacher;
