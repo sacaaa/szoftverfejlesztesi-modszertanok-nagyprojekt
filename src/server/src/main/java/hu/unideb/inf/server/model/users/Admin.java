@@ -9,15 +9,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "admins")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Admin extends User {
-
-    @Column(name = "user_id", nullable = false)
-    private String userId;
-
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
-    private User user;
-
+    public Admin() {
+        super();
+    }
 }

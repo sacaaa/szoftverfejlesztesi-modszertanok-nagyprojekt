@@ -3,15 +3,14 @@ package hu.unideb.inf.server.model.base;
 import hu.unideb.inf.server.model.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -20,6 +19,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public abstract class User extends BaseEntity implements UserDetails {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, updatable = false)
+    private Long id;
 
     @Column(name = "username", nullable = false, unique = true)
     private String username;
@@ -64,11 +68,6 @@ public abstract class User extends BaseEntity implements UserDetails {
     @Override
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
-    }
-
-    @PrePersist
-    public void prePersist() {
-        super.setUpdatedAt(LocalDateTime.now());
     }
 
 }

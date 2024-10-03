@@ -18,6 +18,11 @@ import java.util.Set;
 @AllArgsConstructor
 public class Teacher extends BaseEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, updatable = false)
+    private Long id;
+
     @Column(name = "title", nullable = false)
     @Enumerated(EnumType.STRING)
     private Title title;

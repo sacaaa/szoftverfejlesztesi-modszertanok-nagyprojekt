@@ -18,13 +18,6 @@ import java.util.Set;
 @AllArgsConstructor
 public class Student extends User {
 
-    @Column(name = "user_id", nullable = false)
-    private String userId;
-
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
-    private User user;
-
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
@@ -34,11 +27,11 @@ public class Student extends User {
     @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
 
-    @ManyToOne
-    @JoinColumn(name = "school_id", nullable = false)
-    private School school;
+    @Column(name = "school_id", nullable = false)
+    private Long schoolId;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Review> reviewsGiven = new HashSet<>();
 
 }
+
