@@ -1,15 +1,22 @@
 package hu.unideb.inf.server.data;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import hu.unideb.inf.server.model.Subject;
+import hu.unideb.inf.server.model.Teacher;
+import hu.unideb.inf.server.model.base.User;
+import hu.unideb.inf.server.model.logger.MyLogger;
 import hu.unideb.inf.server.model.users.School;
 import hu.unideb.inf.server.model.users.Student;
 import hu.unideb.inf.server.repository.SchoolRepository;
 import hu.unideb.inf.server.repository.StudentRepository;
+import hu.unideb.inf.server.repository.SubjectRepository;
+import hu.unideb.inf.server.repository.TeacherRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -25,26 +32,45 @@ public class DataLoader {
     private ResourceLoader resourceLoader;
 
     @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
     private SchoolRepository schoolRepository;
 
     @Autowired
     private StudentRepository studentRepository;
 
+    @Autowired
+    private SubjectRepository subjectRepository;
+
+    @Autowired
+    private TeacherRepository teacherRepository;
+
     @PostConstruct
     public void load() {
         loadData("classpath:data/schools.json", School[].class, schoolRepository);
-        // loadData("classpath:data/students.json", Student[].class, studentRepository);
+        loadData("classpath:data/students.json", Student[].class, studentRepository);
+        loadData("classpath:data/subjects.json", Subject[].class, subjectRepository);
+        loadData("classpath:data/teachers.json", Teacher[].class, teacherRepository);
     }
 
     private <T> void loadData(String resourcePath, Class<T[]> clazz, JpaRepository<T, Long> repository) {
         Resource resource = resourceLoader.getResource(resourcePath);
         try {
             T[] objects = objectMapper.readValue(resource.getInputStream(), clazz);
+            if (objects == null || objects.length == 0) {
+                MyLogger.log.warn(String.format("Nem található objektum a(z) %s fájlban.", resourcePath));
+                return;
+            }
+            if (objects[0] instanceof User) {
+                Arrays.stream(objects)
+                        .forEach(user -> ((User) user)
+                                .setPassword(passwordEncoder.encode(((User) user).getPassword())));
+            }
             repository.saveAll(Arrays.asList(objects));
-            System.out.println(objects.length + " objektum betöltve a(z) " + resourcePath + " fájlból.");
+            MyLogger.log.info(String.format("%d objektum betöltve a(z) %s fájlból.", objects.length, resourcePath));
         } catch (IOException e) {
-            System.err.println("Hiba történt a " + resourcePath + " fájl betöltése során: " + e.getMessage());
-            e.printStackTrace();
+            MyLogger.log.error(String.format("Hiba történt a(z) %s fájl beolvasása közben.", resourcePath), e);
         }
     }
 
