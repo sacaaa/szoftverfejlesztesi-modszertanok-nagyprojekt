@@ -1,4 +1,4 @@
-package hu.unideb.inf.server.service;
+package hu.unideb.inf.server.service.impl;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
