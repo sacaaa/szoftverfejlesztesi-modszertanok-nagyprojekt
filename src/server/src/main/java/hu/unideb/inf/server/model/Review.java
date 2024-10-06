@@ -19,13 +19,11 @@ public class Review extends BaseEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id", nullable = false)
-    private Student student;
+    private Long student;
 
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teacher_subject_at_school_id", nullable = false)
-    private TeacherSubjectAtSchool teacherSubjectAtSchool;
+    private Long teacherSubjectAtSchool;
 
     @Column(name = "rating", nullable = false)
     private int rating;

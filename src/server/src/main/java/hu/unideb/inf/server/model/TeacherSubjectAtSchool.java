@@ -22,19 +22,16 @@ public class TeacherSubjectAtSchool extends BaseEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
-    @ManyToOne
     @JoinColumn(name = "teacher_id", nullable = false)
-    private Teacher teacher;
+    private Long teacher;
 
-    @ManyToOne
     @JoinColumn(name = "subject_id", nullable = false)
-    private Subject subject;
+    private Long subject;
 
-    @ManyToOne
     @JoinColumn(name = "school_id", nullable = false)
-    private School school;
+    private Long school;
 
-    @OneToMany(mappedBy = "teacherSubjectAtSchool", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Review> reviewsReceived = new HashSet<>();
+    @ElementCollection
+    private Set<Long> reviewsReceived = new HashSet<>();
 
 }

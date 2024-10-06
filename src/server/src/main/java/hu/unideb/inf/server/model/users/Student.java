@@ -30,8 +30,8 @@ public class Student extends User {
     @Column(name = "school_id", nullable = false)
     private Long schoolId;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Review> reviewsGiven = new HashSet<>();
+    @ElementCollection
+    private Set<Long> reviewsGiven = new HashSet<>();
 
 }
 

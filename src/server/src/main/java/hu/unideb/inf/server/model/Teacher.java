@@ -37,8 +37,8 @@ public class Teacher extends BaseEntity {
     @Email
     private String email;
 
-    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<TeacherSubjectAtSchool> subjectAtSchools = new HashSet<>();
+    @ElementCollection
+    private Set<Long> subjectAtSchools = new HashSet<>();
 
     public String getTitle() {
         return title.getTitle();
