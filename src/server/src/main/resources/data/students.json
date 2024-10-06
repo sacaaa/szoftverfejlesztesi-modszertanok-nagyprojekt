@@ -10,7 +10,7 @@
     "lastName": "User",
     "birthDate": "2000-01-01",
     "schoolId": 1,
-    "reviewsGiven": []
+    "reviewsGiven": [1]
   },
   {
     "username": "studentuser2",
