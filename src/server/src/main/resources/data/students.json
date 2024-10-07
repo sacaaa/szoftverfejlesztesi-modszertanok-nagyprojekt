@@ -9,8 +9,8 @@
     "firstName": "Student",
     "lastName": "User",
     "birthDate": "2000-01-01",
-    "schoolId": 1,
-    "reviewsGiven": [1]
+    "school": { "id": 1 },
+    "schoolId": 1
   },
   {
     "username": "studentuser2",
@@ -22,7 +22,7 @@
     "firstName": "Student",
     "lastName": "User",
     "birthDate": "2000-01-01",
-    "schoolId": 2,
-    "reviewsGiven": []
+    "school": { "id": 2 },
+    "schoolId": 2
   }
 ]

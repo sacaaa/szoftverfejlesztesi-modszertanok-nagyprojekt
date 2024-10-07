@@ -1,7 +1,9 @@
 [
   {
-    "student": 3,
-    "teacherSubjectAtSchool": 1,
+    "student": { "id": 3 },
+    "studentId": 3,
+    "teacherSubjectAtSchool": { "id": 1 },
+    "teacherSubjectAtSchoolId": 1,
     "rating": 5,
     "comment": "Great teacher, very helpful"
   }

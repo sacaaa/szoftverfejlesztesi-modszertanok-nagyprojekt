@@ -55,10 +55,10 @@ public class DataLoader {
     public void load() {
         loadData("classpath:data/schools.json", School[].class, schoolRepository);
         loadData("classpath:data/students.json", Student[].class, studentRepository);
-        //loadData("classpath:data/subjects.json", Subject[].class, subjectRepository);
-        //loadData("classpath:data/teachers.json", Teacher[].class, teacherRepository);
-        //loadData("classpath:data/teacher_subject_at_schools.json", TeacherSubjectAtSchool[].class, teacherSubjectAtSchoolRepository);
-        //loadData("classpath:data/reviews.json", Review[].class, reviewRepository);
+        loadData("classpath:data/subjects.json", Subject[].class, subjectRepository);
+        loadData("classpath:data/teachers.json", Teacher[].class, teacherRepository);
+        loadData("classpath:data/teacher_subject_at_schools.json", TeacherSubjectAtSchool[].class, teacherSubjectAtSchoolRepository);
+        loadData("classpath:data/reviews.json", Review[].class, reviewRepository);
     }
 
     private <T> void loadData(String resourcePath, Class<T[]> clazz, JpaRepository<T, Long> repository) {
@@ -68,11 +68,6 @@ public class DataLoader {
             if (objects == null || objects.length == 0) {
                 MyLogger.log.warn(String.format("Nem található objektum a(z) %s fájlban.", resourcePath));
                 return;
-            }
-            if (objects[0] instanceof User) {
-                Arrays.stream(objects)
-                        .forEach(user -> ((User) user)
-                                .setPassword(passwordEncoder.encode(((User) user).getPassword())));
             }
             if (User.class.isAssignableFrom(clazz.getComponentType())) {
                 Arrays.stream(objects)

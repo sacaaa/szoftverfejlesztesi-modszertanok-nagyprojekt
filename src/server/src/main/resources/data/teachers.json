@@ -3,7 +3,6 @@
     "title": "DR",
     "firstName": "John",
     "lastName": "Doe",
-    "email": "john.doe@example.com",
-    "subjectAtSchools": [1]
+    "email": "john.doe@example.com"
   }
 ]

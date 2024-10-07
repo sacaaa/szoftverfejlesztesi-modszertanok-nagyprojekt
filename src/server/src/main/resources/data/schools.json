@@ -16,9 +16,7 @@
       "postalCode": "5678",
       "country": "Hungary",
       "houseNumber": "2"
-    },
-    "students": [2],
-    "teachers": []
+    }
   },
   {
     "username": "schooluser2",
@@ -37,8 +35,6 @@
       "postalCode": "5678",
       "country": "Hungary",
       "houseNumber": "2"
-    },
-    "students": [4],
-    "teachers": []
+    }
   }
 ]

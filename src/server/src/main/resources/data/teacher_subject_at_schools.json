@@ -1,8 +1,9 @@
 [
   {
-    "teacher": 1,
-    "subject": 1,
-    "school": 1,
-    "reviewsReceived": [1]
+    "teacher": { "id": 1 },
+    "teacherId": 1,
+    "subject": { "id": 1 },
+    "school": { "id": 1 },
+    "schoolId": 1
   }
 ]
