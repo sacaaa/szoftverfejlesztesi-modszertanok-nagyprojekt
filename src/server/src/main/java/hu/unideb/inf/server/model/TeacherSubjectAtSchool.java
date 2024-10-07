@@ -1,13 +1,14 @@
 package hu.unideb.inf.server.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import hu.unideb.inf.server.model.base.BaseEntity;
 import hu.unideb.inf.server.model.users.School;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,16 +23,28 @@ public class TeacherSubjectAtSchool extends BaseEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
-    @JoinColumn(name = "teacher_id", nullable = false)
-    private Long teacher;
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    @JsonBackReference(value = "teacher-teacherSubject")
+    private Teacher teacher;
 
-    @JoinColumn(name = "subject_id", nullable = false)
-    private Long subject;
+    @Column(name = "teacher_id", nullable = false, updatable = false, insertable = false)
+    private Long teacherId;
 
-    @JoinColumn(name = "school_id", nullable = false)
-    private Long school;
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
 
-    @ElementCollection
-    private Set<Long> reviewsReceived = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "school_id")
+    @JsonBackReference(value = "school-teachers")
+    private School school;
+
+    @Column(name = "school_id", nullable = false, updatable = false, insertable = false)
+    private Long schoolId;
+
+    @OneToMany(mappedBy = "teacherSubjectAtSchool", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference(value = "teacherSubject-reviews")
+    private List<Review> reviewsReceived;
 
 }

@@ -1,14 +1,15 @@
 package hu.unideb.inf.server.model.users;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import hu.unideb.inf.server.model.Review;
 import hu.unideb.inf.server.model.base.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -27,11 +28,17 @@ public class Student extends User {
     @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
 
+    @ManyToOne
+    @JoinColumn(name = "school")
+    @JsonBackReference(value = "school-students")
+    private School school;
+
     @Column(name = "school_id", nullable = false)
     private Long schoolId;
 
-    @ElementCollection
-    private Set<Long> reviewsGiven = new HashSet<>();
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference(value = "student-reviews")
+    private List<Review> reviews;
 
 }
 

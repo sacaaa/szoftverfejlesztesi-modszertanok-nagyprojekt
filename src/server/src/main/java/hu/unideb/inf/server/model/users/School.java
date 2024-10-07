@@ -1,15 +1,15 @@
 package hu.unideb.inf.server.model.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import hu.unideb.inf.server.model.Address;
 import hu.unideb.inf.server.model.TeacherSubjectAtSchool;
 import hu.unideb.inf.server.model.base.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -34,12 +34,12 @@ public class School extends User {
     @Embedded
     private Address address;
 
-    @ElementCollection
-    @CollectionTable(name = "school_students", joinColumns = @JoinColumn(name = "school_id"))
-    @Column(name = "student_id")
-    private Set<Long> students = new HashSet<>();
+    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference(value = "school-students")
+    private List<Student> students;
 
     @OneToMany(mappedBy = "school", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<TeacherSubjectAtSchool> teachers = new HashSet<>();
+    @JsonManagedReference(value = "school-teachers")
+    private List<TeacherSubjectAtSchool> teachers;
 }
 

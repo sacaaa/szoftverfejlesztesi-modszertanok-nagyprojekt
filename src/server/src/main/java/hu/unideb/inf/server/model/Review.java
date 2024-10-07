@@ -1,11 +1,10 @@
 package hu.unideb.inf.server.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import hu.unideb.inf.server.model.base.BaseEntity;
 import hu.unideb.inf.server.model.users.Student;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "reviews")
@@ -19,11 +18,21 @@ public class Review extends BaseEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
+    @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
-    private Long student;
+    @JsonBackReference(value = "student-reviews")
+    private Student student;
 
-    @JoinColumn(name = "teacher_subject_at_school_id", nullable = false)
-    private Long teacherSubjectAtSchool;
+    @Column(name = "student_id", nullable = false, updatable = false, insertable = false)
+    private Long studentId;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_subject_at_school_id")
+    @JsonBackReference(value = "teacherSubject-reviews")
+    private TeacherSubjectAtSchool teacherSubjectAtSchool;
+
+    @Column(name = "teacher_subject_at_school_id", nullable = false, updatable = false, insertable = false)
+    private Long teacherSubjectAtSchoolId;
 
     @Column(name = "rating", nullable = false)
     private int rating;

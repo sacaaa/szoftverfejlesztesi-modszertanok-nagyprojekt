@@ -1,14 +1,14 @@
 package hu.unideb.inf.server.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import hu.unideb.inf.server.model.base.BaseEntity;
 import hu.unideb.inf.server.model.enums.Title;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -37,11 +37,11 @@ public class Teacher extends BaseEntity {
     @Email
     private String email;
 
-    @ElementCollection
-    private Set<Long> subjectAtSchools = new HashSet<>();
+//    @ElementCollection
+//    private Set<Long> subjectAtSchools = new HashSet<>();
 
-    public String getTitle() {
-        return title.getTitle();
-    }
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference(value = "teacher-teacherSubject")
+    private List<TeacherSubjectAtSchool> subjectAtSchools;
 
 }
