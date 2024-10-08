@@ -1,6 +1,5 @@
 package hu.unideb.inf.server.model.users;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import hu.unideb.inf.server.model.Address;
 import hu.unideb.inf.server.model.TeacherSubjectAtSchool;
@@ -8,9 +7,7 @@ import hu.unideb.inf.server.model.base.User;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "schools")

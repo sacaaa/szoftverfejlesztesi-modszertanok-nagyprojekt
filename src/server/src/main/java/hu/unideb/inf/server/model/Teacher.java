@@ -7,9 +7,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "teachers")
@@ -36,9 +34,6 @@ public class Teacher extends BaseEntity {
     @Column(name = "email", nullable = false)
     @Email
     private String email;
-
-//    @ElementCollection
-//    private Set<Long> subjectAtSchools = new HashSet<>();
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference(value = "teacher-teacherSubject")
