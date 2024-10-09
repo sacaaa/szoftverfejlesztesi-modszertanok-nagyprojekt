@@ -40,26 +40,13 @@ Az ütemterv a projekt főbb szakaszait és az elvégzendő feladatokat határoz
 
 <!--10 hétre kell felbontani-->
 
-- **Tervezési fázis** (1-2. hét):
-
-    - Rendszer specifikációk kidolgozása
-    - Funkciók és adatbázis-struktúra tervezése
-
-
-- **fejlesztés / tesztelés indítása** (3. hét):
-
-    - Frontend: Alapvető komponensek megírása, reszponzív dizájn kialakítása
-
-    - Backend: API-k fejlesztése és adatbázis struktúra kialakítása
-
-    - Frontend és backend összekapcsolása
-
-    - Unit és integrációs tesztek végrehajtása
-
-    - Hibajavítások, felhasználói tesztek alapján végzett módosítások
-
-    - Élesítés
-
+- **Fejlesztési sprint 1** (3. hét)
+- **Fejlesztési sprint 2** (4.hét)
+- **Demó (projekt bemutató, értékeléssel) + sprint 3** (5. hét)
+- **Fejlesztés sprint 4, tesztelés** (6. hét)
+- **Fejlesztés sprint 5, tesztelés, teszt dokumentáció tesztelés** (7. hét)
+- **Átadás-átvétel (értékelés)** (8. hét)
+- 
 - **Mérföldkövek**:
 
     Az alábbi mérföldkövek segítik a projekt előrehaladásának nyomon követését:
