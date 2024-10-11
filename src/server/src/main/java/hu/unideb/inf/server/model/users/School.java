@@ -1,16 +1,13 @@
 package hu.unideb.inf.server.model.users;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import hu.unideb.inf.server.model.Address;
-import hu.unideb.inf.server.model.TeacherSubjectAtSchool;
+import hu.unideb.inf.server.model.Teacher;
 import hu.unideb.inf.server.model.base.User;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "schools")
@@ -38,8 +35,10 @@ public class School extends User {
     @JsonManagedReference(value = "school-students")
     private List<Student> students;
 
-    @OneToMany(mappedBy = "school", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonManagedReference(value = "school-teachers")
-    private List<TeacherSubjectAtSchool> teachers;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "school_teacher",
+            joinColumns = @JoinColumn(name = "school_id"),
+            inverseJoinColumns = @JoinColumn(name = "teacher_id"))
+    private List<Teacher> teachers;
 }
 
