@@ -1,15 +1,15 @@
 package hu.unideb.inf.server.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import hu.unideb.inf.server.model.base.BaseEntity;
 import hu.unideb.inf.server.model.enums.Title;
+import hu.unideb.inf.server.model.users.School;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.OptionalDouble;
 
 @Entity
 @Table(name = "teachers")
@@ -37,11 +37,50 @@ public class Teacher extends BaseEntity {
     @Email
     private String email;
 
-//    @ElementCollection
-//    private Set<Long> subjectAtSchools = new HashSet<>();
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "school_teacher",
+            joinColumns = @JoinColumn(name = "teacher_id"),
+            inverseJoinColumns = @JoinColumn(name = "school_id"))
+    @JsonBackReference(value = "school-teachers")
+    private List<School> schools;
 
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference(value = "teacher-teacherSubject")
     private List<TeacherSubjectAtSchool> subjectAtSchools;
+
+    /**
+     * Calculates the average rating for the teacher based on all associated reviews.
+     *
+     * @return the average rating as a Double, or null if there are no reviews.
+     */
+    @Transient
+    @JsonProperty("avg_rating")
+    public Double getAvgRating() {
+        if (subjectAtSchools == null || subjectAtSchools.isEmpty()) {
+            return null;
+        }
+        OptionalDouble avg = subjectAtSchools.stream()
+                .filter(ts -> ts.getReviewsReceived() != null && !ts.getReviewsReceived().isEmpty())
+                .flatMap(ts -> ts.getReviewsReceived().stream())
+                .mapToInt(Review::getRating)
+                .average();
+        return avg.isPresent() ? avg.getAsDouble() : null;
+    }
+
+    /**
+     * Returns a list of school IDs associated with the teacher.
+     *
+     * @return a list of school IDs as a List of Long, or null if there are no schools.
+     */
+    @Transient
+    @JsonProperty("school_ids")
+    public List<Long> getSchoolIds() {
+        if (schools == null || schools.isEmpty()) {
+            return null;
+        }
+        return schools.stream()
+                .map(School::getId)
+                .toList();
+    }
 
 }
