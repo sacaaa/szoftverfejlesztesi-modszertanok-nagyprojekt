@@ -6,5 +6,13 @@
     "teacherSubjectAtSchoolId": 1,
     "rating": 5,
     "comment": "Great teacher, very helpful"
+  },
+  {
+    "student": { "id": 3 },
+    "studentId": 3,
+    "teacherSubjectAtSchool": { "id": 1 },
+    "teacherSubjectAtSchoolId": 1,
+    "rating": 3,
+    "comment": "Mid teacher"
   }
 ]
