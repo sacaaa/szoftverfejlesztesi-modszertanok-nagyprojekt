@@ -33,10 +33,6 @@ public class Teacher extends BaseEntity {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "email", nullable = false)
-    @Email
-    private String email;
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "school_teacher",
             joinColumns = @JoinColumn(name = "teacher_id"),

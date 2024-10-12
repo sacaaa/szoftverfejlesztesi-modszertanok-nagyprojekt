@@ -40,5 +40,6 @@ public class School extends User {
             joinColumns = @JoinColumn(name = "school_id"),
             inverseJoinColumns = @JoinColumn(name = "teacher_id"))
     private List<Teacher> teachers;
+
 }
 
