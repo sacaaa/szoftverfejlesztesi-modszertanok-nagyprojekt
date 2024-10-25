@@ -3,4 +3,10 @@
 body {
     font-family: "Plus Jakarta Sans", sans-serif;
     font-optical-sizing: auto;
- }
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
