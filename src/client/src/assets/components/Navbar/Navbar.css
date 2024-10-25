@@ -1,0 +1,173 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: white;
+    border-bottom: 2px solid #969696;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: relative;
+}
+
+.navbar-logo-container {
+    flex: 1;
+}
+
+.navbar-logo-container a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.navbar-links-wrapper {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar-links-container {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-links-container p {
+    font-size: 16px;
+    color: black;
+}
+
+.navbar-actions-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    align-items: center;
+}
+
+.language-selector button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.language-selector button:hover {
+    background-color: #333;
+}
+
+.navbar-login-btn {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+.navbar-register-btn {
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.navbar-register-btn:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+
+
+
+
+
+/* Dropdown container */
+.language-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown toggle button */
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Flags styling */
+  .flag {
+    display: flex;
+    margin-right: 8px;
+  }
+  
+  .flag-hungary {
+    width: 20px;
+    height: 12px;
+    background: linear-gradient(to bottom, red 33%, white 33%, white 66%, green 66%);
+    border-radius: 2px;
+  }
+  
+  .flag-english {
+    width: 20px;
+    height: 12px;
+    background-color: #007bff; /* You can replace this with an actual flag image if needed */
+    border-radius: 2px;
+  }
+  
+  /* Arrow */
+  .arrow {
+    font-size: 12px;
+    margin-left: 5px;
+  }
+  
+  /* Dropdown menu */
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-top: 5px;
+    list-style: none;
+    padding: 10px;
+    width: 120px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .dropdown-menu li {
+    display: flex;
+    align-items: center;
+    padding: 8px 5px;
+    cursor: pointer;
+  }
+  
+  .dropdown-menu li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .dropdown-menu .flag-hungary,
+  .dropdown-menu .flag-english {
+    margin-right: 8px;
+  }
+  

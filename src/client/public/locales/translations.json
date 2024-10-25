@@ -1,0 +1,18 @@
+{
+    "en": {
+        "teacher": "Teacher",
+        "school": "School",
+        "about": "About",
+        "login": "Login",
+        "register": "Register",
+        "description": "This is a text that can be translated into multiple languages."
+    },
+    "hu": {
+        "teacher": "Tanár",
+        "school": "Iskola",
+        "about": "Rólunk",
+        "login": "Bejelentkezés",
+        "register": "Regisztráció",
+        "description": "Ez egy szöveg, amit több nyelvre le lehet fordítani."
+    }
+}
