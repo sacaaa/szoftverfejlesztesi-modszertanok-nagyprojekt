@@ -1,12 +1,14 @@
+import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import TextComponent from "../components/Test";
 
 const HomePage = () => {
     return (
-        <div>
-            <Navbar />
-            <TextComponent />
-        </div>
+        <>
+        <Navbar />
+        <TextComponent />
+        <Footer />
+        </>
     )
 }
 
