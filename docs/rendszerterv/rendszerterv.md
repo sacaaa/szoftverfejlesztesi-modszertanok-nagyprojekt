@@ -285,7 +285,7 @@ Az EduStats rendszer fejlesztéséhez szükséges fizikai környezet és technik
 
 ### 6.1. Vásárolt szoftver komponensek és külső rendszerek
 
-- **Django**: A backend fejlesztéséhez használt nyílt forráskódú webkeretrendszer, amely lehetővé teszi a Python nyelv használatát a fejlesztés során.
+- **Spring**: A backend fejlesztéséhez használt nyílt forráskódú webkeretrendszer, amely lehetővé teszi a Java nyelv használatát a fejlesztés során.
 
 - **React**: A frontend fejlesztéséhez használt JavaScript könyvtár, amely lehetővé teszi dinamikus, interaktív felhasználói felületek létrehozását.
 
@@ -296,18 +296,16 @@ Az EduStats rendszer fejlesztéséhez szükséges fizikai környezet és technik
 
 ### 6.3. Fejlesztő eszközök
 
-- **Visual Studio Code**: A fejlesztők által használt kódeditor, amely támogatja a JavaScript, TypeScript és Python nyelveket.
+- **Visual Studio Code**: A fejlesztők által használt kódeditor, amely támogatja a JavaScript, TypeScript és Java nyelveket.
 
 - **Git**: Verziókezelő rendszer a forráskódok kezelésére és a csapatmunka támogatására.
 
 - **Docker**: A környezetek konténerizálásához használt eszköz, amely biztosítja, hogy a fejlesztői, tesztelési és termelési környezetek konzisztens legyenek.
 
 ### 6.4. Keretrendszer
-- **Django**: A Python-alapú webkeretrendszer, amely gyors és biztonságos webalkalmazások fejlesztésére lett optimalizálva.
+- **Spring**: A Java-alapú webkeretrendszer, amely gyors és biztonságos webalkalmazások fejlesztésére lett optimalizálva.
 
 - **React**: A frontendhez használt keretrendszer, amely lehetővé teszi a dinamikus és reszponzív felhasználói felületek létrehozását.
-
-- **Django REST Framework**: Az API végpontok létrehozásához és kezeléséhez használt keretrendszer, amely segít az adatcsere megkönnyítésében a backend és a frontend között.
 
 
 
@@ -328,7 +326,7 @@ A rendszer főbb absztrakt komponensei és azok kapcsolatai a következők:
 
 - **Felhasználói felület (UI)**: A felhasználók interakcióját lehetővé tevő réteg, amely tartalmazza a regisztrációs, bejelentkezési, és értékelési űrlapokat.
 
-- **Backend (Django)**: A rendszer logikáját és adatkezelését végző réteg. Ez a komponens felelős az API végpontok kezeléséért, az adatbázis műveletek végrehajtásáért, és a felhasználói kérések feldolgozásáért.
+- **Backend (Spring)**: A rendszer logikáját és adatkezelését végző réteg. Ez a komponens felelős az API végpontok kezeléséért, az adatbázis műveletek végrehajtásáért, és a felhasználói kérések feldolgozásáért.
 
 - **Adatbázis**: Az értékelések, felhasználói adatok és tanárok információinak tárolására szolgáló réteg. Az adatbázis kapcsolódik a backendhez, amelyen keresztül az adatok elérhetők és kezelhetők.
 
@@ -372,7 +370,7 @@ Az EduStats rendszer architekturális terve a nemfunkcionális követelmények f
 
 - **Felhasználói felület (UI)**: React alapú frontend, amely biztosítja a felhasználói interakciót.
 
-- **Backend**: Django keretrendszer, amely kezeli az API végpontokat és az adatkezelést.
+- **Backend**: Spring keretrendszer, amely kezeli az API végpontokat és az adatkezelést.
 
 
 ### 8.3. Változások Kezelése
