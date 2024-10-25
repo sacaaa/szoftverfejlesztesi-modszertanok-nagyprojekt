@@ -9,8 +9,9 @@
 .homepage-header h3 {
     font-size: 16px;
     font-weight: 100;
-    color: #333;
+    color: #666;
     margin: 20px;
+    padding-top: 15px;
 }
 
 .homepage-header h2 {
