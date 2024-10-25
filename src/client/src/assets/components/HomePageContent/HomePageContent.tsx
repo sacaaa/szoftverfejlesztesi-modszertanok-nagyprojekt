@@ -1,38 +1,39 @@
+import { useTranslation } from 'react-i18next';
 import './HomePageContent.css';
 
 const HomePageContent = () => {
+    const { t } = useTranslation();
+
     return (
         <div className="homepage-container">
         <header className="homepage-header">
-            <h3>Üdvözlünk az Edustats oldalon!</h3>
-            <h2>Értékeld<br /> tanáraid</h2>
-            <p>
-            Itt könnyedén kereshetsz iskolák és tanárok között, hogy megtaláld a számodra legjobbat. Oszd meg tapasztalataidat másokkal: értékeld a tanárokat és segíts a közösségnek abban, hogy mindenki a legjobb oktatást kapja.
-            </p>
+            <h3>{t('welcome')}</h3>
+            <h2>{t('rate_your_teachers')}</h2>
+            <p>{t('homepagecontent_p')}</p>
         </header>
 
         <div className="homepage-buttons">
-            <button className="search-button">Tanár keresés</button>
-            <button className="search-button">Iskola keresés</button>
+            <button className="search-button">{t('teacher_search')}</button>
+            <button className="search-button">{t('school_search')}</button>
         </div>
 
         <div className="stats-section">
             <div className="stat-card">
             <h3>10.000+</h3>
-            <p>Tanár</p>
+            <p>{t('teacher')}</p>
             </div>
             <div className="stat-card">
             <h3>154.000+</h3>
-            <p>Értékelés</p>
+            <p>{t('rating')}</p>
             </div>
             <div className="stat-card">
             <h3>500+</h3>
-            <p>Iskola</p>
+            <p>{t('school')}</p>
             </div>
         </div>
 
         <section className="about-section">
-            <h3>Rólunk</h3>
+            <h3>{t('about')}</h3>
             <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lacus turpis, tincidunt tempor nisi nec, ornare rutrum leo. Suspendisse semper vehicula quam. Sed quis condimentum lectus. Donec convallis tristique justo, eu posuere justo congue sed.
             </p>
