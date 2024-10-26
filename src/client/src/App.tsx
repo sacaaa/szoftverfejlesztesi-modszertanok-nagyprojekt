@@ -3,6 +3,7 @@ import Signin from "./Signin";
 import Protect from "./Protected";
 import { AuthProvider } from "./useAuth";
 import HomePage from "./assets/pages/HomePage";
+import SchoolList from "./assets/pages/SchoolList";
 
 const App = () => {
     return (
@@ -12,6 +13,7 @@ const App = () => {
                     <Route path="/" index element={<HomePage />} />
                     <Route path="/signin" element={<Signin />} />
                     <Route path="/protected" element={<Protect />} />
+                    <Route path="/schools" element={<SchoolList />} />
                 </Routes>
             </AuthProvider>
         </Router>

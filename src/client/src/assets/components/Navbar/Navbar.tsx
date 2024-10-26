@@ -25,7 +25,8 @@ const Navbar = () => {
 
             <div className="navbar-links-container">
                 <p>{t('teacher')}</p>
-                <p>{t('school')}</p>
+                <a href="/schools" className="navbar-login-btn">{t('school')}</a>  {/*Ez csak ideiglenes megoldás, most csak így tudtam megoldani*/}
+                {/* <p>{t('school')}</p> */}
                 <p>{t('about')}</p>
             </div>
 
@@ -49,7 +50,7 @@ const Navbar = () => {
                     )}
                 </div>
 
-                <a href="#" className="navbar-login-btn">{t('login')}</a>
+                <a href="/signin" className="navbar-login-btn">{t('login')}</a>
                 <a href="#" className="navbar-register-btn">{t('register')}</a>
             </div>
         </nav>
