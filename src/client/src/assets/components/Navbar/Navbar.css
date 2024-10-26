@@ -183,4 +183,25 @@
   .dropdown-menu .flag-english {
     margin-right: 8px;
   }
+
+
+
+@media (max-width: 1200px) {
+  .navbar-actions-container {
+    display: none;
+  }
   
+  .navbar-links-container {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-actions-container {
+    display: none;
+  }
+
+  .navbar-links-container {
+    display: none;
+  }
+}
