@@ -1,0 +1,18 @@
+/* A teljes oldal magasságának beállítása */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* A fő konténer, amely flexbox-szal osztja fel a teret */
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* A konténer minimum magassága a teljes ablak */
+  }
+  
+  /* A fő tartalom kitölti a fennmaradó helyet */
+  .main-content {
+    flex: 1;
+  }

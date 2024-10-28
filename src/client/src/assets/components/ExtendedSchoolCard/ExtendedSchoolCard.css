@@ -7,7 +7,7 @@
     max-width: 1300px;
     max-height: 350px;
     margin: auto;
-    margin-top: 10rem;
+    margin-top: 3rem;
   }
 
   
@@ -47,9 +47,9 @@
     margin: 3px;
     background-color: #00A3FF;
     color: #ffffff;
-    padding: 4px;
+    padding: 5px 10px;
     border-radius: 20px;
-    font-size: 10px;
+    font-size: 12px;
 }
 
   .school-rating {
@@ -63,7 +63,7 @@
     font-size: 30px;
     font-weight: bold;
     color: #4B4B4B;
-    margin-right: 0.5em;
+    margin-right: 0.2em;
 }
 
 .school-rating img {
