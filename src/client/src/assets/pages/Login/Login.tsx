@@ -1,15 +1,18 @@
 import LoginComponent from "../../components/LoginComponent/LoginComponent";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import "./Login.css";
 
 const Login = () => {
     return (
-        <>
+        <div className="container">
             <Navbar />
-            <LoginComponent />
+            <div className="main-content">
+                <LoginComponent />
+            </div>
             <Footer />
-        </>
+        </div>
     )
 }
 
-export default Login
+export default Login;
