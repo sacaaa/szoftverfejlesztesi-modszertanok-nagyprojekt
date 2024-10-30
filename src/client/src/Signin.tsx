@@ -35,8 +35,10 @@ const Signin = () => {
         } catch (err: any) {
             if (!err?.response) {
                 setError("Network Error");
+                console.log(error);
             } else {
                 setError("Login failed");
+                console.log(error);
             }
         }
     };
