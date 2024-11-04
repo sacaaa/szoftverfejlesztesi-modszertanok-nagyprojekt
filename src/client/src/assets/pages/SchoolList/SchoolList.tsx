@@ -26,7 +26,7 @@ const SchoolList: React.FC = () => {
             <SearchBar toggleView={setIsExtended} />
 
             <div className= {!isExtended ? 'main-content' : 'ext-main-content'}>
-                <div className='component'>
+                <div>
                     {isExtended ? (
                         <ExtendedSchoolCard 
                             name={schoolData.name} 
@@ -44,7 +44,25 @@ const SchoolList: React.FC = () => {
                         />
                     )}
                 </div>
-                <div className='component'>
+                <div>
+                    {isExtended ? (
+                        <ExtendedSchoolCard 
+                            name={schoolData.name}  
+                            logo={schoolData.logo} 
+                            rating={schoolData.rating} 
+                            description={schoolData.description} 
+                            additionalInfo={schoolData.additionalInfo}
+                        />
+                    ) : (
+                        <SimpleSchoolCard 
+                            name={schoolData.name} 
+                            logo={schoolData.logo} 
+                            rating={schoolData.rating} 
+                            additionalInfo={schoolData.additionalInfo}
+                        />
+                    )}
+                </div>
+                <div>
                     {isExtended ? (
                         <ExtendedSchoolCard 
                             name={schoolData.name} 
@@ -62,25 +80,7 @@ const SchoolList: React.FC = () => {
                         />
                     )}
                 </div>
-                <div className='component'>
-                    {isExtended ? (
-                        <ExtendedSchoolCard 
-                            name={schoolData.name} 
-                            logo={schoolData.logo} 
-                            rating={schoolData.rating} 
-                            description={schoolData.description} 
-                            additionalInfo={schoolData.additionalInfo}
-                        />
-                    ) : (
-                        <SimpleSchoolCard 
-                            name={schoolData.name} 
-                            logo={schoolData.logo} 
-                            rating={schoolData.rating} 
-                            additionalInfo={schoolData.additionalInfo}
-                        />
-                    )}
-                </div>
-                <div className='component'>
+                <div>
                     {isExtended ? (
                         <ExtendedSchoolCard 
                             name={schoolData.name} 
