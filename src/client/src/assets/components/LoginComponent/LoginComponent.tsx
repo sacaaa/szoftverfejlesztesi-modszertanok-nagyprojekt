@@ -1,22 +1,67 @@
 import React, { useState } from 'react';
 import './LoginComponent.css';
+import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router';
+import { useAuth } from '../../../useAuth';
 
 const LoginComponent: React.FC = () => {
+
+    const API = axios.create({
+        baseURL: "http://localhost:3333",
+        withCredentials: true
+    });
+
     const [emailFocused, setEmailFocused] = useState(false);
     const [passwordFocused, setPasswordFocused] = useState(false);
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
+    const { setTokens } = useAuth(); // Használd a setAuth funkciót a hitelesítési állapot frissítéséhez
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/protected";
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        try {
+            const response = await API.post("/auth/local/signin", { email, password });
+            
+            if (response?.data?.accessToken && response?.data?.refreshToken) {
+                setTokens(response.data.accessToken, response.data.refreshToken);
+
+                navigate(from, { replace: true });
+            } else {
+                console.log("incorrect submission");
+                setError(response?.data.message);
+            }
+        } catch (err: any) {
+            if (!err?.response) {
+                setError("Network Error");
+                console.log(error);
+            } else {
+                setError("Login failed");
+                console.log(error);
+            }
+        }
+    };
 
 return (
     <div className="login-container">
         <h1 className='login-h1'>EDUSTATS</h1>
         <h2 className='login-h2'>Bejelentkezés</h2>
-        <form className="login-form">
+        <form className="login-form"  onSubmit={handleSubmit}>
             <div className="login-input-container">
                 <input
                     type="email"
-                    value={emailValue}
-                    onChange={(e) => setEmailValue(e.target.value)}
+                    value={email}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setEmailValue(e.target.value);
+                        setEmail(e.target.value);
+                    }}
                     onFocus={() => setEmailFocused(true)}
                     onBlur={() => setEmailFocused(false)}
                     required
@@ -28,8 +73,11 @@ return (
             <div className="login-input-container">
                 <input
                     type="password"
-                    value={passwordValue}
-                    onChange={(e) => setPasswordValue(e.target.value)}
+                    value={password}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setPasswordValue(e.target.value);
+                        setPassword(e.target.value);
+                    }}
                     onFocus={() => setPasswordFocused(true)}
                     onBlur={() => setPasswordFocused(false)}
                     required
