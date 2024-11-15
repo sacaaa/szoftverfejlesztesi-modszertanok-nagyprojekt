@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FaListUl } from "react-icons/fa";
+import { IoGridSharp } from "react-icons/io5";
 import './SearchBar.css';
 
 interface SearchBarProps {
@@ -24,13 +26,13 @@ const SearchBar: React.FC<SearchBarProps> = ({ toggleView }) => {
                     className={`toggle-button ${viewMode === 'list' ? 'active' : ''}`}
                     onClick={() => { handleViewModeChange('list'); toggleView(true); }}
                 >
-                    📄
+                    <FaListUl />
                 </button>
                 <button
                     className={`toggle-button ${viewMode === 'grid' ? 'active' : ''}`}
                     onClick={() =>{ handleViewModeChange('grid'); toggleView(false);} }
                 >
-                    🗂️
+                    <IoGridSharp />
                 </button>
             </div>
         </div>
