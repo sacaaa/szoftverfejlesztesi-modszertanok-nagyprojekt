@@ -1,5 +1,6 @@
 [
   {
+    "type": "school",
     "username": "schooluser1",
     "password": "hashedpassword1",
     "email": "school1@example.com",
@@ -19,6 +20,7 @@
     }
   },
   {
+    "type": "school",
     "username": "schooluser2",
     "password": "hashedpassword2",
     "email": "school2@example.com",

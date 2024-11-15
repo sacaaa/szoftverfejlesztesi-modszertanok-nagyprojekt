@@ -1,6 +1,6 @@
 [
   {
-    "student": { "id": 3 },
+    "student": { "id": 3, "type": "student" },
     "studentId": 3,
     "teacherSubjectAtSchool": { "id": 1 },
     "teacherSubjectAtSchoolId": 1,
@@ -8,7 +8,7 @@
     "comment": "Great teacher, very helpful"
   },
   {
-    "student": { "id": 3 },
+    "student": { "id": 3, "type": "student" },
     "studentId": 3,
     "teacherSubjectAtSchool": { "id": 1 },
     "teacherSubjectAtSchoolId": 1,

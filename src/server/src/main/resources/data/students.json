@@ -1,5 +1,6 @@
 [
   {
+    "type": "student",
     "username": "studentuser1",
     "password": "hashedpassword1",
     "email": "student1@example.com",
@@ -9,10 +10,11 @@
     "firstName": "Student",
     "lastName": "User",
     "birthDate": "2000-01-01",
-    "school": { "id": 1 },
+    "school": { "id": 1, "type": "school"  },
     "schoolId": 1
   },
   {
+    "type": "student",
     "username": "studentuser2",
     "password": "hashedpassword2",
     "email": "student2@example.com",
@@ -22,7 +24,7 @@
     "firstName": "Student",
     "lastName": "User",
     "birthDate": "2000-01-01",
-    "school": { "id": 2 },
+    "school": { "id": 2, "type": "school" },
     "schoolId": 2
   }
 ]

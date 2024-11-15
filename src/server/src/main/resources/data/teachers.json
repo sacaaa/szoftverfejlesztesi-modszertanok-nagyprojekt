@@ -4,7 +4,7 @@
     "firstName": "John",
     "lastName": "Doe",
     "schools": [
-      { "id": 1 }
+      { "id": 1, "type": "school" }
     ]
   }
 ]
