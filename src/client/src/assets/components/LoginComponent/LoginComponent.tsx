@@ -7,17 +7,17 @@ import { useAuth } from '../../../useAuth';
 const LoginComponent: React.FC = () => {
 
     const API = axios.create({
-        baseURL: "http://localhost:3333",
+        baseURL: "http://localhost:8080",
         withCredentials: true
     });
 
-    const [emailFocused, setEmailFocused] = useState(false);
+    const [usernameFocused, setUsernameFocused] = useState(false);
     const [passwordFocused, setPasswordFocused] = useState(false);
-    const [emailValue, setEmailValue] = useState('');
+    const [usernameValue, setUsernameValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
     const { setTokens } = useAuth(); // Használd a setAuth funkciót a hitelesítési állapot frissítéséhez
 
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
@@ -28,10 +28,10 @@ const LoginComponent: React.FC = () => {
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         try {
-            const response = await API.post("/auth/local/signin", { email, password });
+            const response = await API.post("/api/auth/login", { username, password });
             
-            if (response?.data?.accessToken && response?.data?.refreshToken) {
-                setTokens(response.data.accessToken, response.data.refreshToken);
+            if (response?.data?.token && response?.data?.refreshToken) {
+                setTokens(response.data.token, response.data.refreshToken);
 
                 navigate(from, { replace: true });
             } else {
@@ -49,52 +49,52 @@ const LoginComponent: React.FC = () => {
         }
     };
 
-return (
-    <div className="login-container">
-        <h1 className='login-h1'>EDUSTATS</h1>
-        <h2 className='login-h2'>Bejelentkezés</h2>
-        <form className="login-form"  onSubmit={handleSubmit}>
-            <div className="login-input-container">
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        setEmailValue(e.target.value);
-                        setEmail(e.target.value);
-                    }}
-                    onFocus={() => setEmailFocused(true)}
-                    onBlur={() => setEmailFocused(false)}
-                    required
-                />
-                <label className={`login-placeholder ${emailFocused || emailValue ? 'login-focused' : ''}`}>
-                    Email cím
-                </label>
-            </div>
-            <div className="login-input-container">
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                        setPasswordValue(e.target.value);
-                        setPassword(e.target.value);
-                    }}
-                    onFocus={() => setPasswordFocused(true)}
-                    onBlur={() => setPasswordFocused(false)}
-                    required
-                />
-                <label className={`login-placeholder ${passwordFocused || passwordValue ? 'login-focused' : ''}`}>
-                    Jelszó
-                </label>
-            </div>
-            <div className="login-remember-container">
-                <input type="checkbox" id="login-rememberMe" />
-                <label htmlFor="login-rememberMe" className='login-rememberMe'>Belépési adatok megjegyzése</label>
-            </div>
+    return (
+        <div className="login-container">
+            <h1 className='login-h1'>EDUSTATS</h1>
+            <h2 className='login-h2'>Bejelentkezés</h2>
+            <form className="login-form" onSubmit={handleSubmit}>
+                <div className="login-input-container">
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                            setUsernameValue(e.target.value);
+                            setUsername(e.target.value);
+                        }}
+                        onFocus={() => setUsernameFocused(true)}
+                        onBlur={() => setUsernameFocused(false)}
+                        required
+                    />
+                    <label className={`login-placeholder ${usernameFocused || usernameValue ? 'login-focused' : ''}`}>
+                        Felhasználónév
+                    </label>
+                </div>
+                <div className="login-input-container">
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                            setPasswordValue(e.target.value);
+                            setPassword(e.target.value);
+                        }}
+                        onFocus={() => setPasswordFocused(true)}
+                        onBlur={() => setPasswordFocused(false)}
+                        required
+                    />
+                    <label className={`login-placeholder ${passwordFocused || passwordValue ? 'login-focused' : ''}`}>
+                        Jelszó
+                    </label>
+                </div>
+                <div className="login-remember-container">
+                    <input type="checkbox" id="login-rememberMe" />
+                    <label htmlFor="login-rememberMe" className='login-rememberMe'>Belépési adatok megjegyzése</label>
+                </div>
                 <button type="submit" className='login-button'>BEJELENTKEZÉS</button>
                 <p className='login-p'>
                     Nincs még regisztrálva felhasználód? <a href="/register" className='login-a'>Regisztrálok!</a>
                 </p>
-        </form>
+            </form>
         </div>
     );
 };

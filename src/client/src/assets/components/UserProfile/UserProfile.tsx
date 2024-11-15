@@ -1,72 +1,41 @@
-import React, { useEffect, useState } from "react";
-import { API } from "../../../useAuth";
-import { useAuth } from "../../../useAuth";
-import { decodeToken } from "./jwtDecode"; // Importálás a dekódoló funkció
-
-interface User {
-    id: number;
-    email: string;
-    createdAt: string;
-    updatedAt: string;
-}
+import React, { useEffect } from "react";
+import { axiosInstance } from "../../../useAuth"; // Importáld az interceptoros Axios példányt
 
 const UserProfile: React.FC = () => {
-    const [user, setUser] = useState<User | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
-    const { token } = useAuth(); // Hozzáférés a tokenhez a kontextusból
-
     useEffect(() => {
-        const fetchUserData = async () => {
-            if (!token) {
-                setError("No token available. Please log in.");
-                setLoading(false);
-                return;
-            }
-
-            const decoded = decodeToken(token);
-            const email = decoded?.email;
-
-            if (!email) {
-                setError("No email found in token.");
-                setLoading(false);
-                return;
-            }
-
+        const fetchUser = async () => {
             try {
-                console.log("[UserProfile] Fetching user data for email:", email);
-                const response = await API.get(`/users/${email}`); // Dinamikus email használata az URL-ben
-                console.log("[UserProfile] User data fetched successfully:", response.data);
-                setUser(response.data);
+                // Token lekérése a localStorage-ból
+                const token = localStorage.getItem("accessToken");
+
+                if (!token) {
+                    console.error("No token found in localStorage");
+                    return;
+                }
+
+                // Token dekódolása és az ID kiolvasása
+                const base64Payload = token.split(".")[1];
+                const decodedPayload = JSON.parse(atob(base64Payload)); // Token payload dekódolása
+                const userId = decodedPayload.sub; // Feltételezve, hogy az 'id' a 'sub'-ban van
+
+                if (!userId) {
+                    console.error("User ID not found in token");
+                    return;
+                }
+
+                // API hívás az ID alapján az axiosInstance használatával
+                const response = await axiosInstance.get(`/users/1`);
+
+                console.log("User Data:", response.data);
             } catch (error) {
-                console.error("[UserProfile] Error fetching user data:", error);
-                setError("Failed to fetch user data. Please try again.");
-            } finally {
-                setLoading(false);
+                console.error("Error fetching user:", error);
             }
         };
 
-        fetchUserData();
-    }, [token]);
+        fetchUser();
+    }, []);
 
-    if (loading) return <p>Loading user data...</p>;
-    if (error) return <p>{error}</p>;
-
-    return (
-        <div>
-            <h2>User Profile</h2>
-            {user ? (
-                <div>
-                    <p><strong>ID:</strong> {user.id}</p>
-                    <p><strong>Email:</strong> {user.email}</p>
-                    <p><strong>Created At:</strong> {new Date(user.createdAt).toLocaleString()}</p>
-                    <p><strong>Updated At:</strong> {new Date(user.updatedAt).toLocaleString()}</p>
-                </div>
-            ) : (
-                <p>No user data found.</p>
-            )}
-        </div>
-    );
+    return <div>Check the console for user data!</div>;
 };
 
 export default UserProfile;

@@ -31,7 +31,7 @@
   margin-bottom: 1rem;
 }
 
-input[type="email"],
+input[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 1rem;
@@ -41,7 +41,7 @@ input[type="password"] {
   outline: none;
 }
 
-input[type="email"]:focus,
+input[type="text"]:focus,
 input[type="password"]:focus {
   border-color: #2196f3;
 }
@@ -100,7 +100,7 @@ input:focus + .login-placeholder,
   text-decoration: underline;
 }
 
-.login-rememberMe{
+.login-rememberMe {
   margin-left: 8px;
   font-size: 0.9rem;
 }

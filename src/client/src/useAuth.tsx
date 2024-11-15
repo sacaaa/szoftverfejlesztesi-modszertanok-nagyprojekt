@@ -22,10 +22,17 @@ export const useAuth = () => {
 
 // Axios példány konfigurálása
 const API = axios.create({
-    baseURL: "http://localhost:3333",
-    withCredentials: true
+    baseURL: "http://localhost:8080",
+    withCredentials: true,
 });
 
+// Második Axios példány létrehozása a tokenfrissítéshez
+const axiosInstance = axios.create({
+    baseURL: "http://localhost:8080",
+    withCredentials: true,
+});
+
+// AuthProvider implementáció
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [token, setToken] = useState<string | null | undefined>(undefined);
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -36,7 +43,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         if (accessToken) {
             console.log("[AuthProvider] Access token found in localStorage. Setting token state.");
             setToken(accessToken);
-            setIsAuthenticated(true); // Ha van token, akkor be van jelentkezve
+            setIsAuthenticated(true);
         } else {
             console.log("[AuthProvider] No access token found in localStorage.");
         }
@@ -60,7 +67,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setIsAuthenticated(false);
     };
 
-    // Kérés interceptor - Bearer token hozzáadása
+    // Ha változik a token, akkor frissítjük az Authorization headert
     useLayoutEffect(() => {
         const authInterceptor = API.interceptors.request.use((config) => {
             if (token) {
@@ -71,69 +78,56 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             }
             return config;
         });
-    
+
         return () => {
             API.interceptors.request.eject(authInterceptor);
         };
     }, [token]);
+
+    useLayoutEffect(() => {
+      axiosInstance.interceptors.response.use(
+        (response) => response,
+        async (error) => {
+            if (error.response?.status === 403) {
+                const refreshToken = localStorage.getItem("refreshToken");
+                console.log("ÚJ REFRESH TOKEN KÉRÉS ITT!!!!!");
     
-    // Válasz interceptor - Token frissítés hibakezelés esetén
-    useEffect(() => {
-        console.log("REFRESH INTERCEPTOR TRIGGERED");
-        const refreshInterceptor = API.interceptors.response.use(
-            (response) => response,
-            async (error) => {
-                const originalRequest = error.config;
-                console.log("[AuthProvider] Response interceptor triggered with error:", error);
-    
-                // Ellenőrizzük, hogy a 401 státuszkódot megkapta-e, vagy a "Unauthorized" üzenetet
-                if (error.response?.status === 401 || error.response?.data?.message === "Unauthorized") {
-                    console.log("[AuthProvider] Token expired or unauthorized. Attempting to refresh token.");
-                    originalRequest.retryRequest = true;
-    
+                if (refreshToken) {
                     try {
-                        const refreshToken = localStorage.getItem("refreshToken");
-                        console.log("[AuthProvider] Refresh token retrieved:", refreshToken);
-    
-                        if (!refreshToken) {
-                            console.log("[AuthProvider] No refresh token available. Logging out user.");
-                            logout();
-                            return Promise.reject(error);
-                        }
-    
-                        const response = await API.post(
-                            "/auth/refresh", 
-                            {},
+                        // Refresh token API call
+                        const response = await axios.post(
+                            "http://localhost:8080/api/auth/refresh-token",
+                            { refreshToken },
                             {
-                                headers: {
-                                    "Content-Type": "application/json",
-                                    "Authorization": `Bearer ${refreshToken}`
-                                }
+                                headers: { "Content-Type": "application/json" },
                             }
                         );
     
-                        console.log("[AuthProvider] Token refresh successful. Updating tokens with new accessToken:", response.data.accessToken);
+                        // A válaszban lévő 'token' mezőt kezeljük accessToken-ként
+                        const newAccessToken = response.data.token; // A szerver válaszában 'token' mező
+                        console.log(newAccessToken + " ÚJ TOKEN ITT MOST!!!!!");
     
-                        setTokens(response.data.accessToken, response.data.refreshToken);
+                        if (newAccessToken) {
+                            localStorage.setItem("accessToken", newAccessToken);
     
-                        // Eredeti kérés újraküldése az új accessToken-nel
-                        originalRequest.headers['Authorization'] = `Bearer ${response.data.accessToken}`;
-                        return API(originalRequest);  // Az eredeti kérés újraküldése
+                            // Retry the original request with the new token
+                            error.config.headers.Authorization = `Bearer ${newAccessToken}`;
+                            return axiosInstance.request(error.config);
+                        } else {
+                            console.error("Refresh token response did not contain a new token.");
+                        }
                     } catch (refreshError) {
-                        console.log("[AuthProvider] Token refresh failed. Logging out user.", refreshError);
-                        logout();
-                        return Promise.reject(refreshError);
+                        console.error("Error refreshing token:", refreshError);
+                        // Handle logout or other necessary actions here
                     }
+                } else {
+                    console.error("No refresh token available.");
                 }
-                return Promise.reject(error);
             }
-        );
-    
-        return () => {
-            API.interceptors.response.eject(refreshInterceptor);
-        };
-    }, [token]);
-    
+            return Promise.reject(error);
+        }
+    );    
+    }, []);
 
     return (
         <AuthContext.Provider value={{ isAuthenticated, token, setTokens, logout }}>
@@ -142,4 +136,4 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-export { API };
+export { API, axiosInstance };
