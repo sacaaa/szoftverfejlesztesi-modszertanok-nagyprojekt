@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,22 +31,25 @@ public class AuthController {
         String username = request.get("username");
         String password = request.get("password");
 
-        UserDetails userDetails = userService.loadUserByUsername(username);
+        try {
+            UserDetails userDetails = userService.loadUserByUsername(username);
 
-        if (userDetails == null) {
+            if (!userService.authenticate(username, password)) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Invalid username or password"));
+            }
+
+            return ResponseEntity.ok(Map.of(
+                    "token", jwtService.generateToken(userDetails),
+                    "refreshToken", jwtService.generateRefreshToken(userDetails)
+            ));
+        } catch (UsernameNotFoundException ex) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body(Map.of("error", "Invalid username or password"));
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("error", "An unexpected error occurred"));
         }
-
-        if (!userService.authenticate(username, password)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(Map.of("error", "Invalid username or password"));
-        }
-
-        return ResponseEntity.ok(Map.of(
-                "token", jwtService.generateToken(userDetails),
-                "refreshToken", jwtService.generateRefreshToken(userDetails)
-        ));
     }
 
     @PostMapping("/register")
