@@ -88,7 +88,7 @@ return (
             </div>
             <div className="login-remember-container">
                 <input type="checkbox" id="login-rememberMe" />
-                <label htmlFor="login-rememberMe">Belépési adatok megjegyzése</label>
+                <label htmlFor="login-rememberMe" className='login-rememberMe'>Belépési adatok megjegyzése</label>
             </div>
                 <button type="submit" className='login-button'>BEJELENTKEZÉS</button>
                 <p className='login-p'>

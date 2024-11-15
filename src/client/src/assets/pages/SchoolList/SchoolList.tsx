@@ -23,7 +23,9 @@ const SchoolList: React.FC = () => {
     return (
         <>  
             <Navbar />
-            <SearchBar toggleView={setIsExtended} />
+            <div className='seach-bar'>
+                <SearchBar toggleView={setIsExtended} />
+            </div>
 
             <div className= {!isExtended ? 'main-content' : 'ext-main-content'}>
                 <div>
