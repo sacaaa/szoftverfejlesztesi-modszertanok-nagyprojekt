@@ -23,7 +23,7 @@ const LoginComponent: React.FC = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/protected";
+    const from = location.state?.from?.pathname || "/profile";
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
