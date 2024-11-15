@@ -6,12 +6,7 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ toggleView }) => {
-    const [filter, setFilter] = useState('Szűrő');
     const [viewMode, setViewMode] = useState('list');
-
-    const handleFilterChange = (newFilter: string) => {
-        setFilter(newFilter);
-    };
 
     const handleViewModeChange = (mode: 'list' | 'grid') => {
         setViewMode(mode);
