@@ -99,3 +99,8 @@ input:focus + .login-placeholder,
 .login-a:hover {
   text-decoration: underline;
 }
+
+.login-rememberMe{
+  margin-left: 8px;
+  font-size: 0.9rem;
+}
