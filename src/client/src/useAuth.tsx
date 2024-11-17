@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useLayoutEffect, useState } from "react";
 
 // Autentikációs kontextus típusdefiníció
 interface AuthContextType {
@@ -82,23 +82,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             },
             (error) => Promise.reject(error)
         );
-
+    
         return () => {
             axiosInstance.interceptors.request.eject(authInterceptor);
         };
-    }, []);
+    }, [token]); // A token állapotára figyelünk
+    
 
     // Response interceptor - Token frissítés 403-as hiba esetén
-    useEffect(() => {
+    useLayoutEffect(() => {
         const responseInterceptor = axiosInstance.interceptors.response.use(
             (response) => response,
             async (error) => {
                 if (error.response?.status === 403 && !error.config._retry) {
                     error.config._retry = true; // Végtelen ciklus elkerülése
-
+    
                     const refreshToken = localStorage.getItem("refreshToken");
                     console.log("ÚJ REFRESH TOKEN KÉRÉS ITT!!!!!");
-
+    
                     if (refreshToken) {
                         try {
                             const response = await axios.post(
@@ -106,18 +107,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                                 { refreshToken },
                                 { headers: { "Content-Type": "application/json" } }
                             );
-
+    
                             const newAccessToken = response.data.token; // A szerver válaszában 'token' mező
                             console.log(newAccessToken + " ÚJ TOKEN ITT MOST!!!!!");
-
+    
                             if (newAccessToken) {
-                                // Új token mentése és alkalmazása
+                                // Új token mentése
                                 localStorage.setItem("accessToken", newAccessToken);
-
-                                // Fontos: az eredeti kérés fejlécének frissítése!
+    
+                                // Fontos: az eredeti kérés fejlécének közvetlen frissítése!
                                 error.config.headers.Authorization = `Bearer ${newAccessToken}`;
-
-                                // Az eredeti kérés újrapróbálása
+    
+                                // Új tokennel újrapróbáljuk az eredeti kérést
                                 return axiosInstance.request(error.config);
                             } else {
                                 console.error("Refresh token response did not contain a new token.");
@@ -131,16 +132,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                         logout(); // Logout, ha nincs refresh token
                     }
                 }
-
+    
                 // Más hibák továbbítása
                 return Promise.reject(error);
             }
         );
-
+    
         return () => {
             axiosInstance.interceptors.response.eject(responseInterceptor);
         };
     }, []);
+    
 
     return (
         <AuthContext.Provider value={{ isAuthenticated, token, setTokens, logout }}>

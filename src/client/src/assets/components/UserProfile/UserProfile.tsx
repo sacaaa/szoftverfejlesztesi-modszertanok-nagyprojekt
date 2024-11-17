@@ -24,7 +24,7 @@ const UserProfile: React.FC = () => {
                 }
 
                 // API hívás az ID alapján az axiosInstance használatával
-                const response = await axiosInstance.get(`/users/1`);
+                const response = await axiosInstance.get(`/api/users/1`);
 
                 console.log("User Data:", response.data);
             } catch (error) {
