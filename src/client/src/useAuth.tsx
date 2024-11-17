@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useContext, useEffect, useLayoutEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 // Autentikációs kontextus típusdefiníció
 interface AuthContextType {
@@ -67,66 +67,79 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setIsAuthenticated(false);
     };
 
-    // Ha változik a token, akkor frissítjük az Authorization headert
-    useLayoutEffect(() => {
-        const authInterceptor = API.interceptors.request.use((config) => {
-            if (token) {
-                config.headers.Authorization = `Bearer ${token}`;
-                console.log("[AuthProvider] Authorization header added with token:", token);
-            } else {
-                console.log("[AuthProvider] No token available for Authorization header.");
-            }
-            return config;
-        });
+    // Request interceptor - Authorization header frissítése
+    useEffect(() => {
+        const authInterceptor = axiosInstance.interceptors.request.use(
+            (config) => {
+                const currentToken = localStorage.getItem("accessToken");
+                if (currentToken) {
+                    config.headers.Authorization = `Bearer ${currentToken}`;
+                    console.log("[AuthProvider] Authorization header updated with token:", currentToken);
+                } else {
+                    console.log("[AuthProvider] No token available for Authorization header.");
+                }
+                return config;
+            },
+            (error) => Promise.reject(error)
+        );
 
         return () => {
-            API.interceptors.request.eject(authInterceptor);
+            axiosInstance.interceptors.request.eject(authInterceptor);
         };
-    }, [token]);
+    }, []);
 
-    useLayoutEffect(() => {
-      axiosInstance.interceptors.response.use(
-        (response) => response,
-        async (error) => {
-            if (error.response?.status === 403) {
-                const refreshToken = localStorage.getItem("refreshToken");
-                console.log("ÚJ REFRESH TOKEN KÉRÉS ITT!!!!!");
-    
-                if (refreshToken) {
-                    try {
-                        // Refresh token API call
-                        const response = await axios.post(
-                            "http://localhost:8080/api/auth/refresh-token",
-                            { refreshToken },
-                            {
-                                headers: { "Content-Type": "application/json" },
+    // Response interceptor - Token frissítés 403-as hiba esetén
+    useEffect(() => {
+        const responseInterceptor = axiosInstance.interceptors.response.use(
+            (response) => response,
+            async (error) => {
+                if (error.response?.status === 403 && !error.config._retry) {
+                    error.config._retry = true; // Végtelen ciklus elkerülése
+
+                    const refreshToken = localStorage.getItem("refreshToken");
+                    console.log("ÚJ REFRESH TOKEN KÉRÉS ITT!!!!!");
+
+                    if (refreshToken) {
+                        try {
+                            const response = await axios.post(
+                                "http://localhost:8080/api/auth/refresh-token",
+                                { refreshToken },
+                                { headers: { "Content-Type": "application/json" } }
+                            );
+
+                            const newAccessToken = response.data.token; // A szerver válaszában 'token' mező
+                            console.log(newAccessToken + " ÚJ TOKEN ITT MOST!!!!!");
+
+                            if (newAccessToken) {
+                                // Új token mentése és alkalmazása
+                                localStorage.setItem("accessToken", newAccessToken);
+
+                                // Fontos: az eredeti kérés fejlécének frissítése!
+                                error.config.headers.Authorization = `Bearer ${newAccessToken}`;
+
+                                // Az eredeti kérés újrapróbálása
+                                return axiosInstance.request(error.config);
+                            } else {
+                                console.error("Refresh token response did not contain a new token.");
                             }
-                        );
-    
-                        // A válaszban lévő 'token' mezőt kezeljük accessToken-ként
-                        const newAccessToken = response.data.token; // A szerver válaszában 'token' mező
-                        console.log(newAccessToken + " ÚJ TOKEN ITT MOST!!!!!");
-    
-                        if (newAccessToken) {
-                            localStorage.setItem("accessToken", newAccessToken);
-    
-                            // Retry the original request with the new token
-                            error.config.headers.Authorization = `Bearer ${newAccessToken}`;
-                            return axiosInstance.request(error.config);
-                        } else {
-                            console.error("Refresh token response did not contain a new token.");
+                        } catch (refreshError) {
+                            console.error("Error refreshing token:", refreshError);
+                            logout(); // Kijelentkeztetés sikertelen frissítés esetén
                         }
-                    } catch (refreshError) {
-                        console.error("Error refreshing token:", refreshError);
-                        // Handle logout or other necessary actions here
+                    } else {
+                        console.error("No refresh token available.");
+                        logout(); // Logout, ha nincs refresh token
                     }
-                } else {
-                    console.error("No refresh token available.");
                 }
+
+                // Más hibák továbbítása
+                return Promise.reject(error);
             }
-            return Promise.reject(error);
-        }
-    );    
+        );
+
+        return () => {
+            axiosInstance.interceptors.response.eject(responseInterceptor);
+        };
     }, []);
 
     return (
