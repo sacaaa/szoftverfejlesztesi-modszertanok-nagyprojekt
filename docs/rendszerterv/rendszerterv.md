@@ -46,16 +46,17 @@ Az ütemterv a projekt főbb szakaszait és az elvégzendő feladatokat határoz
 - **Fejlesztés sprint 4, tesztelés** (6. hét)
 - **Fejlesztés sprint 5, tesztelés, teszt dokumentáció tesztelés** (7. hét)
 - **Átadás-átvétel (értékelés)** (8. hét)
-- 
+  
+
 - **Mérföldkövek**:
 
     Az alábbi mérföldkövek segítik a projekt előrehaladásának nyomon követését:
 
     1. mérföldkő (2. hét vége): Részletes rendszerterv és séma
 
-    2. mérföldkő (3. hét vége): Kódírás / Tesztelés
+    2. mérföldkő (7. hét vége): Kódírás / Tesztelés
  
-    3. mérföldkő (3. hét vége): Rendszer élesítése és átadás
+    3. mérföldkő (8. hét vége): Rendszer élesítése és átadás
 
 
 
@@ -188,7 +189,7 @@ Az EduStats rendszerben a következő szereplők vannak:
         - Iskola ahol tanul: *School*,
         - Értékelések amiket tanárra tett: *list*
 
-    ![Diák UML](rendszerterv\models\diak\uml.png)
+    ![Diák UML](models\Student\image.png)
 
 
 - **Értékelés**
@@ -202,7 +203,7 @@ Az EduStats rendszerben a következő szereplők vannak:
         - Megjegyzés: *string*,
         - Értékelési skála (1-5): *int*
 
-    ![Diák UML](rendszerterv\models\ertekeles\uml.png)
+    ![Értékelés UML](models\Review\image.png)
 
 
 
@@ -217,7 +218,7 @@ Az EduStats rendszerben a következő szereplők vannak:
             - Kulcs a tanár, érték a tárgyak listája.
 
 
-    - ![Diák UML](rendszerterv\models\iskola\uml.png)
+    ![Iskola UML](models\School\image.png)
 
 
 
@@ -237,7 +238,7 @@ Az EduStats rendszerben a következő szereplők vannak:
             - Iskola a kulcs, érték egy lista az értékelésekkel.
 
 
-    - ![Diák UML](rendszerterv\models\tanar\uml.png)
+  ![Tanár UML](models\Teacher\image.png)
 
 
 
@@ -260,24 +261,32 @@ Az EduStats rendszer menüje az alábbi hierarchiát követi:
 - Főmenü
     - Regisztráció
     - Bejelentkezés
-    - Értékelések
+    - Tanár
+        - Keresés
+        - Értékelések
         - Értékelés megadása
         - Saját értékelések megtekintése
+    - Iskola
+        - Keresés
+        - Értékelések
+        - Értékelés megadása
+        - Saját értékelések megtekintése
+    - Rólunk
+    - Nyelv
 
 
 ### 5.5. Képernyő tervek
 
 - Az alábbiakban bemutatjuk a főbb képernyők terveit:
 
-![Diák UML](rendszerterv\design\DiákProfil.png)
-
-![Diák UML](rendszerterv\design\HomePage.png)
-
-![Diák UML](rendszerterv\design\Iskolák.png)
-
-![Diák UML](rendszerterv\design\Tanárok.png)
-
-
+![Bejelentkezés](Screenshots\Login.png)
+![Regisztráció](Screenshots\SignIn.png)
+![Főoldal](Screenshots\MainPage.png)
+![Iskolák listája](Screenshots\SchoolList.png)
+![Iskolák listája kártya](Screenshots\SchoolsListCard.png)
+![Tanárok listája](Screenshots\TeacherList.png)
+![Tanárok listája kártya](Screenshots\TeacherListCard.png)
+![Tanárok értékelése](Screenshots\RateTeacher.png)
 
 ## 6. Fizikai környezet
 
