@@ -32,7 +32,7 @@ const HomePageContent = () => {
             </div>
         </div>
 
-        <section className="about-section">
+        <section className="about-section" id='about'>
             <h3>{t('about')}</h3>
             <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lacus turpis, tincidunt tempor nisi nec, ornare rutrum leo. Suspendisse semper vehicula quam. Sed quis condimentum lectus. Donec convallis tristique justo, eu posuere justo congue sed.
