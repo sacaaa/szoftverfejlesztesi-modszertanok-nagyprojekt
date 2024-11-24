@@ -25,7 +25,7 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-links-container">
-                <p>{t('teacher')}</p>
+                <a href='/teachers' className='navbar-teachers-btn'>{t('teacher')}</a>
                 <a href="/schools" className="navbar-login-btn">{t('school')}</a>
                 <p>{t('about')}</p>
             </div>

@@ -99,6 +99,11 @@
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+.navbar-teachers-btn {
+  text-decoration: none;
+  color: black;
+}
+
 
 
 
