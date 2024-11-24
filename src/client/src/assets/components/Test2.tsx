@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 
-const SchoolsComponent: React.FC = () => {
+const Test2: React.FC = () => {
     useEffect(() => {
         const fetchSchools = async () => {
             try {
@@ -25,4 +25,4 @@ const SchoolsComponent: React.FC = () => {
     return <div></div>;
 };
 
-export default SchoolsComponent;
+export default Test2;
