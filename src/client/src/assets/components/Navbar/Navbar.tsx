@@ -50,8 +50,8 @@ const Navbar = () => {
                     )}
                 </div>
 
-                <a href="/signin" className="navbar-login-btn">{t('login')}</a>
-                <a href="#" className="navbar-register-btn">{t('register')}</a>
+                <a href="/login" className="navbar-login-btn">{t('login')}</a>
+                <a href="/register" className="navbar-register-btn">{t('register')}</a>
             </div>
         </nav>
     );
