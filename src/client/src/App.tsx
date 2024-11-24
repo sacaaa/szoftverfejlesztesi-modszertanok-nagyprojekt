@@ -5,6 +5,7 @@ import SchoolList from "./assets/pages/SchoolList/SchoolList";
 import Register from "./assets/pages/Register/Register";
 import Login from "./assets/pages/Login/Login";
 import UserProfile from "./assets/components/UserProfile/UserProfile";
+import TeacherList from "./assets/pages/TeacherList/TeacherList";
 import TeacherRaterPage from "./assets/pages/TeacherRaterPage/TeacherRaterPage";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
                     <Route path="/profile" element={<UserProfile />}/>
                     <Route path="/register" element={<Register />}/>
                     <Route path="/teacers/:id" element={<TeacherRaterPage />}/>
+                    <Route path="/teachers" element={<TeacherList />}/>
                 </Routes>
         </Router>
     );
