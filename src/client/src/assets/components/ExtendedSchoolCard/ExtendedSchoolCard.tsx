@@ -23,7 +23,7 @@ export default function Extended_School_Items({ name, logo, rating, description,
             <h2>{name}</h2>
             <p>{description}</p>
         </div>
-        <div className='right-container'>
+        <div className='school-right-container'>
             <div className='school-rating'>
                 <p>{rating}</p>
                 <img src={"images/star_purple500.png"} alt={`star`}/>

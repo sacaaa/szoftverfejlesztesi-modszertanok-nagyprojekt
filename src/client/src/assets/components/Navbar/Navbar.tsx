@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react';
 
 const Navbar = () => {
     const { t, i18n } = useTranslation();
-    const [selectedLanguage, setSelectedLanguage] = useState<string>(i18n.language || 'hu');
+    const [selectedLanguage, setSelectedLanguage] = useState<string>(() => i18n.language.slice(0, 2) || 'hu');
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     useEffect(() => {
-        setSelectedLanguage(i18n.language || 'hu');
+        console.log("Current language:", i18n.language); // Debug log
+        // Az első két karaktert használjuk a nyelvkód normalizálásához
+        setSelectedLanguage(i18n.language.slice(0, 2) || 'hu');
     }, [i18n.language]);
 
     const selectLanguage = (lang: string) => {
@@ -25,8 +27,7 @@ const Navbar = () => {
 
             <div className="navbar-links-container">
                 <p>{t('teacher')}</p>
-                <a href="/schools" className="navbar-login-btn">{t('school')}</a>  {/*Ez csak ideiglenes megoldás, most csak így tudtam megoldani*/}
-                {/* <p>{t('school')}</p> */}
+                <a href="/schools" className="navbar-login-btn">{t('school')}</a>
                 <p>{t('about')}</p>
             </div>
 

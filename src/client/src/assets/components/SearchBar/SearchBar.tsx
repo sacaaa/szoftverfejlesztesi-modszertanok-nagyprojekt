@@ -8,7 +8,7 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ toggleView }) => {
-    const [viewMode, setViewMode] = useState('list');
+    const [viewMode, setViewMode] = useState('grid');
 
     const handleViewModeChange = (mode: 'list' | 'grid') => {
         setViewMode(mode);
@@ -19,17 +19,17 @@ const SearchBar: React.FC<SearchBarProps> = ({ toggleView }) => {
             <input
                 type="text"
                 placeholder="Keresés..."
-                className="search-input"
+                className="searchbar-search-input"
             />
-            <div className="view-toggle">
+            <div className="searchbar-view-toggle">
                 <button
-                    className={`toggle-button ${viewMode === 'list' ? 'active' : ''}`}
+                    className={`searchbar-toggle-button ${viewMode === 'list' ? 'active' : ''}`}
                     onClick={() => { handleViewModeChange('list'); toggleView(true); }}
                 >
                     <FaListUl />
                 </button>
                 <button
-                    className={`toggle-button ${viewMode === 'grid' ? 'active' : ''}`}
+                    className={`searchbar-toggle-button ${viewMode === 'grid' ? 'active' : ''}`}
                     onClick={() =>{ handleViewModeChange('grid'); toggleView(false);} }
                 >
                     <IoGridSharp />
