@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar/Navbar";
 import HomePageContent from "../components/HomePageContent/HomePageContent";
 import SchoolsComponent from "../components/Test2";
 import TeacherCard from "../components/TeacherCard/TeacherCard";
+import OpinionForm from "../components/OpinionForm/OpinionForm";
 
 const HomePage = () => {
     return (
@@ -19,6 +20,7 @@ const HomePage = () => {
                 tags={['Debrecen', 'Egyetem', 'Kollégium']}
                 profileImage="https://via.placeholder.com/100" // Opcionális URL képhez
             />
+        <OpinionForm />
         <Footer />
         </>
     )

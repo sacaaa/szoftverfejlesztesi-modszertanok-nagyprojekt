@@ -1,0 +1,77 @@
+/* Konténer */
+.review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+/* Legördülő listák konténer */
+.review-form-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+/* Legördülő lista stílusa */
+.review-form-select {
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    appearance: none;
+    cursor: pointer;
+}
+
+.review-form-select:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Rating legördülő külön stílus (szűkebb) */
+.rating-select {
+    max-width: 120px;
+    text-align: center;
+}
+
+/* Szövegmező stílusa */
+.review-form-textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-form-textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Küldés gomb */
+.review-form-submit {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.review-form-submit:hover {
+    background-color: #0056b3;
+}
