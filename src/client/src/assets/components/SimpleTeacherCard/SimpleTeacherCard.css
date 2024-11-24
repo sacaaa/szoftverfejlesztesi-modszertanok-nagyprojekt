@@ -1,0 +1,72 @@
+.simpleteacher-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 338px;
+    max-height: 338px;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column; /* Vertikális elrendezés */
+    align-items: center; /* Vízszintesen középre */
+    justify-content: center; /* Függőlegesen középre */
+  }
+  
+  .simpleteacher-logo1 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .simpleteacher-logo1 img {
+    border-radius: 50%;
+  }
+  
+  .simpleteacher-rating1 {
+    display: flex;
+    align-items: center;
+  }
+  
+  .simpleteacher-rating1 p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4B4B4B;
+    padding-right: 3px;
+  }
+  
+  .simpleteacher-rating1 img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .simpleteacher-info1 {
+    padding: 10px;
+    flex-grow: 1; 
+    max-width: 800px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .simpleteacher-info1 h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #484848;
+    font-weight: normal;
+  } 
+  
+  .simpleteacher-additional-info1 {
+    display: flex;
+    align-items: center;
+  }
+  
+  .simpleteacher-additional-info1 p {
+    margin: 3px;
+    background-color: #00A3FF;
+    color: #ffffff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #00A3FF;
+    box-shadow: 0 0 3px rgba(0, 163, 255, 0.7);
+  }

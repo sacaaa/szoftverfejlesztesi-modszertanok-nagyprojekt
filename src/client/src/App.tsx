@@ -5,6 +5,7 @@ import SchoolList from "./assets/pages/SchoolList/SchoolList";
 import Register from "./assets/pages/Register/Register";
 import Login from "./assets/pages/Login/Login";
 import UserProfile from "./assets/components/UserProfile/UserProfile";
+import TeacherRaterPage from "./assets/pages/TeacherRaterPage/TeacherRaterPage";
 
 const App = () => {
     return (
@@ -16,6 +17,7 @@ const App = () => {
                     <Route path="/login" element={<Login />}/>
                     <Route path="/profile" element={<UserProfile />}/>
                     <Route path="/register" element={<Register />}/>
+                    <Route path="/teacers/:id" element={<TeacherRaterPage />}/>
                 </Routes>
         </Router>
     );

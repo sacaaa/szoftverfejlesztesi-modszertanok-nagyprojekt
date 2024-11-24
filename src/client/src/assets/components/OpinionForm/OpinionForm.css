@@ -8,7 +8,7 @@
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
     background-color: white;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 40px auto;
     font-family: Arial, sans-serif;
 }
 
@@ -34,7 +34,7 @@
 
 .review-form-select:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #00A3FF;
 }
 
 /* Rating legördülő külön stílus (szűkebb) */
@@ -57,7 +57,7 @@
 
 .review-form-textarea:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #00A3FF;
 }
 
 /* Küldés gomb */
@@ -65,7 +65,7 @@
     padding: 10px 20px;
     font-size: 16px;
     color: white;
-    background-color: #007bff;
+    background-color: #00A3FF;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -73,5 +73,5 @@
 }
 
 .review-form-submit:hover {
-    background-color: #0056b3;
+    background-color: #108cd3;
 }

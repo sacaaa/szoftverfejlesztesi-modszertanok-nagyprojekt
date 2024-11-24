@@ -1,0 +1,98 @@
+.extended-teacher-card {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+    width: 1300px;
+    max-width: 1300px;
+    max-height: 350px;
+    margin: auto;
+    margin-top: 3rem;
+  }
+  
+  
+  .teacher-logo {  
+    margin: 20px;
+    margin-right:20px;
+    max-width: 80%;
+    max-height: 80%;
+  }
+
+  .teacher-logo img {
+    border-radius: 50%;
+  }
+  
+  .teacher-info {
+    padding: 10px;
+    flex-grow: 1; 
+    max-width: 840px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .teacher-info h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    color: #484848;
+    font-weight: bold;
+    padding-left: 2px;
+  } 
+  
+  .teacher-info p {
+    font-size: 0.8rem;
+    margin: 5px 0;
+  
+  }
+  
+  .teacher-additional-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .teacher-additional-info p {
+    margin: 3px;
+    background-color: #00A3FF;
+    color: #ffffff;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #00A3FF;
+    box-shadow: 0 0 3px rgba(0, 163, 255, 0.7);
+  }
+  
+  
+  .teachercard-rating {
+    display: flex;    
+    align-items: center;
+    padding-right: 13px;
+  }
+  
+  
+  .teachercard-rating p {
+    font-size: 30px;
+    font-weight: bold;
+    color: #4B4B4B;
+  }
+  
+  .teachercard-rating img {
+    margin-left: auto;
+    width: 2.0rem; 
+    height: auto;
+  }
+  
+  .teacher-more {    
+    text-decoration: underline; 
+    font-size: 15px;   
+    padding: 40px 5px 5px;
+    flex-grow: 2;
+  }
+  
+  .teacher-right-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    align-self: flex-end;
+  }

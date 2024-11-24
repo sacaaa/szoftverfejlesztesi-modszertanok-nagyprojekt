@@ -27,9 +27,9 @@ const OpinionComponent: React.FC<ReviewCardProps> = ({ title, opinion, rating, p
                 {/* Vélemény */}
                 <p className="review-opinion">{opinion}</p>
             </div>
-            <div className="review-card-rating">
-                <span className="rating-value">{rating}</span>
-                <span className="rating-star">★</span>
+            <div className='review-rating'>
+                <p>{rating}</p>
+                <img src={"images/star_purple500.png"} alt={`star`}/>
             </div>
         </div>
     );
