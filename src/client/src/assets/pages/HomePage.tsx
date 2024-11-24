@@ -5,6 +5,7 @@ import HomePageContent from "../components/HomePageContent/HomePageContent";
 import SchoolsComponent from "../components/Test2";
 import TeacherCard from "../components/TeacherCard/TeacherCard";
 import OpinionForm from "../components/OpinionForm/OpinionForm";
+import OpinionComponent from "../components/OpinionComponent/OpinionComponent";
 
 const HomePage = () => {
     return (
@@ -21,6 +22,12 @@ const HomePage = () => {
                 profileImage="https://via.placeholder.com/100" // Opcionális URL képhez
             />
         <OpinionForm />
+        <OpinionComponent 
+                title="Matematika"
+                opinion="Nagyon jó tanár, érthetően magyaráz. "
+                rating={5}
+                profileImage="https://via.placeholder.com/100"
+        />
         <Footer />
         </>
     )
