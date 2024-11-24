@@ -22,7 +22,7 @@ const TeacherRaterPage = () => {
         <OpinionComponent 
                 title="Matematika"
                 opinion="Nagyon jó tanár, érthetően magyaráz. "
-                rating={5}
+                rating={4.53}
                 profileImage="https://via.placeholder.com/100"
         />
         <OpinionComponent 
@@ -34,7 +34,7 @@ const TeacherRaterPage = () => {
         <OpinionComponent 
                 title="Matematika"
                 opinion="Nagyon jó tanár, érthetően magyaráz. "
-                rating={5}
+                rating={4.23}
                 profileImage="https://via.placeholder.com/100"
         />
         <Footer />

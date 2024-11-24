@@ -29,7 +29,7 @@ const OpinionComponent: React.FC<ReviewCardProps> = ({ title, opinion, rating, p
             </div>
             <div className='review-rating'>
                 <p>{rating}</p>
-                <img src={"images/star_purple500.png"} alt={`star`}/>
+                <span className="rating-star">★</span>
             </div>
         </div>
     );
