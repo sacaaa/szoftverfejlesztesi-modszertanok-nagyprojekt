@@ -1,0 +1,124 @@
+.teacher-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.teacher-card-left {
+    flex: 1;
+    text-align: center;
+}
+
+.teacher-card-right {
+    flex: 1;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2.5rem;
+}
+
+.teacher-profile-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-color: #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.teacher-profile-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.placeholder-icon {
+    width: 60%;
+    height: 60%;
+    background: linear-gradient(135deg, #ffffff 0%, #007bff 100%);
+    border-radius: 50%;
+}
+
+.teacher-tags {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.teacher-tag {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.teacher-tag.more {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.teacher-name {
+    margin: 15px 0 5px;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+.teacher-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.rating-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.rating-star {
+    color: #007bff;
+    font-size: 20px;
+}
+
+.teacher-subjects,
+.teacher-school {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.teacher-subjects strong,
+.teacher-school strong {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.teacher-school a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.teacher-school a:hover {
+    text-decoration: underline;
+}

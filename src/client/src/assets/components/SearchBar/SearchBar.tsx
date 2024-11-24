@@ -23,16 +23,16 @@ const SearchBar: React.FC<SearchBarProps> = ({ toggleView }) => {
             />
             <div className="searchbar-view-toggle">
                 <button
-                    className={`searchbar-toggle-button ${viewMode === 'list' ? 'active' : ''}`}
-                    onClick={() => { handleViewModeChange('list'); toggleView(true); }}
-                >
-                    <FaListUl />
-                </button>
-                <button
                     className={`searchbar-toggle-button ${viewMode === 'grid' ? 'active' : ''}`}
                     onClick={() =>{ handleViewModeChange('grid'); toggleView(false);} }
                 >
                     <IoGridSharp />
+                </button>
+                <button
+                    className={`searchbar-toggle-button ${viewMode === 'list' ? 'active' : ''}`}
+                    onClick={() => { handleViewModeChange('list'); toggleView(true); }}
+                >
+                    <FaListUl />
                 </button>
             </div>
         </div>

@@ -8,8 +8,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     useEffect(() => {
-        console.log("Current language:", i18n.language); // Debug log
-        // Az első két karaktert használjuk a nyelvkód normalizálásához
+        console.log("Current language:", i18n.language);
         setSelectedLanguage(i18n.language.slice(0, 2) || 'hu');
     }, [i18n.language]);
 
