@@ -5,9 +5,10 @@ interface ExtendedSchoolListProps {
     name: string;
     logo: string;
     rating: string;
+    description: string;
 }
 
-export default function Extended_School_Items({ name, logo, rating, additionalInfo }: ExtendedSchoolListProps) {
+export default function Extended_School_Items({ name, logo, rating, description, additionalInfo }: ExtendedSchoolListProps) {
     return (<>
     <div className="extended-school-card">
         <div className="school-logo">
@@ -20,6 +21,7 @@ export default function Extended_School_Items({ name, logo, rating, additionalIn
                 <p>{additionalInfo[2]}</p>
             </div>
             <h2>{name}</h2>
+            <p>{description}</p>
         </div>
         <div className='school-right-container'>
             <div className='school-rating'>
