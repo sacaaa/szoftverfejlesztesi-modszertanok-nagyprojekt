@@ -3,13 +3,11 @@ import Navbar from "../../components/Navbar/Navbar"
 import OpinionComponent from "../../components/OpinionComponent/OpinionComponent"
 import OpinionForm from "../../components/OpinionForm/OpinionForm"
 import TeacherCard from "../../components/TeacherCard/TeacherCard"
-import SchoolsComponent from "../../components/Test2"
 
 const TeacherRaterPage = () => {
         return (
                 <>
                 <Navbar />
-                <SchoolsComponent />
                 <TeacherCard
                         name="Székely Dávid Béla"
                         rating={4.76}

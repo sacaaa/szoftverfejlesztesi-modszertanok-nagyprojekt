@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './LoginComponent.css';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router';
-import { useAuth } from '../../../useAuth';
 
 const LoginComponent: React.FC = () => {
 
@@ -14,8 +13,7 @@ const LoginComponent: React.FC = () => {
     const [usernameFocused, setUsernameFocused] = useState(false);
     const [passwordFocused, setPasswordFocused] = useState(false);
     const [usernameValue, setUsernameValue] = useState('');
-    const [passwordValue, setPasswordValue] = useState('');
-    const { setTokens } = useAuth(); // Használd a setAuth funkciót a hitelesítési állapot frissítéséhez
+    const [passwordValue, setPasswordValue] = useState(''); // Használd a setAuth funkciót a hitelesítési állapot frissítéséhez
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -31,7 +29,6 @@ const LoginComponent: React.FC = () => {
             const response = await API.post("/api/auth/login", { username, password });
             
             if (response?.data?.token && response?.data?.refreshToken) {
-                setTokens(response.data.token, response.data.refreshToken);
 
                 navigate(from, { replace: true });
             } else {
