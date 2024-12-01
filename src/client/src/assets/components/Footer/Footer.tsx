@@ -1,7 +1,9 @@
-import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './Footer.css';
 
 const Footer: React.FC = () => {
+    const { t, i18n } = useTranslation();
+
     return (
         <footer className="footer">
             <h3>EDUSTATS</h3>
@@ -12,11 +14,11 @@ const Footer: React.FC = () => {
                     <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
                 </div>
                 <div className="footer-links">
-                    <a href="/privacy">Adatvédelmi nyilatkozat</a>
-                    <a href="/contact">Kapcsolat</a>
-                    <a href="/terms">Felhasználási feltételek</a>
+                    <a href="/privacy">{t('Privacy_Policy')}</a>
+                    <a href="/contact">{t('Contact')}</a>
+                    <a href="/terms">{t('Terms_of_Use')}</a>
                 </div>
-                <p>A vélemények tartalmáért az EduStats nem vállal felelősséget. A felhasználók által megosztott információk nem feltétlenül tükrözik az EduStats álláspontját.</p>
+                <p>{t('footer_long')}</p>
                 <p>COPYRIGHT © {new Date().getFullYear()} - www.edustats.hu</p>
             </div>
         </footer>

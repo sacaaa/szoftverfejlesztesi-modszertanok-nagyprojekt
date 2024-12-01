@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './LoginComponent.css';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router';
 
 const LoginComponent: React.FC = () => {
@@ -18,6 +19,7 @@ const LoginComponent: React.FC = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const { t, i18n } = useTranslation();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -49,7 +51,7 @@ const LoginComponent: React.FC = () => {
     return (
         <div className="login-container">
             <h1 className='login-h1'>EDUSTATS</h1>
-            <h2 className='login-h2'>Bejelentkezés</h2>
+            <h2 className='login-h2'>{t('login')}</h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <div className="login-input-container">
                     <input
@@ -64,7 +66,7 @@ const LoginComponent: React.FC = () => {
                         required
                     />
                     <label className={`login-placeholder ${usernameFocused || usernameValue ? 'login-focused' : ''}`}>
-                        Felhasználónév
+                    {t('username')}
                     </label>
                 </div>
                 <div className="login-input-container">
@@ -80,16 +82,16 @@ const LoginComponent: React.FC = () => {
                         required
                     />
                     <label className={`login-placeholder ${passwordFocused || passwordValue ? 'login-focused' : ''}`}>
-                        Jelszó
+                        {t('password')}
                     </label>
                 </div>
                 <div className="login-remember-container">
                     <input type="checkbox" id="login-rememberMe" />
-                    <label htmlFor="login-rememberMe" className='login-rememberMe'>Belépési adatok megjegyzése</label>
+                    <label htmlFor="login-rememberMe" className='login-rememberMe'>{t('Remember_login_credentials')}</label>
                 </div>
-                <button type="submit" className='login-button'>BEJELENTKEZÉS</button>
+                <button type="submit" className='login-button'>{t('LOGIN')}</button>
                 <p className='login-p'>
-                    Nincs még regisztrálva felhasználód? <a href="/register" className='login-a'>Regisztrálok!</a>
+                    {t('no_reg')} <a href="/register" className='login-a'>{t('sign_up!')}</a>
                 </p>
             </form>
         </div>

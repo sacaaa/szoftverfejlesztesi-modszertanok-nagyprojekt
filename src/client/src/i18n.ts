@@ -12,11 +12,21 @@ const resources = {
             "about": "Rólunk",
             "rating": "Értékelés",
             "login": "Bejelentkezés",
+            "LOGIN": "BEJELENTKEZÉS",
             "register": "Regisztráció",
             "description": "Ez egy szöveg, amit több nyelvre le lehet fordítani.",
             "welcome": "Üdvözlünk az Edustats oldalon!",
             "homepagecontent_p": "Itt könnyedén kereshetsz iskolák és tanárok között, hogy megtaláld a számodra legjobbat. Oszd meg tapasztalataidat másokkal: értékeld a tanárokat és segíts a közösségnek abban, hogy mindenki a legjobb oktatást kapja.",
-            "rate_your_teachers": "Értékeld tanáraid!"
+            "rate_your_teachers": "Értékeld tanáraid!",
+            "Privacy_Policy": "Adatvédelmi nyilatkozat",
+            "Contact": "Kapcsolat",
+            "Terms_of_Use": "Felhasználási feltételek",
+            "footer_long": "A vélemények tartalmáért az EduStats nem vállal felelősséget. A felhasználók által megosztott információk nem feltétlenül tükrözik az EduStats álláspontját.",
+            "username": "Felhasználónév",
+            "password": "Jelszó",
+            "Remember_login_credentials": "Belépési adatok megjegyzése",
+            "no_reg": "Nincs még regisztrálva felhasználód?",
+            "sign_up!": "Regisztrálok!"
         }
     },
     en: {
@@ -28,11 +38,21 @@ const resources = {
             "about": "About",
             "rating": "Rating",
             "login": "Login",
+            "LOGIN": "LOGIN",
             "register": "Register",
             "description": "This is a text that",
             "welcome": "Welcome to the Edustats website!",
             "homepagecontent_p": "Here you can easily search for schools and teachers to find the best one for you. Share your experiences with others: rate the teachers and help the community ensure everyone gets the best education.",
-            "rate_your_teachers": "Rate your teachers!"
+            "rate_your_teachers": "Rate your teachers!",
+            "Privacy_Policy": "Privacy Policy",
+            "Contact": "Contact",
+            "Terms_of_Use": "Terms of Use",
+            "footer_long": "EduStats is not responsible for the content of user reviews. Information shared by users does not necessarily reflect the views of EduStats.",
+            "username": "Username",
+            "password": "Password",
+            "Remember_login_credentials": "Remember login credentials",
+            "no_reg": "Don't have an account yet?",
+            "sign_up!": "Sign Up!"
         }
     }
 };
