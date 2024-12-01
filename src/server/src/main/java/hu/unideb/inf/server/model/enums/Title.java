@@ -1,5 +1,7 @@
 package hu.unideb.inf.server.model.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum Title {
     DR("Dr."),
     PROF("Prof."),
@@ -11,6 +13,7 @@ public enum Title {
         this.title = title;
     }
 
+    @JsonValue
     public String getTitle() {
         return title;
     }

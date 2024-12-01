@@ -8,8 +8,8 @@
     "role": "SCHOOL",
     "lastLoggedIn": "2024-04-01T12:34:56",
     "institutionId": "inst123",
-    "name": "Example School 1",
-    "title": "Best School 1",
+    "name": "Debreceni Egyetem",
+    "title": "DE",
     "description": "A description of the first school.",
     "address": {
       "street": "Main St 2",
@@ -28,12 +28,12 @@
     "role": "SCHOOL",
     "lastLoggedIn": "2024-04-01T12:34:56",
     "institutionId": "inst122",
-    "name": "Example School 2",
-    "title": "Best School 2",
+    "name": "Eötvös Loránd Tudományegyetem",
+    "title": "ELTE",
     "description": "A description of the first school.",
     "address": {
       "street": "Main St 2",
-      "city": "Debrecen",
+      "city": "Budapest",
       "postalCode": "5678",
       "country": "Hungary",
       "houseNumber": "2"
