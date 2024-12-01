@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ExtendedTeacherCard from '../../components/ExtendedSchoolCard/ExtendedSchoolCard';
 import SimpleTeacherCard from '../../components/SimpleSchoolCard/SimpleSchoolCard';
 import '../SchoolList/SchoolList.css';
@@ -7,35 +8,50 @@ import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 
 interface Teacher {
+    id: number;
     name: string;
-    logo: string;
-    rating: string;
+    logo?: string; // Logo optional
+    rating: number;
     additionalInfo: string[];
 }
 
 const TeacherList: React.FC = () => {
     const [isExtended, setIsExtended] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
-    const teacherData: Teacher[] = [
-        {
-            name: "Székely Dávid Béla",
-            logo: "public/images/svgg.png",
-            rating: "4.2",
-            additionalInfo: ["Debrecen", "Kollégium", "Egyetem"],
-        },
-        {
-            name: "Kiss Anna",
-            logo: "public/images/svgg.png",
-            rating: "4.7",
-            additionalInfo: ["Budapest", "Gimnázium"],
-        },
-        {
-            name: "Nagy Péter",
-            logo: "public/images/svgg.png",
-            rating: "4.0",
-            additionalInfo: ["Szeged", "Szakképzés"],
-        },
-    ];
+    const [teacherData, setTeacherData] = useState<Teacher[]>([]);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // Adatok betöltése az API-ról
+        const fetchTeachers = async () => {
+            try {
+                const response = await fetch('http://localhost:8080/api/teachers');
+                if (response.ok) {
+                    const data = await response.json();
+                    // Átalakítás a megfelelő formátumra
+                    const formattedData = data.map((teacher: any) => ({
+                        id: teacher.id,
+                        name: `${teacher.title || ''} ${teacher.firstName} ${teacher.lastName}`,
+                        logo: 'public/images/svgg.png', // Default logo
+                        rating: teacher.avg_rating,
+                        additionalInfo: teacher.subjectAtSchools.map((subject: any) =>
+                            `${subject.subject.name} (${teacher.school_ids.join(', ')})`
+                        ),
+                    }));
+                    setTeacherData(formattedData);
+                } else {
+                    console.error('Failed to fetch teachers.');
+                }
+            } catch (error) {
+                console.error('Error fetching teachers:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchTeachers();
+    }, []);
 
     const filteredTeachers = teacherData.filter((teacher) =>
         teacher.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -44,36 +60,50 @@ const TeacherList: React.FC = () => {
         )
     );
 
+    const handleCardClick = (id: number) => {
+        navigate(`/teachers/${id}`);
+    };
+
     return (
         <>  
             <Navbar />
-            <div className='seach-bar'>
+            <div className="search-bar">
                 <SearchBar
                     toggleView={setIsExtended}
-                    onSearch={(value) => setSearchTerm(value)} // Átadjuk a keresőmező értékét
+                    onSearch={(value) => setSearchTerm(value)}
                 />
             </div>
 
             <div className={!isExtended ? 'main-content' : 'ext-main-content'}>
-                {filteredTeachers.map((teacher, index) => (
-                    <div key={index}>
-                        {isExtended ? (
-                            <ExtendedTeacherCard
-                                name={teacher.name}
-                                logo={teacher.logo}
-                                rating={teacher.rating}
-                                additionalInfo={teacher.additionalInfo}
-                            />
-                        ) : (
-                            <SimpleTeacherCard
-                                name={teacher.name}
-                                logo={teacher.logo}
-                                rating={teacher.rating}
-                                additionalInfo={teacher.additionalInfo}
-                            />
-                        )}
-                    </div>
-                ))}
+                {loading ? (
+                    <p>Adatok betöltése...</p>
+                ) : filteredTeachers.length > 0 ? (
+                    filteredTeachers.map((teacher) => (
+                        <div
+                            key={teacher.id}
+                            onClick={() => handleCardClick(teacher.id)}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            {isExtended ? (
+                                <ExtendedTeacherCard
+                                    name={teacher.name}
+                                    logo={teacher.logo}
+                                    rating={teacher.rating.toString()}
+                                    additionalInfo={teacher.additionalInfo}
+                                />
+                            ) : (
+                                <SimpleTeacherCard
+                                    name={teacher.name}
+                                    logo={teacher.logo}
+                                    rating={teacher.rating.toString()}
+                                    additionalInfo={teacher.additionalInfo}
+                                />
+                            )}
+                        </div>
+                    ))
+                ) : (
+                    <p className="no-results-message">Nincs találat a keresési feltételek alapján.</p>
+                )}
             </div>
 
             <Footer />

@@ -44,14 +44,6 @@ const OpinionForm: React.FC = () => {
                 </select>
             </div>
 
-            {/* Vélemény szövegmező */}
-            <textarea
-                className="review-form-textarea"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                placeholder="Írd meg véleményed ide..."
-            />
-
             <button type="submit" className="review-form-submit">
                 Küldés
             </button>
