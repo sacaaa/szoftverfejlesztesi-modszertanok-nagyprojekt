@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Protect from "./Protected";
 import HomePage from "./assets/pages/HomePage";
 import SchoolList from "./assets/pages/SchoolList/SchoolList";
 import Register from "./assets/pages/Register/Register";
@@ -13,7 +12,6 @@ const App = () => {
         <Router>
                 <Routes>
                     <Route path="/" index element={<HomePage />}/>
-                    <Route path="/protected" element={<Protect />}/>
                     <Route path="/schools" element={<SchoolList />}/>
                     <Route path="/login" element={<Login />}/>
                     <Route path="/profile" element={<UserProfile />}/>
