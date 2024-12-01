@@ -1,111 +1,90 @@
-// SchoolList.tsx
 import React, { useState } from 'react';
 import ExtendedSchoolCard from '../../components/ExtendedSchoolCard/ExtendedSchoolCard';
 import SimpleSchoolCard from '../../components/SimpleSchoolCard/SimpleSchoolCard';
-import '../SchoolList/SchoolList.css'
+import '../SchoolList/SchoolList.css';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 
+interface School {
+    name: string;
+    logo: string;
+    rating: string;
+    description: string;
+    additionalInfo: string[];
+}
 
 const SchoolList: React.FC = () => {
     const [isExtended, setIsExtended] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('');
     
+    const schoolData: School[] = [
+        {
+            name: "Debreceni Egyetem Informatikai Kar",
+            logo: "public/images/svgg.png",
+            rating: "4.5",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            additionalInfo: ["Debrecen", "Kollégium", "Egyetem"],
+        },
+        {
+            name: "Budapesti Műszaki és Gazdaságtudományi Egyetem",
+            logo: "public/images/svgg.png",
+            rating: "4.7",
+            description: "Kiemelkedő mérnökképzés Magyarországon.",
+            additionalInfo: ["Budapest", "Egyetem"],
+        },
+        {
+            name: "Szegedi Tudományegyetem",
+            logo: "public/images/svgg.png",
+            rating: "4.3",
+            description: "Szeged szívében található elismert intézmény.",
+            additionalInfo: ["Szeged", "Egyetem"],
+        },
+    ];
 
-    const schoolData = {
-        name: "Debreceni Egyetem Informatikai Kar",
-        logo: "public/images/svgg.png",
-        rating: "4.5",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pharetra magna et consectetur rhoncus. Curabitur quis turpis eget eros pulvinar eleifend ut vel arcu. In sit amet viverra sem, quis finibus lorem. Proin in orci nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean vestibulum pharetra massa, ac varius diam auctor sed. Ut ut lobortis nibh, eget tempus massa. Nullam at diam augue. Morbi luctus nulla id libero condimentum, at vulputate ante fermentum.",
-        additionalInfo: ["Debrecen", "Kollégium", "Egyetem"],
-    };
+    const filteredSchools = schoolData.filter((school) =>
+        school.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        school.additionalInfo.some(info =>
+            info.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+    );
 
     return (
         <>  
             <Navbar />
-            <div className='seach-bar'>
-                <SearchBar toggleView={setIsExtended} />
+            <div className='search-bar'>
+                <SearchBar
+                    toggleView={setIsExtended}
+                    onSearch={(value) => setSearchTerm(value)} // Keresési feltétel átadása
+                />
             </div>
 
-            <div className= {!isExtended ? 'main-content' : 'ext-main-content'}>
-                <div>
-                    {isExtended ? (
-                        <ExtendedSchoolCard 
-                            name={schoolData.name} 
-                            logo={schoolData.logo} 
-                            rating={schoolData.rating} 
-                            description={schoolData.description} 
-                            additionalInfo={schoolData.additionalInfo}
-                        />
-                    ) : (
-                        <SimpleSchoolCard 
-                            name={schoolData.name} 
-                            logo={schoolData.logo} 
-                            rating={schoolData.rating} 
-                            additionalInfo={schoolData.additionalInfo}
-                        />
-                    )}
-                </div>
-                <div>
-                    {isExtended ? (
-                        <ExtendedSchoolCard 
-                            name={schoolData.name}  
-                            logo={schoolData.logo} 
-                            rating={schoolData.rating} 
-                            description={schoolData.description} 
-                            additionalInfo={schoolData.additionalInfo}
-                        />
-                    ) : (
-                        <SimpleSchoolCard 
-                            name={schoolData.name} 
-                            logo={schoolData.logo} 
-                            rating={schoolData.rating} 
-                            additionalInfo={schoolData.additionalInfo}
-                        />
-                    )}
-                </div>
-                <div>
-                    {isExtended ? (
-                        <ExtendedSchoolCard 
-                            name={schoolData.name} 
-                            logo={schoolData.logo} 
-                            rating={schoolData.rating} 
-                            description={schoolData.description} 
-                            additionalInfo={schoolData.additionalInfo}
-                        />
-                    ) : (
-                        <SimpleSchoolCard 
-                            name={schoolData.name} 
-                            logo={schoolData.logo} 
-                            rating={schoolData.rating} 
-                            additionalInfo={schoolData.additionalInfo}
-                        />
-                    )}
-                </div>
-                <div>
-                    {isExtended ? (
-                        <ExtendedSchoolCard 
-                            name={schoolData.name} 
-                            logo={schoolData.logo} 
-                            rating={schoolData.rating} 
-                            description={schoolData.description} 
-                            additionalInfo={schoolData.additionalInfo}
-                        />
-                    ) : (
-                        <SimpleSchoolCard 
-                            name={schoolData.name} 
-                            logo={schoolData.logo} 
-                            rating={schoolData.rating} 
-                            additionalInfo={schoolData.additionalInfo}
-                        />
-                    )}
-                </div>
+            <div className={!isExtended ? 'main-content' : 'ext-main-content'}>
+                {filteredSchools.map((school, index) => (
+                    <div key={index}>
+                        {isExtended ? (
+                            <ExtendedSchoolCard
+                                name={school.name}
+                                logo={school.logo}
+                                rating={school.rating}
+                                description={school.description}
+                                additionalInfo={school.additionalInfo}
+                            />
+                        ) : (
+                            <SimpleSchoolCard
+                                name={school.name}
+                                logo={school.logo}
+                                rating={school.rating}
+                                additionalInfo={school.additionalInfo}
+                            />
+                        )}
+                    </div>
+                ))}
             </div>
 
             <Footer />
         </>
-
     );
-}
+};
 
 export default SchoolList;

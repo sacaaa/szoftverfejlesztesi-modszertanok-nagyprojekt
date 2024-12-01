@@ -16,7 +16,8 @@ const Footer: React.FC = () => {
                     <a href="/contact">Kapcsolat</a>
                     <a href="/terms">Felhasználási feltételek</a>
                 </div>
-                <p>COPYRIGHT © {new Date().getFullYear()} - WWW.EDUSTATS.HU | MINDEN JOG FENNTARTVA!</p>
+                <p>A vélemények tartalmáért az EduStats nem vállal felelősséget. A felhasználók által megosztott információk nem feltétlenül tükrözik az EduStats álláspontját.</p>
+                <p>COPYRIGHT © {new Date().getFullYear()} - www.edustats.hu</p>
             </div>
         </footer>
     );
