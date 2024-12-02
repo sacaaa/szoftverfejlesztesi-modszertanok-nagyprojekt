@@ -25,4 +25,9 @@ public class ReviewService implements IReviewService {
         return reviewRepository.findById(id);
     }
 
+    @Override
+    public Review save(Review review) {
+        return reviewRepository.save(review);
+    }
+
 }

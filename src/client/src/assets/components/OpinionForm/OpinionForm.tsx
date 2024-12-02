@@ -1,17 +1,47 @@
 import React, { useState } from 'react';
 import './OpinionForm.css';
 
-const OpinionForm: React.FC = () => {
-    const [subject, setSubject] = useState<string>('Matematika');
-    const [rating, setRating] = useState<number>(5);
-    const [comment, setComment] = useState<string>('');
+interface OpinionFormProps {
+    subjects: string[]; // A tanár által tanított tantárgyak listája
+    teacherSubjectIds: number[]; // Tantárgyakhoz tartozó azonosítók
+    onReviewSubmitted: () => void; // Callback a vélemény frissítéséhez
+}
 
-    const handleSubmit = (e: React.FormEvent) => {
+const OpinionForm: React.FC<OpinionFormProps> = ({ subjects, teacherSubjectIds, onReviewSubmitted }) => {
+    const [subjectIndex, setSubjectIndex] = useState<number>(0); // Az aktuális tantárgy indexe
+    const [rating, setRating] = useState<number>(5);
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Subject:', subject);
-        console.log('Rating:', rating);
-        console.log('Comment:', comment);
-        alert('Értékelés elküldve!');
+
+        const reviewPayload = {
+            student: { id: 3, type: "student" }, // Statikus diák adat
+            studentId: 3,
+            teacherSubjectAtSchool: { id: teacherSubjectIds[subjectIndex] },
+            teacherSubjectAtSchoolId: teacherSubjectIds[subjectIndex],
+            rating,
+            comment: "", // Kommentek nélkül
+        };
+
+        try {
+            const response = await fetch("http://localhost:8080/api/reviews", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(reviewPayload),
+            });
+
+            if (response.ok) {
+                alert("Értékelés sikeresen elküldve!");
+                onReviewSubmitted(); // Frissítjük az értékeléseket
+            } else {
+                alert("Hiba történt az értékelés elküldése során.");
+            }
+        } catch (error) {
+            console.error("Error submitting review:", error);
+            alert("Hiba történt az értékelés elküldése során.");
+        }
     };
 
     return (
@@ -20,14 +50,14 @@ const OpinionForm: React.FC = () => {
                 {/* Tantárgy legördülő lista */}
                 <select
                     className="review-form-select"
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
+                    value={subjectIndex}
+                    onChange={(e) => setSubjectIndex(Number(e.target.value))}
                 >
-                    <option value="Matematika">- Matematika</option>
-                    <option value="Fizika">- Fizika</option>
-                    <option value="Kémia">- Kémia</option>
-                    <option value="Biológia">- Biológia</option>
-                    <option value="Történelem">- Történelem</option>
+                    {subjects.map((subject, index) => (
+                        <option key={index} value={index}>
+                            {subject}
+                        </option>
+                    ))}
                 </select>
 
                 {/* Értékelés legördülő lista */}

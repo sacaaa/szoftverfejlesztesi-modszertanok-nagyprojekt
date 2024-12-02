@@ -11,4 +11,6 @@ public interface IReviewService {
 
     Optional<Review> getReviewById(Long id);
 
+    Review save(Review review);
+
 }

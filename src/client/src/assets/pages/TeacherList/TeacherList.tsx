@@ -88,14 +88,14 @@ const TeacherList: React.FC = () => {
                                 <ExtendedTeacherCard
                                     name={teacher.name}
                                     logo={teacher.logo}
-                                    rating={teacher.rating.toString()}
+                                    rating={Math.round(teacher.rating).toString()}
                                     additionalInfo={teacher.additionalInfo}
                                 />
                             ) : (
                                 <SimpleTeacherCard
                                     name={teacher.name}
                                     logo={teacher.logo}
-                                    rating={teacher.rating.toString()}
+                                    rating={Math.round(teacher.rating).toString()}
                                     additionalInfo={teacher.additionalInfo}
                                 />
                             )}

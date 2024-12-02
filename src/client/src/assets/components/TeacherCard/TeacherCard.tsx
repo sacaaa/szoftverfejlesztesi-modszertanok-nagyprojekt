@@ -5,32 +5,13 @@ interface TeacherCardProps {
     name: string;
     rating: number; // Tanár értékelése (1-5 skála)
     subjects: string[]; // Tantárgyak listája
-    school: string; // Iskola neve
-    tags: string[]; // Címkék (város, extra információk, pl. egyetem)
-    profileImage?: string; // Opcionális profilkép URL
+    schools: { id: number; name: string }[]; // Iskolák listája, ahol tanít a tanár
 }
 
-const TeacherCard: React.FC<TeacherCardProps> = ({ name, rating, subjects, school, tags, profileImage }) => {
+const TeacherCard: React.FC<TeacherCardProps> = ({ name, rating, subjects, schools }) => {
     return (
         <div className="teacher-card">
             <div className="teacher-card-left">
-                {/* Profilkép vagy alapértelmezett ikon */}
-                <div className="teacher-profile-image">
-                    {profileImage ? (
-                        <img src={profileImage} />
-                    ) : (
-                        <div className="placeholder-icon" />
-                    )}
-                </div>
-                {/* Címkék (pl. város, egyetem, kollégium) */}
-                <div className="teacher-tags">
-                    {tags.map((tag, index) => (
-                        <span key={index} className="teacher-tag">
-                            {tag}
-                        </span>
-                    ))}
-                    {tags.length > 3 && <span className="teacher-tag more">...</span>}
-                </div>
                 {/* Tanár neve */}
                 <h2 className="teacher-name">{name}</h2>
                 {/* Értékelés (szám + csillag) */}
@@ -46,14 +27,22 @@ const TeacherCard: React.FC<TeacherCardProps> = ({ name, rating, subjects, schoo
                     <strong>Tantárgyak:</strong>
                     <p>{subjects.join(', ')}</p>
                 </div>
-                {/* Iskola */}
-                <div className="teacher-school">
-                    <strong>Iskola:</strong>
-                    <p>
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            {school}
-                        </a>
-                    </p>
+                {/* Iskolák */}
+                <div className="teacher-schools">
+                    <strong>Iskolák:</strong>
+                    <div className="school-list">
+                        {schools.map((school) => (
+                            <a
+                                key={school.id}
+                                href={`/schools/${school.id}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="school-link"
+                            >
+                                {school.name}
+                            </a>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
