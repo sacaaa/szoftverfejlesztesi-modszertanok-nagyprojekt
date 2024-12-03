@@ -10,9 +10,6 @@ interface ExtendedSchoolListProps {
 export default function ExtendedTeacherCard({ name, logo, rating, additionalInfo }: ExtendedSchoolListProps) {
     return (<>
     <div className="extended-teacher-card">
-        <div className="teacher-logo">
-            <img src={logo} alt={`${name} logo`} />
-        </div>
         <div className='teacher-info'>
             <div className='teacher-additional-info'>
                 <p>{additionalInfo[0]}</p>

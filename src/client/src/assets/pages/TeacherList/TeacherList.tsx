@@ -10,7 +10,7 @@ import Footer from '../../components/Footer/Footer';
 interface Teacher {
     id: number;
     name: string;
-    logo?: string; // Logo optional
+    logo: string; // Logo optional
     rating: number;
     additionalInfo: string[];
 }
@@ -33,7 +33,7 @@ const TeacherList: React.FC = () => {
                     const formattedData = data.map((teacher: any) => ({
                         id: teacher.id,
                         name: `${teacher.title || ''} ${teacher.firstName} ${teacher.lastName}`,
-                        logo: 'public/images/svgg.png', // Default logo
+                        logo: 'avatar.png', // Default logo
                         rating: teacher.avg_rating,
                         additionalInfo: teacher.subjectAtSchools.map((subject: any) =>
                             `${subject.subject.name} (${teacher.school_ids.join(', ')})`
@@ -90,6 +90,7 @@ const TeacherList: React.FC = () => {
                                     logo={teacher.logo}
                                     rating={Math.round(teacher.rating).toString()}
                                     additionalInfo={teacher.additionalInfo}
+                                    description="Default description" // Add a description property
                                 />
                             ) : (
                                 <SimpleTeacherCard

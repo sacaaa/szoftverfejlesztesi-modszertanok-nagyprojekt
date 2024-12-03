@@ -9,6 +9,10 @@ interface TeacherCardProps {
 }
 
 const TeacherCard: React.FC<TeacherCardProps> = ({ name, rating, subjects, schools }) => {
+    const formattedRating = rating !== null && rating !== undefined && !isNaN(rating)
+        ? rating.toFixed(2)
+        : '0';
+
     return (
         <div className="teacher-card">
             <div className="teacher-card-left">
@@ -17,7 +21,7 @@ const TeacherCard: React.FC<TeacherCardProps> = ({ name, rating, subjects, schoo
                 {/* Értékelés (szám + csillag) */}
                 <div className="teacher-rating">
                     <span>Értékelés:</span>
-                    <span className="rating-value">{rating.toFixed(2)}</span>
+                    <span className="rating-value">{formattedRating}</span>
                     <span className="rating-star">★</span>
                 </div>
             </div>
@@ -48,5 +52,6 @@ const TeacherCard: React.FC<TeacherCardProps> = ({ name, rating, subjects, schoo
         </div>
     );
 };
+
 
 export default TeacherCard;

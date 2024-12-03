@@ -8,9 +8,11 @@ import { useParams } from "react-router-dom";
 
 interface Review {
     id: number;
-    title: string; // Tantárgy neve
-    rating: number; // Értékelés
-    studentName: string; // Diák neve
+    title: string;
+    rating: number;
+    studentName: string;
+    schoolName: string;
+    createdAt: string;
 }
 
 interface Teacher {
@@ -18,13 +20,14 @@ interface Teacher {
     name: string;
     avgRating: number;
     subjects: string[];
-    school: string;
+    schools: { id: number; name: string }[];
     tags: string[];
+    subjectAtSchoolIds: number[];
     reviews: Review[];
 }
 
 const TeacherRaterPage: React.FC = () => {
-    const { id } = useParams<{ id: string }>(); // Tanár ID az URL-ből
+    const { id } = useParams<{ id: string }>();
     const [teacher, setTeacher] = useState<Teacher | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -34,7 +37,6 @@ const TeacherRaterPage: React.FC = () => {
             if (response.ok) {
                 const data = await response.json();
     
-                // Iskolák nevének betöltése az azonosítók alapján
                 const schoolDetails = await Promise.all(
                     data.school_ids.map(async (schoolId: number) => {
                         const schoolResponse = await fetch(`http://localhost:8080/api/schools/${schoolId}`);
@@ -43,13 +45,12 @@ const TeacherRaterPage: React.FC = () => {
                     })
                 );
     
-                // Vélemények feldolgozása a tantárgyak alapján
                 const reviewsWithDetails = data.subjectAtSchools.flatMap((subjectAtSchool: any) =>
                     subjectAtSchool.reviewsReceived.map((review: any) => ({
                         id: review.id,
-                        title: subjectAtSchool.subject.name, // Tantárgy neve
+                        title: subjectAtSchool.subject.name,
                         rating: review.rating,
-                        createdAt: review.createdAt, // Vélemény létrehozásának dátuma
+                        createdAt: review.createdAt,
                         schoolName: schoolDetails.find(s => s.id === subjectAtSchool.schoolId)?.name || 'Ismeretlen iskola',
                     }))
                 );
@@ -61,7 +62,8 @@ const TeacherRaterPage: React.FC = () => {
                     subjects: data.subjectAtSchools.map((s: any) => s.subject.name),
                     schools: schoolDetails,
                     tags: [],
-                    reviews: reviewsWithDetails, // Vélemények hozzáadása
+                    reviews: reviewsWithDetails,
+                    subjectAtSchoolIds: data.subjectAtSchools.map((s: any) => s.id),
                 };
     
                 setTeacher(formattedTeacher);
@@ -98,21 +100,22 @@ const TeacherRaterPage: React.FC = () => {
             />
             <OpinionForm
                 subjects={teacher.subjects}
-                teacherSubjectIds={teacher.subjects.map((_, index) => index + 1)} // Példa ID-k
-                onReviewSubmitted={fetchTeacher} // Vélemények frissítése POST után
+                teacherSubjectIds={teacher.subjectAtSchoolIds}
+                onReviewSubmitted={fetchTeacher}
             />
             {teacher.reviews.map((review) => (
                 <OpinionComponent
-                        key={review.id}
-                        title={review.title}
-                        rating={review.rating}
-                        createdAt={review.createdAt}
-                        schoolName={review.schoolName}
+                    key={review.id}
+                    title={review.title}
+                    rating={review.rating}
+                    createdAt={review.createdAt}
+                    schoolName={review.schoolName}
                 />
-                ))}
+            ))}
             <Footer />
         </>
     );
 };
+
 
 export default TeacherRaterPage;

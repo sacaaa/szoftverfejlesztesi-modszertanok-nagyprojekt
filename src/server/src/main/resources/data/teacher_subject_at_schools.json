@@ -12,5 +12,12 @@
     "subject": { "id": 2 },
     "school": { "id": 1, "type": "school" },
     "schoolId": 1
+  },
+  {
+    "teacher": { "id": 2 },
+    "teacherId": 2,
+    "subject": { "id": 3 },
+    "school": { "id": 1, "type": "school" },
+    "schoolId": 1
   }
 ]

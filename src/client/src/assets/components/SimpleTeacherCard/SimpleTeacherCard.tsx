@@ -12,9 +12,6 @@ interface SimpleSchoolCardProps {
 const SimpleTeacherCard: React.FC<SimpleSchoolCardProps> = ({ name, logo, rating, additionalInfo }) => {
     return (
         <div className="simpleteacher-card">
-            <div className="simpleteacher-logo1">
-                <img src={logo} alt={`${name} logo`} />
-            </div>
             <div className="simpleteacher-rating1">
                 <p>{rating}</p>
                 <img src="images/star_purple500.png" alt="star" />
