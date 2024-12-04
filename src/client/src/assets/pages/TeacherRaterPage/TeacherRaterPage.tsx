@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import OpinionComponent from "../../components/OpinionComponent/OpinionComponent";
 import OpinionForm from "../../components/OpinionForm/OpinionForm";
@@ -112,7 +111,6 @@ const TeacherRaterPage: React.FC = () => {
                     schoolName={review.schoolName}
                 />
             ))}
-            <Footer />
         </>
     );
 };
