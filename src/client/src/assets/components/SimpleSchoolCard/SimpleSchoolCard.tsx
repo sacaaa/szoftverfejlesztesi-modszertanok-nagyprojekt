@@ -4,12 +4,11 @@ import './SimpleSchoolCard.css';
 
 interface SimpleSchoolCardProps {
     name: string;
-    logo: string;
     rating: string;
     additionalInfo: string[];
 }
 
-const SimpleSchoolCard: React.FC<SimpleSchoolCardProps> = ({ name, logo, rating, additionalInfo }) => {
+const SimpleSchoolCard: React.FC<SimpleSchoolCardProps> = ({ name, rating, additionalInfo }) => {
     return (
         <div className="school-card">
             <div className="school-rating1">

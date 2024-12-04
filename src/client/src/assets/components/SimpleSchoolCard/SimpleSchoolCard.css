@@ -9,6 +9,7 @@
   flex-direction: column; /* Vertikális elrendezés */
   align-items: center; /* Vízszintesen középre */
   justify-content: center; /* Függőlegesen középre */
+  padding-top: 1.5rem;
 }
 
 .school-logo1 {

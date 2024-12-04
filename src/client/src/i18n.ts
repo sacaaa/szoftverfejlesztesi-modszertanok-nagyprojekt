@@ -34,7 +34,8 @@ const resources = {
             "accept_terms": "Elfogadom a szabályzatot",
             "subscribe_newsletter": "Feliratkozom a hírlevélre, hogy kapjak értesítést a legújabb termékekről és ajánlatokról",
             "have_account": "Van már felhasználód?",
-            "sign_in": "Jelentkezz be!"
+            "sign_in": "Jelentkezz be!",
+            "search...": "Keresés..."
         }
     },
     en: {
@@ -68,7 +69,8 @@ const resources = {
             "accept_terms": "I accept the terms and conditions",
             "subscribe_newsletter": "Subscribe to the newsletter to receive updates on the latest products and offers",
             "have_account": "Already have an account?",
-            "sign_in": "Log In!"
+            "sign_in": "Log In!",
+            "search...": "Search..."
         }
     }
 };

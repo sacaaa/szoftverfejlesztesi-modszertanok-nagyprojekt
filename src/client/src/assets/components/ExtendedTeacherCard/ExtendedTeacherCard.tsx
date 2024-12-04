@@ -7,7 +7,7 @@ interface ExtendedSchoolListProps {
     rating: number;
 }
 
-export default function ExtendedTeacherCard({ name, logo, rating, additionalInfo }: ExtendedSchoolListProps) {
+export default function ExtendedTeacherCard({ name, rating, additionalInfo }: ExtendedSchoolListProps) {
     return (<>
     <div className="extended-teacher-card">
         <div className='teacher-info'>

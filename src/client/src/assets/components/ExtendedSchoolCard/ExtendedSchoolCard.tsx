@@ -3,12 +3,11 @@ import './ExtendedSchoolCard.css'
 interface ExtendedSchoolListProps {
     additionalInfo: string[];
     name: string;
-    logo: string;
     rating: string;
     description: string;
 }
 
-export default function Extended_School_Items({ name, logo, rating, description, additionalInfo }: ExtendedSchoolListProps) {
+export default function Extended_School_Items({ name, rating, description, additionalInfo }: ExtendedSchoolListProps) {
     return (<>
     <div className="extended-school-card">
         <div className='school-info'>
