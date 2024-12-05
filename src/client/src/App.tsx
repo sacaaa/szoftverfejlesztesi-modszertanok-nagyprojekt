@@ -6,6 +6,7 @@ import Login from "./assets/pages/Login/Login";
 import UserProfile from "./assets/components/UserProfile/UserProfile";
 import TeacherList from "./assets/pages/TeacherList/TeacherList";
 import TeacherRaterPage from "./assets/pages/TeacherRaterPage/TeacherRaterPage";
+import SchoolRaterPage from "./assets/pages/SchoolRatePage/SchoolRaterPage";
 
 const App = () => {
     return (
@@ -18,6 +19,7 @@ const App = () => {
                     <Route path="/register" element={<Register />}/>
                     <Route path="/teachers/:id" element={<TeacherRaterPage />}/>
                     <Route path="/teachers" element={<TeacherList />}/>
+                    <Route path="/schools/:id" element={<SchoolRaterPage />}/>
                 </Routes>
         </Router>
     );

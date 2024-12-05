@@ -99,14 +99,12 @@ const SchoolList: React.FC = () => {
                                     name={school.name}
                                     rating={school.rating.toString()}
                                     description={school.description}
-                                    additionalInfo={school.additionalInfo}
-                                />
+                                    additionalInfo={school.additionalInfo} logo={''}                                />
                             ) : (
                                 <SimpleSchoolCard
-                                    name={school.name}
-                                    rating={school.rating.toString()}
-                                    additionalInfo={school.additionalInfo}
-                                />
+                                        name={school.name}
+                                        rating={school.rating.toString()}
+                                        additionalInfo={school.additionalInfo} logo={''}                                />
                             )}
                         </div>
                     ))
