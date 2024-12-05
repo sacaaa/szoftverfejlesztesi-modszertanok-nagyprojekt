@@ -9,7 +9,7 @@ interface SimpleSchoolCardProps {
     additionalInfo: string[];
 }
 
-const SimpleTeacherCard: React.FC<SimpleSchoolCardProps> = ({ name, logo, rating, additionalInfo }) => {
+const SimpleTeacherCard: React.FC<SimpleSchoolCardProps> = ({ name, rating, additionalInfo }) => {
     return (
         <div className="simpleteacher-card">
             <div className="simpleteacher-rating1">

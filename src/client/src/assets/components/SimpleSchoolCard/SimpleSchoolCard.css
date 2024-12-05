@@ -1,7 +1,7 @@
 .school-card {
   background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   max-width: 338px;
   max-height: 338px;
   margin-top: 3rem;
@@ -9,6 +9,7 @@
   flex-direction: column; /* Vertikális elrendezés */
   align-items: center; /* Vízszintesen középre */
   justify-content: center; /* Függőlegesen középre */
+  padding-top: 1.5rem;
 }
 
 .school-logo1 {

@@ -5,7 +5,6 @@ import SimpleTeacherCard from '../../components/SimpleSchoolCard/SimpleSchoolCar
 import '../SchoolList/SchoolList.css';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Navbar from '../../components/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer';
 
 interface Teacher {
     id: number;
@@ -87,7 +86,6 @@ const TeacherList: React.FC = () => {
                             {isExtended ? (
                                 <ExtendedTeacherCard
                                     name={teacher.name}
-                                    logo={teacher.logo}
                                     rating={Math.round(teacher.rating).toString()}
                                     additionalInfo={teacher.additionalInfo}
                                     description="Default description" // Add a description property
@@ -95,7 +93,6 @@ const TeacherList: React.FC = () => {
                             ) : (
                                 <SimpleTeacherCard
                                     name={teacher.name}
-                                    logo={teacher.logo}
                                     rating={Math.round(teacher.rating).toString()}
                                     additionalInfo={teacher.additionalInfo}
                                 />
@@ -106,8 +103,6 @@ const TeacherList: React.FC = () => {
                     <p className="no-results-message">Nincs találat a keresési feltételek alapján.</p>
                 )}
             </div>
-
-            <Footer />
         </>
     );
 };

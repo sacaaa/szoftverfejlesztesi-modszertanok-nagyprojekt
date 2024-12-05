@@ -1,31 +1,33 @@
 import React, { useState } from 'react';
 import { FaListUl } from "react-icons/fa";
 import { IoGridSharp } from "react-icons/io5";
+import { useTranslation } from 'react-i18next';
 import './SearchBar.css';
 
 interface SearchBarProps {
     toggleView: (isExtended: boolean) => void;
-    onSearch: (value: string) => void; // Új prop a keresési érték átadására
+    onSearch: (value: string) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ toggleView, onSearch }) => {
     const [viewMode, setViewMode] = useState('grid');
+    const { t } = useTranslation();
 
     const handleViewModeChange = (mode: 'list' | 'grid') => {
         setViewMode(mode);
     };
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        onSearch(event.target.value); // Keresési érték átadása
+        onSearch(event.target.value);
     };
 
     return (
         <div className="search-bar-container">
             <input
                 type="text"
-                placeholder="Keresés..."
+                placeholder={t('search...')}
                 className="searchbar-search-input"
-                onChange={handleSearchChange} // Érték változás kezelése
+                onChange={handleSearchChange}
             />
             <div className="searchbar-view-toggle">
                 <button
