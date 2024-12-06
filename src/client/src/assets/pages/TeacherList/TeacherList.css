@@ -1,0 +1,50 @@
+/* teacherlist.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.main-content, .ext-main-content {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap; /* Kártyák vízszintes igazítása, sorokba töréssel */
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px; /* Kártyák közötti távolság */
+}
+
+.main-content > div, .ext-main-content > div {
+    width: 200px; /* Kártyák fix szélessége */
+    height: 300px; /* Kártyák fix magassága */
+    box-sizing: border-box; /* Padding és border beleszámít a méretekbe */
+}
+
+.no-results-message {
+    text-align: center;
+    color: #333;
+    width: 100%; /* Középre igazított üzenet */
+}
+
+.footer {
+    color: #ffffff;
+    padding: 40px;
+    text-align: center;
+    background-color: #00A3FF;
+    margin-top: auto; /* Ez biztosítja, hogy a footer a tartalom alatt vagy az oldal alján jelenjen meg */
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
