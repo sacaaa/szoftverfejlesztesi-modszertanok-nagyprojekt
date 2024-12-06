@@ -1,6 +1,7 @@
 package hu.unideb.inf.server.controller;
 
 import hu.unideb.inf.server.model.base.User;
+import hu.unideb.inf.server.repository.UserRepository;
 import hu.unideb.inf.server.service.impl.JwtService;
 import hu.unideb.inf.server.service.impl.UserService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -26,6 +28,9 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@RequestBody Map<String, String> request) {
         String username = request.get("username");
@@ -33,14 +38,23 @@ public class AuthController {
 
         try {
             UserDetails userDetails = userService.loadUserByUsername(username);
+            Optional<User> user = userRepository.findByEmail(username);
+            if (user.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Invalid username or password"));
+            }
 
             if (!userService.authenticate(username, password)) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                         .body(Map.of("error", "Invalid username or password"));
             }
 
+            Map<String, Object> extraClaims = Map.of(
+                    "studentId", user.get().getId()
+            );
+
             return ResponseEntity.ok(Map.of(
-                    "token", jwtService.generateToken(userDetails),
+                    "token", jwtService.generateToken(extraClaims, userDetails),
                     "refreshToken", jwtService.generateRefreshToken(userDetails)
             ));
         } catch (UsernameNotFoundException ex) {
@@ -76,11 +90,19 @@ public class AuthController {
 
             // Load user details
             UserDetails userDetails = userService.loadUserByUsername(username);
+            Optional<User> user = userRepository.findByEmail(username);
+            if (user.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                        .body(Map.of("error", "Invalid refresh token"));
+            }
 
             // Validate the refresh token
             if (jwtService.isTokenValid(refreshToken, userDetails)) {
                 // Generate a new access token
-                String newAccessToken = jwtService.generateToken(userDetails);
+                Map<String, Object> extraClaims = Map.of(
+                        "studentId", user.get().getId()
+                );
+                String newAccessToken = jwtService.generateToken(extraClaims, userDetails);
 
                 // Return the new access token
                 return ResponseEntity.ok(Map.of(
