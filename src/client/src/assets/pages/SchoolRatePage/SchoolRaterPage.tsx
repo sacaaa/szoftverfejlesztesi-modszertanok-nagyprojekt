@@ -31,13 +31,20 @@ const SchoolRaterPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [school, setSchool] = useState<School | null>(null);
     const [loading, setLoading] = useState(true);
+    const [dataForDownload, setDataForDownload] = useState<{ 
+        teacherName: string;
+        teacherId: number;
+        subjectName: string;
+        reviewRating: number;
+        reviewDate: string;
+    }[]>([])
 
     const fetchSchool = async () => {
         try {
             const response = await fetch(`http://localhost:8080/api/schools/${id}`);
             if (response.ok) {
                 const data = await response.json();
-                console.log("Fetched school data:", data);
+
                 
             
                 const teacherDetails = await Promise.all(
@@ -54,11 +61,24 @@ const SchoolRaterPage: React.FC = () => {
                             rating: review.rating,
                             createdAt: review.createdAt,
                             teacherName: `${teacher.teacherData.title} ${teacher.teacherData.firstName} ${teacher.teacherData.lastName}`,
+                            teacherId: teacher.teacherData.id
                         }))
                     )
-                );
-                
-                console.log("Final Reviews with Details:", reviewsWithDetails);  
+                );            
+
+                const dataForDownload = teacherDetails.flatMap((teacher: any) => {
+                    return teacher.teacherData.subjectAtSchools.flatMap((subject: any) => {
+                        return subject.reviewsReceived.map((review: any) => ({
+                            teacherName: `${teacher.teacherData.title} ${teacher.teacherData.firstName} ${teacher.teacherData.lastName}`,
+                            teacherId: teacher.teacherData.id,
+                            subjectName: subject.subject?.name || "Ismeretlen tantárgy",
+                            reviewRating: review.rating,
+                            reviewDate: review.createdAt,
+                        }));
+                    });
+                });
+
+                setDataForDownload(dataForDownload)
 
                 const formattedSchool: School = {
                     id: data.id,
@@ -78,9 +98,7 @@ const SchoolRaterPage: React.FC = () => {
                     address: `${data.address.country}, ${data.address.city}, ${data.address.street} ${data.address.houseNumber}`
                 }
                 setSchool(formattedSchool);
-                console.log(formattedSchool)
-                    
-                
+
             } else {
                 console.error("Failed to fetch school's data");
             }
@@ -102,7 +120,7 @@ const SchoolRaterPage: React.FC = () => {
     if (!school) {
         return <h1>Az iskola nem található.</h1>;
     }
-
+ 
 
     return (
         
@@ -111,8 +129,8 @@ const SchoolRaterPage: React.FC = () => {
             <SchoolCard
                 name={school.name}
                 rating={school.avgRating}
-                teachers={school.teachers}
                 address={school.address}
+                dataForDownload={dataForDownload}
             />
             {school.reviews.map((review) => (
                 <SchoolOpinionComponent

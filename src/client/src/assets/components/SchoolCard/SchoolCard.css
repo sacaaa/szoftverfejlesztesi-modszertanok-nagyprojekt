@@ -59,6 +59,7 @@
 }
 
 .download-icon {
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,5 +77,6 @@
 .download-icon:hover {
     transform: scale(1.1); /* Hover méret */
 }
+
 
 
