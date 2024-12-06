@@ -5,6 +5,8 @@ import SimpleTeacherCard from '../../components/SimpleSchoolCard/SimpleSchoolCar
 import '../SchoolList/SchoolList.css';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
+import './TeacherList.css';
 
 interface Teacher {
     id: number;
@@ -64,7 +66,7 @@ const TeacherList: React.FC = () => {
     };
 
     return (
-        <>  
+        <>
             <Navbar />
             <div className="search-bar">
                 <SearchBar
@@ -72,7 +74,7 @@ const TeacherList: React.FC = () => {
                     onSearch={(value) => setSearchTerm(value)}
                 />
             </div>
-
+    
             <div className={!isExtended ? 'main-content' : 'ext-main-content'}>
                 {loading ? (
                     <p>Adatok betöltése...</p>
@@ -88,7 +90,7 @@ const TeacherList: React.FC = () => {
                                     name={teacher.name}
                                     rating={Math.round(teacher.rating).toString()}
                                     additionalInfo={teacher.additionalInfo}
-                                    description="Default description" // Add a description property
+                                    description="Default description"
                                 />
                             ) : (
                                 <SimpleTeacherCard
@@ -103,8 +105,10 @@ const TeacherList: React.FC = () => {
                     <p className="no-results-message">Nincs találat a keresési feltételek alapján.</p>
                 )}
             </div>
+    
+            <Footer />
         </>
     );
-};
+}    
 
 export default TeacherList;
