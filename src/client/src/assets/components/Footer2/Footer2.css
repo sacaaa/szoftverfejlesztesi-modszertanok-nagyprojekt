@@ -2,35 +2,36 @@ h3 {
     padding-bottom: 10px;
 }
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #00A3FF;
+.footer2 {
     color: #ffffff;
+    padding: 40px;
     text-align: center;
-    padding: 20px 0;
+    background-color: #00A3FF;
+    margin-top: 45px;
+    left:0;
+    bottom:0;
+    right:0;
 }
 
-.footer-content {
+.footer-content2 {
     max-width: 1000px;
     margin: 0 auto;
     font-size: 12px;
 }
 
-.footer-links,
-.social-media {
+.footer-links2,
+.social-media2 {
     margin: 10px 0;
 }
 
-.footer-links a,
-.social-media a {
+.footer-links2 a,
+.social-media2 a {
     color: #ffffff;
     margin: 0 10px;
     text-decoration: none;
 }
 
-.footer-links a:hover,
-.social-media a:hover {
+.footer-links2 a:hover,
+.social-media2 a:hover {
     text-decoration: underline;
 }
