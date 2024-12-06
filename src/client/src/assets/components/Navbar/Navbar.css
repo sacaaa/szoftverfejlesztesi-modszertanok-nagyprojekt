@@ -83,6 +83,17 @@
     margin: 0 15px;
 }
 
+.navbar-logout-btn {
+  text-decoration: none;
+    color: white;
+    background-color: #00A3FF;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .navbar-register-btn {
     text-decoration: none;
     color: white;

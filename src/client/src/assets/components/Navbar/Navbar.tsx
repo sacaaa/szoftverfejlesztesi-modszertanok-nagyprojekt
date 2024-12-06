@@ -6,6 +6,7 @@ const Navbar = () => {
     const { t, i18n } = useTranslation();
     const [selectedLanguage, setSelectedLanguage] = useState<string>(() => i18n.language.slice(0, 2) || 'hu');
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
     useEffect(() => {
         console.log("Current language:", i18n.language);
@@ -16,6 +17,19 @@ const Navbar = () => {
         setSelectedLanguage(lang);
         i18n.changeLanguage(lang);
         setIsOpen(false);
+    };
+
+    // Ellenőrzés, hogy be van-e jelentkezve
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token); // Ha van token, akkor bejelentkezve
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('refreshToken');
+        setIsLoggedIn(false);
+        window.location.reload(); // Frissítjük az oldalt, hogy tükrözze az állapotot
     };
 
     return (
@@ -50,8 +64,16 @@ const Navbar = () => {
                     )}
                 </div>
 
-                <a href="/login" className="navbar-login-btn">{t('login')}</a>
-                <a href="/register" className="navbar-register-btn">{t('register')}</a>
+                {isLoggedIn ? (
+                    <button onClick={handleLogout} className="navbar-logout-btn">
+                        {t('logout')}
+                    </button>
+                ) : (
+                    <>
+                        <a href="/login" className="navbar-login-btn">{t('login')}</a>
+                        <a href="/register" className="navbar-register-btn">{t('register')}</a>
+                    </>
+                )}
             </div>
         </nav>
     );
