@@ -1,0 +1,80 @@
+.school-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.school-card-left {
+    flex: 1;
+    text-align: left;
+}
+
+.school-name {
+    color: #333;
+    font-weight: bold;
+}
+
+.school-rating {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+.rating-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.rating-star {
+    color: #00A3FF;
+    font-size: 30px;
+}
+
+.address{
+    padding-top: 20px;
+    color: #333;
+    font-size: 14px;
+}
+
+.download {
+    color: #00A3FF;
+    text-align: right;
+    flex: 0;
+    align-self: flex-end;
+    margin-top: auto; 
+    padding-right: 5px;
+    cursor: pointer;
+
+}
+
+.download-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px; /* Kör átmérője */
+    height: 24px;
+    background-color: #00A3FF; /* Háttér színe */
+    border-radius: 50%; /* Kör alak */
+    color: white; /* Ikon színe */
+    font-size: 16px; /* Ikon mérete */
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Árnyék */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.download-icon:hover {
+    transform: scale(1.1); /* Hover méret */
+}
+
+
