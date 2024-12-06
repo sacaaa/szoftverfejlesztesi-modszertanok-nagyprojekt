@@ -147,7 +147,7 @@
   .flag-english {
     width: 20px;
     height: 12px;
-    background-color: #007bff; /* You can replace this with an actual flag image if needed */
+    background: url(/united-kingdom-flag-icon.svg);
     border-radius: 2px;
   }
   
