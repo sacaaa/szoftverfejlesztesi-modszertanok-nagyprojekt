@@ -1,10 +1,10 @@
-.school-card {
+.schooll-card {
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   max-width: 338px;
   max-height: 338px;
-  margin-top: 3rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column; /* Vertikális elrendezés */
   align-items: center; /* Vízszintesen középre */
@@ -12,28 +12,28 @@
   padding-top: 1.5rem;
 }
 
-.school-logo1 {
+.schooll-logo1 {
   margin-top: 25px;
 }
 
-.school-rating1 {
+.schooll-rating1 {
   display: flex;
   align-items: center;
 }
 
-.school-rating1 p {
+.schooll-rating1 p {
   font-size: 20px;
   font-weight: bold;
   color: #4B4B4B;
   padding-right: 3px;
 }
 
-.school-rating1 img {
+.schooll-rating1 img {
   width: 30px;
   height: 30px;
 }
 
-.school-info1 {
+.schooll-info1 {
   padding: 10px;
   flex-grow: 1; 
   max-width: 800px;
@@ -42,7 +42,7 @@
   text-align: center;
 }
 
-.school-info1 h2 {
+.schooll-info1 h2 {
   margin-bottom: 10px;
   font-size: 1.5rem;
   color: #484848;
