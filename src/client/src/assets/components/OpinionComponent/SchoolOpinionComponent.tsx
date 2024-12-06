@@ -23,11 +23,11 @@ const SchoolOpinionComponent: React.FC<ReviewCardProps> = ({id, title, rating, c
                     href={`/teachers/${id}`} // Dinamikusan generált URL az id alapján
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="review-title"
+                    className="review-teacher-school"
                 >
                     {teacherName}
                 </a>
-                <p className="review-teacher">{title}</p>
+                <p className="review-subject">{title}</p>
                 <p className="review-date">{formattedDate || 'N/A'}</p>
             </div>
             <div className="review-rating">

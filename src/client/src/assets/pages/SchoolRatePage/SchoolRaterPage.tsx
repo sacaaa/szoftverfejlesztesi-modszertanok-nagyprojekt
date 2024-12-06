@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
-import TeacherCard from "../../components/TeacherCard/TeacherCard";
 import Footer from "../../components/Footer/Footer";
-import OpinionComponent from "../../components/OpinionComponent/OpinionComponent";
 import SchoolCard from "../../components/SchoolCard/SchoolCard";
 import SchoolOpinionComponent from "../../components/OpinionComponent/SchoolOpinionComponent";
 
