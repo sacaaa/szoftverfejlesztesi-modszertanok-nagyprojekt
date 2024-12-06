@@ -5,6 +5,7 @@ import SimpleSchoolCard from '../../components/SimpleSchoolCard/SimpleSchoolCard
 import '../SchoolList/SchoolList.css';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
 
 interface School {
     id: number;
@@ -113,6 +114,7 @@ const SchoolList: React.FC = () => {
                     <p className="no-results-message">Nincs találat a keresési feltételek alapján.</p>
                 )}
             </div>
+            <Footer />
         </>
     );
 };

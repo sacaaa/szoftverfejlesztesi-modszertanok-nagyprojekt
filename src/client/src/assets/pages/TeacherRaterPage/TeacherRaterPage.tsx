@@ -3,7 +3,10 @@ import Navbar from "../../components/Navbar/Navbar";
 import OpinionComponent from "../../components/OpinionComponent/OpinionComponent";
 import OpinionForm from "../../components/OpinionForm/OpinionForm";
 import TeacherCard from "../../components/TeacherCard/TeacherCard";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom"
+import Footer from '../../components/Footer/Footer';
+import './TeacherRaterPage.css';
+
 
 interface Review {
     id: number;
@@ -89,29 +92,32 @@ const TeacherRaterPage: React.FC = () => {
     }
 
     return (
-        <>
+        <div className="page-container">
             <Navbar />
-            <TeacherCard
-                name={teacher.name}
-                rating={teacher.avgRating}
-                subjects={teacher.subjects}
-                schools={teacher.schools}
-            />
-            <OpinionForm
-                subjects={teacher.subjects}
-                teacherSubjectIds={teacher.subjectAtSchoolIds}
-                onReviewSubmitted={fetchTeacher}
-            />
-            {teacher.reviews.map((review) => (
-                <OpinionComponent
-                    key={review.id}
-                    title={review.title}
-                    rating={review.rating}
-                    createdAt={review.createdAt}
-                    schoolName={review.schoolName}
+            <div className="content-wrap">
+                <TeacherCard
+                    name={teacher.name}
+                    rating={teacher.avgRating}
+                    subjects={teacher.subjects}
+                    schools={teacher.schools}
                 />
-            ))}
-        </>
+                <OpinionForm
+                    subjects={teacher.subjects}
+                    teacherSubjectIds={teacher.subjectAtSchoolIds}
+                    onReviewSubmitted={fetchTeacher}
+                />
+                {teacher.reviews.map((review) => (
+                    <OpinionComponent
+                        key={review.id}
+                        title={review.title}
+                        rating={review.rating}
+                        createdAt={review.createdAt}
+                        schoolName={review.schoolName}
+                    />
+                ))}
+            </div>
+            <Footer />
+        </div>
     );
 };
 

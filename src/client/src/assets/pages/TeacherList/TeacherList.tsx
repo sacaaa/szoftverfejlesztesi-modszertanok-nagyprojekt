@@ -66,48 +66,49 @@ const TeacherList: React.FC = () => {
     };
 
     return (
-        <>
+        <div className="page-container">
             <Navbar />
-            <div className="search-bar">
-                <SearchBar
-                    toggleView={setIsExtended}
-                    onSearch={(value) => setSearchTerm(value)}
-                />
-            </div>
+            <div className="content-wrap">
+                <div className="search-bar">
+                    <SearchBar
+                        toggleView={setIsExtended}
+                        onSearch={(value) => setSearchTerm(value)}
+                    />
+                </div>
     
-            <div className={!isExtended ? 'main-content' : 'ext-main-content'}>
-                {loading ? (
-                    <p>Adatok betöltése...</p>
-                ) : filteredTeachers.length > 0 ? (
-                    filteredTeachers.map((teacher) => (
-                        <div
-                            key={teacher.id}
-                            onClick={() => handleCardClick(teacher.id)}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            {isExtended ? (
-                                <ExtendedTeacherCard
-                                    name={teacher.name}
-                                    rating={Math.round(teacher.rating).toString()}
-                                    additionalInfo={teacher.additionalInfo}
-                                    description="Default description"
-                                />
-                            ) : (
-                                <SimpleTeacherCard
-                                    name={teacher.name}
-                                    rating={Math.round(teacher.rating).toString()}
-                                    additionalInfo={teacher.additionalInfo}
-                                />
-                            )}
-                        </div>
-                    ))
-                ) : (
-                    <p className="no-results-message">Nincs találat a keresési feltételek alapján.</p>
-                )}
+                <div className={!isExtended ? 'main-content' : 'ext-main-content'}>
+                    {loading ? (
+                        <p>Adatok betöltése...</p>
+                    ) : filteredTeachers.length > 0 ? (
+                        filteredTeachers.map((teacher) => (
+                            <div
+                                key={teacher.id}
+                                onClick={() => handleCardClick(teacher.id)}
+                                style={{ cursor: 'pointer' }}
+                            >
+                                {isExtended ? (
+                                    <ExtendedTeacherCard
+                                        name={teacher.name}
+                                        rating={Math.round(teacher.rating).toString()}
+                                        additionalInfo={teacher.additionalInfo}
+                                        description="Default description"
+                                    />
+                                ) : (
+                                    <SimpleTeacherCard
+                                        name={teacher.name}
+                                        rating={Math.round(teacher.rating).toString()}
+                                        additionalInfo={teacher.additionalInfo}
+                                    />
+                                )}
+                            </div>
+                        ))
+                    ) : (
+                        <p className="no-results-message">Nincs találat a keresési feltételek alapján.</p>
+                    )}
+                </div>
             </div>
-    
             <Footer />
-        </>
+        </div>
     );
 }    
 
