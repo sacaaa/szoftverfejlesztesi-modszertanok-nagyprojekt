@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from "jwt-decode";
 import './OpinionForm.css';
 
 interface OpinionFormProps {
@@ -8,19 +10,47 @@ interface OpinionFormProps {
 }
 
 const OpinionForm: React.FC<OpinionFormProps> = ({ subjects, teacherSubjectIds, onReviewSubmitted }) => {
-    const [subjectIndex, setSubjectIndex] = useState<number>(0); // Az aktuális tantárgy indexe
+    const [subjectIndex, setSubjectIndex] = useState<number>(0);
     const [rating, setRating] = useState<number>(5);
+    const navigate = useNavigate();
+
+    const getStudentIdFromToken = () => {
+        const token = localStorage.getItem('token');
+        if (!token) return null;
+
+        try {
+            const decoded: any = jwtDecode(token);
+            return decoded.studentId || null; // Az extraClaims-ből
+        } catch (error) {
+            console.error('Invalid token:', error);
+            return null;
+        }
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert("A vélemény küldéséhez be kell jelentkeznie!");
+            navigate('/login');
+            return;
+        }
+
+        const studentId = getStudentIdFromToken();
+        if (!studentId) {
+            alert("Érvénytelen token! Jelentkezzen be újra.");
+            navigate('/login');
+            return;
+        }
+
         const reviewPayload = {
-            student: { id: 3, type: "student" }, // Statikus diák adat
-            studentId: 3,
+            student: { id: studentId, type: "student" },
+            studentId: studentId,
             teacherSubjectAtSchool: { id: teacherSubjectIds[subjectIndex] },
             teacherSubjectAtSchoolId: teacherSubjectIds[subjectIndex],
             rating,
-            comment: "", // Kommentek nélkül
+            comment: "",
         };
 
         try {
@@ -34,7 +64,7 @@ const OpinionForm: React.FC<OpinionFormProps> = ({ subjects, teacherSubjectIds, 
 
             if (response.ok) {
                 alert("Értékelés sikeresen elküldve!");
-                onReviewSubmitted(); // Frissítjük az értékeléseket
+                onReviewSubmitted();
             } else {
                 alert("Hiba történt az értékelés elküldése során.");
             }
@@ -47,7 +77,6 @@ const OpinionForm: React.FC<OpinionFormProps> = ({ subjects, teacherSubjectIds, 
     return (
         <form className="review-form" onSubmit={handleSubmit}>
             <div className="review-form-controls">
-                {/* Tantárgy legördülő lista */}
                 <select
                     className="review-form-select"
                     value={subjectIndex}
@@ -60,7 +89,6 @@ const OpinionForm: React.FC<OpinionFormProps> = ({ subjects, teacherSubjectIds, 
                     ))}
                 </select>
 
-                {/* Értékelés legördülő lista */}
                 <select
                     className="review-form-select rating-select"
                     value={rating}
