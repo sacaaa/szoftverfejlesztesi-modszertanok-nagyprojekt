@@ -1,4 +1,5 @@
 import './ExtendedSchoolCard.css'
+import { useTranslation } from 'react-i18next';
 
 interface ExtendedSchoolListProps {
     additionalInfo: string[];
@@ -8,6 +9,8 @@ interface ExtendedSchoolListProps {
 }
 
 export default function Extended_School_Items({ name, rating, description, additionalInfo }: ExtendedSchoolListProps) {
+    const { t } = useTranslation();
+
     return (<>
     <div className="extended-school-card">
         <div className='school-info'>
@@ -25,7 +28,7 @@ export default function Extended_School_Items({ name, rating, description, addit
                 <img src={"images/star_purple500.png"} alt={`star`}/>
             </div>
             <a className='more'>
-                Részletek -&#62;
+                {t('Details')} -&#62;
             </a>
         </div>
         

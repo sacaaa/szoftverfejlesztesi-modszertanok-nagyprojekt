@@ -45,7 +45,8 @@ const resources = {
             "Good": "Jó",
             "Average": "Közepes",
             "Poor": "Gyenge",
-            "Insufficient": "Elégtelen"
+            "Insufficient": "Elégtelen",
+            "Details": "Részletek"
         }
     },
     en: {
@@ -90,7 +91,8 @@ const resources = {
             "Good": "Good",
             "Average": "Average",
             "Poor": "Poor",
-            "Insufficient": "Insufficient"
+            "Insufficient": "Insufficient",
+            "Details": "Details"
         }
     }
 };
