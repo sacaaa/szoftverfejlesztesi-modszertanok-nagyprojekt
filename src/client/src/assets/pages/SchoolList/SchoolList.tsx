@@ -98,13 +98,13 @@ const SchoolList: React.FC = () => {
                                 {isExtended ? (
                                     <ExtendedSchoolCard
                                         name={school.name}
-                                        rating={school.rating.toString()}
+                                        rating={school.rating}
                                         description={school.description}
                                         additionalInfo={school.additionalInfo}                           />
                                 ) : (
                                     <SimpleSchoolCard
                                             name={school.name}
-                                            rating={school.rating.toString()}
+                                            rating={school.rating}
                                             additionalInfo={school.additionalInfo}
                                             type="school"                              />
                                 )}

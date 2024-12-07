@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 interface ExtendedSchoolListProps {
     additionalInfo: string[];
     name: string;
-    rating: string;
+    rating: number;
     description: string;
 }
 
@@ -24,7 +24,7 @@ export default function Extended_School_Items({ name, rating, description, addit
         </div>
         <div className='school-right-container'>
             <div className='school-rating'>
-                <p>{rating}</p>
+                <p>{isNaN(rating) ? 0 : rating}</p>
                 <img src={"images/star_purple500.png"} alt={`star`}/>
             </div>
             <a className='more'>

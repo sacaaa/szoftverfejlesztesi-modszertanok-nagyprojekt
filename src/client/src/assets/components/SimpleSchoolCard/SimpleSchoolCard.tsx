@@ -3,7 +3,7 @@ import './SimpleSchoolCard.css';
 
 interface SimpleSchoolCardProps {
     name: string;
-    rating: string;
+    rating: number;
     additionalInfo: string[];
     type: string;
 }
@@ -17,7 +17,7 @@ const SimpleSchoolCard: React.FC<SimpleSchoolCardProps> = ({ name, rating, addit
     return (
         <div className={`schooll-card ${type === 'school' ? 'schooll-card' : 'teacherr-card'}`}>
             <div className="schooll-rating1">
-                <p>{rating}</p>
+                <p>{isNaN(rating) ? 0 : rating}</p>
                 <img src="images/star_purple500.png" alt="star" />
             </div>
             <div className='additional-info1'>
