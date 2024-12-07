@@ -89,14 +89,14 @@ const TeacherList: React.FC = () => {
                                 {isExtended ? (
                                     <ExtendedTeacherCard
                                         name={teacher.name}
-                                        rating={Math.round(teacher.rating).toString()}
+                                        rating={Math.round(teacher.rating)}
                                         additionalInfo={teacher.additionalInfo}
                                         description="Default description"
                                     />
                                 ) : (
                                     <SimpleTeacherCard
                                         name={teacher.name}
-                                        rating={Math.round(teacher.rating).toString()}
+                                        rating={Math.round(teacher.rating)}
                                         additionalInfo={teacher.additionalInfo}
                                         type="teacher"
                                     />
