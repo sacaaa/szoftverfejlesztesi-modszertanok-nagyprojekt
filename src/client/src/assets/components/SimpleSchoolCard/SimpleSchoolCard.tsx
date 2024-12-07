@@ -15,7 +15,7 @@ const SimpleSchoolCard: React.FC<SimpleSchoolCardProps> = ({ name, rating, addit
     };
 
     return (
-        <div className={`schooll-card ${type === 'school' ? 'school-card' : 'teacher-card'}`}>
+        <div className={`schooll-card ${type === 'school' ? 'schooll-card' : 'teacherr-card'}`}>
             <div className="schooll-rating1">
                 <p>{rating}</p>
                 <img src="images/star_purple500.png" alt="star" />
