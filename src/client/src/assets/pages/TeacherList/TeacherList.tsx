@@ -14,6 +14,7 @@ interface Teacher {
     logo: string; // Logo optional
     rating: number;
     additionalInfo: string[];
+    schoolNames: string[];
 }
 
 const TeacherList: React.FC = () => {
@@ -39,6 +40,9 @@ const TeacherList: React.FC = () => {
                         additionalInfo: teacher.subjectAtSchools.map((subject: any) =>
                             `${subject.subject.name}`
                         ),
+                        schoolNames: Array.from(new Set(teacher.subjectAtSchools.map((subject: any) =>
+                            `${subject.schoolName}`
+                        )))
                     }));
                     setTeacherData(formattedData);
                 } else {
@@ -91,7 +95,7 @@ const TeacherList: React.FC = () => {
                                         name={teacher.name}
                                         rating={Math.round(teacher.rating)}
                                         additionalInfo={teacher.additionalInfo}
-                                        description="Default description"
+                                        description={teacher.schoolNames.join(', ')}
                                     />
                                 ) : (
                                     <SimpleTeacherCard

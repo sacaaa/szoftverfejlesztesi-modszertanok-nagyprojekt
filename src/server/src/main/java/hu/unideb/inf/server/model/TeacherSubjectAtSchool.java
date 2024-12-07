@@ -1,6 +1,7 @@
 package hu.unideb.inf.server.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import hu.unideb.inf.server.model.base.BaseEntity;
 import hu.unideb.inf.server.model.users.School;
@@ -44,5 +45,13 @@ public class TeacherSubjectAtSchool extends BaseEntity {
     @OneToMany(mappedBy = "teacherSubjectAtSchool", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference(value = "teacherSubject-reviews")
     private List<Review> reviewsReceived;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public String getSchoolName() {
+        if (this.school != null) {
+            return this.school.getName();
+        }
+        return null;
+    }
 
 }
