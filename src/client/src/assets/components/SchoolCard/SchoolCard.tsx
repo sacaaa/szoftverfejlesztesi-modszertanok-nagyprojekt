@@ -1,4 +1,5 @@
-import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { MdDownload } from "react-icons/md";
 import './SchoolCard.css';
 
 interface SchoolCardProps {
@@ -18,6 +19,7 @@ const SchoolCard: React.FC<SchoolCardProps> = ({ name, rating, address, dataForD
     const formattedRating = rating !== null && rating !== undefined && !isNaN(rating)
         ? rating.toFixed(2)
         : '0';
+    const { t } = useTranslation();
 
     // Funkció a CSV fájl generálásához és letöltéséhez
     const downloadCSV = () => {
@@ -47,15 +49,15 @@ const SchoolCard: React.FC<SchoolCardProps> = ({ name, rating, address, dataForD
                 <h2 className="school-name">{name}</h2>
                 {/* Értékelés (szám + csillag) */}
                 <div className="school-rating">
-                    <span>Értékelés:</span>
+                    <span>{t('rating')}:</span>
                     <span className="rating-value">{formattedRating}</span>
                     <span className="rating-star">★</span>
                 </div>
-                <p className="address">Cím: {address}</p>
+                <p className="address">{t('Address')} {address}</p>
             </div>   
             <div className="download">
                 <button onClick={downloadCSV} className="download-icon">
-                    ⬇️ 
+                    <MdDownload /> 
                 </button>
             </div>
         </div>

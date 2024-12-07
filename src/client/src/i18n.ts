@@ -36,7 +36,16 @@ const resources = {
             "subscribe_newsletter": "Feliratkozom a hírlevélre, hogy kapjak értesítést a legújabb termékekről és ajánlatokról",
             "have_account": "Van már felhasználód?",
             "sign_in": "Jelentkezz be!",
-            "search...": "Keresés..."
+            "search...": "Keresés...",
+            "Address": "Cím:",
+            "Subjects": "Tantárgyak:",
+            "Schools": "Iskolák:",
+            "Submit": "Küldés",
+            "Excellent": "Kiváló",
+            "Good": "Jó",
+            "Average": "Közepes",
+            "Poor": "Gyenge",
+            "Insufficient": "Elégtelen"
         }
     },
     en: {
@@ -72,7 +81,16 @@ const resources = {
             "subscribe_newsletter": "Subscribe to the newsletter to receive updates on the latest products and offers",
             "have_account": "Already have an account?",
             "sign_in": "Log In!",
-            "search...": "Search..."
+            "search...": "Search...",
+            "Address": "Address:",
+            "Subjects": "Subjects:",
+            "Schools": "Schools:",
+            "Submit": "Submit",
+            "Excellent": "Excellent",
+            "Good": "Good",
+            "Average": "Average",
+            "Poor": "Poor",
+            "Insufficient": "Insufficient"
         }
     }
 };

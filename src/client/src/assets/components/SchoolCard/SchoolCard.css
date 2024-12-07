@@ -63,8 +63,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px; /* Kör átmérője */
-    height: 24px;
+    width: 30px; /* Kör átmérője */
+    height: 30px;
     background-color: #00A3FF; /* Háttér színe */
     border-radius: 50%; /* Kör alak */
     color: white; /* Ikon színe */

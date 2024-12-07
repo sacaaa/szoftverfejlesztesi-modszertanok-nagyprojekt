@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './TeacherCard.css';
 
 interface TeacherCardProps {
@@ -12,6 +13,7 @@ const TeacherCard: React.FC<TeacherCardProps> = ({ name, rating, subjects, schoo
     const formattedRating = rating !== null && rating !== undefined && !isNaN(rating)
         ? rating.toFixed(2)
         : '0';
+    const { t } = useTranslation();
 
     return (
         <div className="teacher-card">
@@ -20,7 +22,7 @@ const TeacherCard: React.FC<TeacherCardProps> = ({ name, rating, subjects, schoo
                 <h2 className="teacher-name">{name}</h2>
                 {/* Értékelés (szám + csillag) */}
                 <div className="teacher-rating">
-                    <span>Értékelés:</span>
+                    <span>{t('rating')}:</span>
                     <span className="rating-value">{formattedRating}</span>
                     <span className="rating-star">★</span>
                 </div>
@@ -28,12 +30,12 @@ const TeacherCard: React.FC<TeacherCardProps> = ({ name, rating, subjects, schoo
             <div className="teacher-card-right">
                 {/* Tantárgyak */}
                 <div className="teacher-subjects">
-                    <strong>Tantárgyak:</strong>
+                    <strong>{t('Subjects')}</strong>
                     <p>{subjects.join(', ')}</p>
                 </div>
                 {/* Iskolák */}
                 <div className="teacher-schools">
-                    <strong>Iskolák:</strong>
+                    <strong>{t('Schools')}</strong>
                     <div className="school-list">
                         {schools.map((school) => (
                             <a

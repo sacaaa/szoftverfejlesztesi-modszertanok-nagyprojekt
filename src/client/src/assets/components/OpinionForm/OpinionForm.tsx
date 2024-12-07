@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
+import { useTranslation } from 'react-i18next';
 import './OpinionForm.css';
 
 interface OpinionFormProps {
@@ -13,6 +14,7 @@ const OpinionForm: React.FC<OpinionFormProps> = ({ subjects, teacherSubjectIds, 
     const [subjectIndex, setSubjectIndex] = useState<number>(0);
     const [rating, setRating] = useState<number>(5);
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const getStudentIdFromToken = () => {
         const token = localStorage.getItem('token');
@@ -94,16 +96,16 @@ const OpinionForm: React.FC<OpinionFormProps> = ({ subjects, teacherSubjectIds, 
                     value={rating}
                     onChange={(e) => setRating(Number(e.target.value))}
                 >
-                    <option value={5}>5 - Kiváló</option>
-                    <option value={4}>4 - Jó</option>
-                    <option value={3}>3 - Közepes</option>
-                    <option value={2}>2 - Gyenge</option>
-                    <option value={1}>1 - Elégtelen</option>
+                    <option value={5}>5 - {t('Excellent')}</option>
+                    <option value={4}>4 - {t('Good')}</option>
+                    <option value={3}>3 - {t('Average')}</option>
+                    <option value={2}>2 - {t('Poor')}</option>
+                    <option value={1}>1 - {t('Insufficient')}</option>
                 </select>
             </div>
 
             <button type="submit" className="review-form-submit">
-                Küldés
+                {t('Submit')}
             </button>
         </form>
     );
