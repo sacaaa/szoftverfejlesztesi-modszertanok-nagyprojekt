@@ -27,9 +27,11 @@ export default function Extended_School_Items({ name, rating, description, addit
                 <p>{isNaN(rating) ? 0 : rating}</p>
                 <img src={"images/star_purple500.png"} alt={`star`}/>
             </div>
-            <a className='more'>
-                {t('Details')} -&#62;
-            </a>
+            <div className='school-more-a'>
+                <a className='more'>
+                    {t('Details')}
+                </a>
+            </div>
         </div>
         
     </div>

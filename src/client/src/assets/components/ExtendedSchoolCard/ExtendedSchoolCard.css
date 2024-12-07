@@ -7,6 +7,7 @@
   width: 1300px;
   max-width: 1300px;
   max-height: 350px;
+  min-height: 120px;
   margin: auto;
   margin-top: 1rem;
 }
@@ -32,11 +33,13 @@
   font-size: 1.5rem;
   color: #484848;
   font-weight: normal;
+  margin-left: 0.2rem;
 } 
 
 .school-info p {
   font-size: 0.8rem;
   margin: 5px 0;
+  margin-left: 0.3rem;
 
 }
 
@@ -71,12 +74,12 @@
   font-weight: bold;
   color: #4B4B4B;
   margin-right: 0.2em;
+  margin-bottom: 1rem;
 }
 
 .school-rating img {
-  margin-left: auto;
-  width: 2.5rem; 
-  height: auto;
+  width: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .more {    
@@ -84,11 +87,15 @@
   font-size: 15px;   
   padding: 60px 5px 5px;
   flex-grow: 2;
+  margin-right: 0.3rem;
+
 }
 
 .school-right-container {
-  display: flex;
-  flex-direction: column;
   margin-left: auto;
   align-self: flex-end;
+}
+
+.school-more-a {
+  margin-bottom: 0.5rem;
 }
