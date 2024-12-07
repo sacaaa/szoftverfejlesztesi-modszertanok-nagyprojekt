@@ -15,9 +15,9 @@ export default function Extended_School_Items({ name, rating, description, addit
     <div className="extended-school-card">
         <div className='school-info'>
             <div className='additional-info'>
-                <p>{additionalInfo[0]}</p>
-                <p>{additionalInfo[1]}</p>
-                <p>{additionalInfo[2]}</p>
+                {additionalInfo.map((info, index) => (
+                    info && <p key={index}>{info}</p>
+                ))}
             </div>
             <h2>{name}</h2>
             <p>{description}</p>
