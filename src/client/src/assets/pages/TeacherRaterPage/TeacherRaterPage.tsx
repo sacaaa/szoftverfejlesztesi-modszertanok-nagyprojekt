@@ -59,7 +59,7 @@ const TeacherRaterPage: React.FC = () => {
                 
                 const formattedTeacher: Teacher = {
                     id: data.id,
-                    name: `${data.title} ${data.firstName} ${data.lastName}`,
+                    name: `${data.title ? data.title + ' ' : ''}${data.lastName} ${data.firstName}`,
                     avgRating: data.avg_rating,
                     subjects: data.subjectAtSchools.map((s: any) => s.subject.name),
                     schools: schoolDetails,

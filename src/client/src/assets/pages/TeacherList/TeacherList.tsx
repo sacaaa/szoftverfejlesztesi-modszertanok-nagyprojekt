@@ -33,11 +33,11 @@ const TeacherList: React.FC = () => {
                     // Átalakítás a megfelelő formátumra
                     const formattedData = data.map((teacher: any) => ({
                         id: teacher.id,
-                        name: `${teacher.title || ''} ${teacher.firstName} ${teacher.lastName}`,
+                        name: `${teacher.title || ''} ${teacher.lastName} ${teacher.firstName}`,
                         logo: 'avatar.png', // Default logo
                         rating: teacher.avg_rating,
                         additionalInfo: teacher.subjectAtSchools.map((subject: any) =>
-                            `${subject.subject.name} (${teacher.school_ids.join(', ')})`
+                            `${subject.subject.name}`
                         ),
                     }));
                     setTeacherData(formattedData);
