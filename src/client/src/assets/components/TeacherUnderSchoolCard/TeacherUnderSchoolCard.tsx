@@ -26,7 +26,7 @@ const TeacherUnderSchoolCard: React.FC<ReviewCardProps> = ({id, subjects, rating
             </div>
 
             <div className="review-rating">
-                <p>{rating}</p>
+                <p>{Math.round(rating * 100) / 100}</p>
                 <span className="rating-star">★</span>
             </div>
         </div>
