@@ -1,20 +1,14 @@
 import React from 'react';
-import './SchoolOpinionComponent.css';
+import './TeacherUnderSchoolCard.css';
 
 interface ReviewCardProps {
     id: number;
-    title: string; // Tantárgy neve
+    subjects: string[]; // Tantárgy neve
     rating: number; // Értékelés
-    createdAt: string; // Vélemény dátuma
     teacherName: string; // Iskola neve
 }
 
-const SchoolOpinionComponent: React.FC<ReviewCardProps> = ({id, title, rating, createdAt, teacherName }) => {
-    const formattedDate = new Date(createdAt).toLocaleDateString('hu-HU', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-    });
+const TeacherUnderSchoolCard: React.FC<ReviewCardProps> = ({id, subjects, rating, teacherName }) => {
 
     return (
         <div className="review-card">
@@ -27,9 +21,10 @@ const SchoolOpinionComponent: React.FC<ReviewCardProps> = ({id, title, rating, c
                 >
                     {teacherName}
                 </a>
-                <p className="review-subject">{title}</p>
-                <p className="review-date">{formattedDate || 'N/A'}</p>
+                <p className="review-subject">{subjects.join(', ')}</p>
+
             </div>
+
             <div className="review-rating">
                 <p>{rating}</p>
                 <span className="rating-star">★</span>
@@ -38,4 +33,4 @@ const SchoolOpinionComponent: React.FC<ReviewCardProps> = ({id, title, rating, c
     );
 };
 
-export default SchoolOpinionComponent;
+export default TeacherUnderSchoolCard;

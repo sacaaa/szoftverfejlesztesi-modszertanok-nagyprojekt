@@ -2,17 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import SchoolCard from "../../components/SchoolCard/SchoolCard";
-import SchoolOpinionComponent from "../../components/OpinionComponent/SchoolOpinionComponent";
 import Footer2 from "../../components/Footer2/Footer2";
 import './SchoolRaterPage.css'
+import TeacherUnderSchoolCard from "../../components/TeacherUnderSchoolCard/TeacherUnderSchoolCard";
 
-interface Review {
+interface Teacher {
     id: number;
-    title: string;
-    rating: number;
-    studentName: string;
-    teacherName: string;
-    createdAt: string;
+    subjects: string[];
+    avgRating: number;
+    name: string;
 }
 
 
@@ -20,9 +18,8 @@ interface School {
     id: number;
     name: string;
     avgRating: number;
-    teachers: { id: number;  fullName: string}[];
+    teachers: Teacher[];
     description: string;
-    reviews: Review[];
     address: string;
 }
 
@@ -48,54 +45,41 @@ const SchoolRaterPage: React.FC = () => {
 
                 
             
-                const teacherDetails = await Promise.all(
-                    data.teachers.map(async (teacherData: number) => {
-                        return {teacherData};
-                    })
-                );
+                const teacherDetails: Teacher[] = 
+                    data.teachers.map((teacherData: any) => ({
+                        id: teacherData.id,
+                        subjects: teacherData.subjectAtSchools.map((s: any) => s.subject.name),
+                        avgRating: `${teacherData.avg_rating ?? 0}`,
+                        name: `${teacherData.title ?? ""} ${teacherData.firstName} ${teacherData.lastName}`,
+                        subjectAtSchools: teacherData.subjectAtSchools
+                    }));
 
-                const reviewsWithDetails = teacherDetails.flatMap((teacher: any) => 
-                    (teacher.teacherData.subjectAtSchools || []).flatMap((subject: any) => 
-                        (subject.reviewsReceived || []).map((review: any) => ({
-                            id: review.id,
-                            title: subject.subject?.name || "Ismeretlen tantárgy",
-                            rating: review.rating,
-                            createdAt: review.createdAt,
-                            teacherName: `${teacher.teacherData.title} ${teacher.teacherData.firstName} ${teacher.teacherData.lastName}`,
-                            teacherId: teacher.teacherData.id
-                        }))
-                    )
-                );            
+
+
+                console.log("Teacher Data:  ", teacherDetails)         
 
                 const dataForDownload = teacherDetails.flatMap((teacher: any) => {
-                    return teacher.teacherData.subjectAtSchools.flatMap((subject: any) => {
+                    return teacher.subjectAtSchools.flatMap((subject: any) => {
                         return subject.reviewsReceived.map((review: any) => ({
-                            teacherName: `${teacher.teacherData.title} ${teacher.teacherData.firstName} ${teacher.teacherData.lastName}`,
-                            teacherId: teacher.teacherData.id,
+                            teacherName: `${teacher.title} ${teacher.firstName} ${teacher.lastName}`,
+                            teacherId: teacher.id,
                             subjectName: subject.subject?.name || "Ismeretlen tantárgy",
                             reviewRating: review.rating,
                             reviewDate: review.createdAt,
                         }));
                     });
                 });
-
                 setDataForDownload(dataForDownload)
 
                 const formattedSchool: School = {
                     id: data.id,
                     name: data.name,
-                    teachers: data.teachers.map((t: any) => (
-                        {   
-                            id: t.id,
-                            fullName: `${t.title} ${t.firstName} ${t.lastName}`           
-                        })
-                    ),
+                    teachers: teacherDetails,
                     description: data.description,
                     avgRating: data.teachers
                         .filter((t: any) => t.avg_rating > 0) // Szűrjük azokat, akiknek az avg_rating értéke nagyobb, mint 0
                         .reduce((sum: number, t: any) => sum + t.avg_rating, 0) /
                         data.teachers.filter((t: any) => t.avg_rating > 0).length || 0, // Elkerüljük a nullával osztást
-                    reviews: reviewsWithDetails,
                     address: `${data.address.country}, ${data.address.city}, ${data.address.street} ${data.address.houseNumber}`
                 }
                 setSchool(formattedSchool);
@@ -135,15 +119,16 @@ const SchoolRaterPage: React.FC = () => {
                         address={school.address}
                         dataForDownload={dataForDownload}
                     />
-                    {school.reviews.map((review) => (
-                        <SchoolOpinionComponent
-                            id={review.id}
-                            title={review.title}
-                            rating={review.rating}
-                            createdAt={review.createdAt}
-                            teacherName={review.teacherName}
-                        />
-                    ))}
+                    {school.teachers.map((teacher) => (
+                    <TeacherUnderSchoolCard
+                        key={teacher.id} // Egyedi kulcs
+                        id={teacher.id}
+                        subjects={teacher.subjects}
+                        rating={teacher.avgRating}
+                        teacherName={teacher.name}
+                    />
+                ))}
+
                 </div>
                 <Footer2 />
             </div>
