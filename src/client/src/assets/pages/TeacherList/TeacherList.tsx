@@ -98,6 +98,7 @@ const TeacherList: React.FC = () => {
                                         name={teacher.name}
                                         rating={Math.round(teacher.rating).toString()}
                                         additionalInfo={teacher.additionalInfo}
+                                        type="teacher"
                                     />
                                 )}
                             </div>

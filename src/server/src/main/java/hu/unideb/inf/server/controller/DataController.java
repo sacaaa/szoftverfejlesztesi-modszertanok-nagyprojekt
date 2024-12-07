@@ -31,7 +31,7 @@ public class DataController {
         var schoolCount = schoolService.getAllSchools().size();
 
         return ResponseEntity.ok(Map.of(
-                "teacherCount", formatCount(150),
+                "teacherCount", formatCount(teacherCount),
                 "reviewCount", formatCount(reviewCount),
                 "schoolCount", formatCount(schoolCount)
         ));

@@ -5,16 +5,17 @@ interface SimpleSchoolCardProps {
     name: string;
     rating: string;
     additionalInfo: string[];
+    type: string;
 }
 
-const SimpleSchoolCard: React.FC<SimpleSchoolCardProps> = ({ name, rating, additionalInfo }) => {
+const SimpleSchoolCard: React.FC<SimpleSchoolCardProps> = ({ name, rating, additionalInfo, type }) => {
     const limit = 25;
     const truncateInfo = (info: string) => {
         return info.length > limit ? `${info.substring(0, limit)}...` : info;
     };
 
     return (
-        <div className="schooll-card">
+        <div className={`schooll-card ${type === 'school' ? 'school-card' : 'teacher-card'}`}>
             <div className="schooll-rating1">
                 <p>{rating}</p>
                 <img src="images/star_purple500.png" alt="star" />
