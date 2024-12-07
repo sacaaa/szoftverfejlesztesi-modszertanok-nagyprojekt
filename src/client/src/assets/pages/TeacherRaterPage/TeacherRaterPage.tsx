@@ -53,7 +53,7 @@ const TeacherRaterPage: React.FC = () => {
                         title: subjectAtSchool.subject.name,
                         rating: review.rating,
                         createdAt: review.createdAt,
-                        schoolName: schoolDetails.find(s => s.id === subjectAtSchool.schoolId)?.name || 'Ismeretlen iskola',
+                        schoolName: schoolDetails.find(s => s.id === subjectAtSchool.schoolId)?.name,
                     }))
                 );
                 
