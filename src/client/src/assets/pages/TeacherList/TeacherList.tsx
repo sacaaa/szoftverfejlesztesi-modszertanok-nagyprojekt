@@ -5,8 +5,8 @@ import SimpleTeacherCard from '../../components/SimpleSchoolCard/SimpleSchoolCar
 import '../SchoolList/SchoolList.css';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Navbar from '../../components/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer';
 import './TeacherList.css';
+import Footer2 from '../../components/Footer2/Footer2';
 
 interface Teacher {
     id: number;
@@ -66,7 +66,7 @@ const TeacherList: React.FC = () => {
     };
 
     return (
-        <div className="page-container">
+        <div className="teacher-page-container">
             <Navbar />
             <div className="content-wrap">
                 <div className="search-bar">
@@ -108,7 +108,7 @@ const TeacherList: React.FC = () => {
                     )}
                 </div>
             </div>
-            <Footer />
+            <Footer2 />
         </div>
     );
 }    

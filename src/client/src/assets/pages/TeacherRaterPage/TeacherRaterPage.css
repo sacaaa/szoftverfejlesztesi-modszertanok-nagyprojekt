@@ -1,12 +1,12 @@
-.page-container {
+.teacher-rater-page-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Teljes ablakmagasság */
+    justify-content: space-between;
 }
 
 .content-wrap {
     flex: 1;
-    padding-bottom: 120px; /* A footer magasságának megfelelő hely */
 }
 
 .footer {

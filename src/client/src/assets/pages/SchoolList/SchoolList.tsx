@@ -5,7 +5,7 @@ import SimpleSchoolCard from '../../components/SimpleSchoolCard/SimpleSchoolCard
 import '../SchoolList/SchoolList.css';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import Navbar from '../../components/Navbar/Navbar';
-import Footer from '../../components/Footer/Footer';
+import Footer2 from '../../components/Footer2/Footer2';
 
 interface School {
     id: number;
@@ -75,45 +75,47 @@ const SchoolList: React.FC = () => {
     );
 
     return (
-        <>
-            <Navbar />
-            <div className="search-bar">
-                <SearchBar
-                    toggleView={setIsExtended}
-                    onSearch={(value) => setSearchTerm(value)}
-                />
-            </div>
+        <>  
+            <div className='schoollist-page-container'>
+                <Navbar />
+                <div className="search-bar">
+                    <SearchBar
+                        toggleView={setIsExtended}
+                        onSearch={(value) => setSearchTerm(value)}
+                    />
+                </div>
 
-            <div className={!isExtended ? 'main-content' : 'ext-main-content'}>
-                {loading ? (
-                    <p>Adatok betöltése...</p>
-                ) : filteredSchools.length > 0 ? (
-                    filteredSchools.map((school) => (
-                        <div
-                            key={school.id}
-                            onClick={() => handleCardClick(school.id)} // Kattintási esemény
-                            style={{ cursor: 'pointer' }} // Vizualizáció a kattinthatósághoz
-                        >
-                            {isExtended ? (
-                                <ExtendedSchoolCard
-                                    name={school.name}
-                                    rating={school.rating.toString()}
-                                    description={school.description}
-                                    additionalInfo={school.additionalInfo}                           />
-                            ) : (
-                                <SimpleSchoolCard
+                <div className={!isExtended ? 'main-content' : 'ext-main-content'}>
+                    {loading ? (
+                        <p>Adatok betöltése...</p>
+                    ) : filteredSchools.length > 0 ? (
+                        filteredSchools.map((school) => (
+                            <div
+                                key={school.id}
+                                onClick={() => handleCardClick(school.id)} // Kattintási esemény
+                                style={{ cursor: 'pointer' }} // Vizualizáció a kattinthatósághoz
+                            >
+                                {isExtended ? (
+                                    <ExtendedSchoolCard
                                         name={school.name}
                                         rating={school.rating.toString()}
-                                        additionalInfo={school.additionalInfo}
-                                        type="school"                              />
-                            )}
-                        </div>
-                    ))
-                ) : (
-                    <p className="no-results-message">Nincs találat a keresési feltételek alapján.</p>
-                )}
+                                        description={school.description}
+                                        additionalInfo={school.additionalInfo}                           />
+                                ) : (
+                                    <SimpleSchoolCard
+                                            name={school.name}
+                                            rating={school.rating.toString()}
+                                            additionalInfo={school.additionalInfo}
+                                            type="school"                              />
+                                )}
+                            </div>
+                        ))
+                    ) : (
+                        <p className="no-results-message">Nincs találat a keresési feltételek alapján.</p>
+                    )}
+                </div>
+                <Footer2 />
             </div>
-            <Footer />
         </>
     );
 };

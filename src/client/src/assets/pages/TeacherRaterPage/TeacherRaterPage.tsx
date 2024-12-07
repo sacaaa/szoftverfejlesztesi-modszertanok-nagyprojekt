@@ -4,8 +4,8 @@ import OpinionComponent from "../../components/OpinionComponent/OpinionComponent
 import OpinionForm from "../../components/OpinionForm/OpinionForm";
 import TeacherCard from "../../components/TeacherCard/TeacherCard";
 import { useParams } from "react-router-dom"
-import Footer from '../../components/Footer/Footer';
 import './TeacherRaterPage.css';
+import Footer2 from "../../components/Footer2/Footer2";
 
 
 interface Review {
@@ -92,7 +92,7 @@ const TeacherRaterPage: React.FC = () => {
     }
 
     return (
-        <div className="page-container">
+        <div className="teacher-rater-page-container">
             <Navbar />
             <div className="content-wrap">
                 <TeacherCard
@@ -116,7 +116,7 @@ const TeacherRaterPage: React.FC = () => {
                     />
                 ))}
             </div>
-            <Footer />
+            <Footer2 />
         </div>
     );
 };

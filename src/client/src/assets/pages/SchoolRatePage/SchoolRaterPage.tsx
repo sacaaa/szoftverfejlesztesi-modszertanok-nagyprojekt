@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import SchoolCard from "../../components/SchoolCard/SchoolCard";
 import SchoolOpinionComponent from "../../components/OpinionComponent/SchoolOpinionComponent";
+import Footer2 from "../../components/Footer2/Footer2";
+import './SchoolRaterPage.css'
 
 interface Review {
     id: number;
@@ -124,24 +125,28 @@ const SchoolRaterPage: React.FC = () => {
 
     return (
         
-        <>
-            <Navbar />
-            <SchoolCard
-                name={school.name}
-                rating={school.avgRating}
-                address={school.address}
-                dataForDownload={dataForDownload}
-            />
-            {school.reviews.map((review) => (
-                <SchoolOpinionComponent
-                    id={review.id}
-                    title={review.title}
-                    rating={review.rating}
-                    createdAt={review.createdAt}
-                    teacherName={review.teacherName}
-                />
-            ))}
-            <Footer />
+        <>  
+            <div className="school-rater-page-container">
+                <Navbar />
+                <div className="schoolrater-content-wrap">
+                    <SchoolCard
+                        name={school.name}
+                        rating={school.avgRating}
+                        address={school.address}
+                        dataForDownload={dataForDownload}
+                    />
+                    {school.reviews.map((review) => (
+                        <SchoolOpinionComponent
+                            id={review.id}
+                            title={review.title}
+                            rating={review.rating}
+                            createdAt={review.createdAt}
+                            teacherName={review.teacherName}
+                        />
+                    ))}
+                </div>
+                <Footer2 />
+            </div>
         </>
     );
 };

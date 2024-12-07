@@ -1,10 +1,11 @@
-.reg-container {
+.school-rater-page-container{
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     justify-content: space-between;
+    min-height: 100vh;
+    
 }
 
-.login-main-content {
+.schoolrater-content-wrap {
     flex: 1;
 }

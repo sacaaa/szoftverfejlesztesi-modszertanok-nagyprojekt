@@ -1,4 +1,9 @@
-
+.schoollist-page-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
 .main-content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
