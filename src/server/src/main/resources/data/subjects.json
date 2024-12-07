@@ -1,17 +1,47 @@
 [
   {
-    "name": "Programozás I."
+    "name": "Bevezetés a számítógéptudományba"
   },
   {
-    "name": "Programozás II."
+    "name": "Adatbázis-kezelés"
   },
   {
-    "name": "Irodalom"
+    "name": "Matematikai analízis"
   },
   {
-    "name": "Nyelvtan"
+    "name": "Fizikai kémia"
   },
   {
-    "name": "Matematika"
+    "name": "Szociálpszichológia"
+  },
+  {
+    "name": "Nemzetközi gazdaságtan"
+  },
+  {
+    "name": "Irodalomelmélet"
+  },
+  {
+    "name": "Polgári jog alapjai"
+  },
+  {
+    "name": "Orvosi biokémia"
+  },
+  {
+    "name": "Műszaki rajz és ábrázoló geometria"
+  },
+  {
+    "name": "Programozás alapjai"
+  },
+  {
+    "name": "Ökológia"
+  },
+  {
+    "name": "Középkori történelem"
+  },
+  {
+    "name": "Kvantummechanika"
+  },
+  {
+    "name": "Társadalmi kommunikáció"
   }
 ]

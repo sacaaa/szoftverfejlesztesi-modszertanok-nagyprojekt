@@ -1,42 +1,161 @@
 [
   {
     "title": "Dr.",
-    "firstName": "Teszt",
-    "lastName": "Elek1",
+    "firstName": "Péter",
+    "lastName": "Kovács",
     "schools": [
-      { "id": 1, "type": "school" }
+      {
+        "id": 2,
+        "type": "school"
+      }
+    ]
+  },
+  {
+    "title": "Prof.",
+    "firstName": "Anna",
+    "lastName": "Nagy",
+    "schools": [
+      {
+        "id": 2,
+        "type": "school"
+      }
+    ]
+  },
+  {
+    "firstName": "Gábor",
+    "lastName": "Szabó",
+    "schools": [
+      {
+        "id": 5,
+        "type": "school"
+      }
     ]
   },
   {
     "title": "Dr.",
-    "firstName": "Teszt",
-    "lastName": "Elek2",
+    "firstName": "János",
+    "lastName": "Farkas",
     "schools": [
-      { "id": 1, "type": "school" }
+      {
+        "id": 1,
+        "type": "school"
+      }
+    ]
+  },
+  {
+    "title": "Prof.",
+    "firstName": "Eszter",
+    "lastName": "Tóth",
+    "schools": [
+      {
+        "id": 2,
+        "type": "school"
+      }
+    ]
+  },
+  {
+    "firstName": "László",
+    "lastName": "Varga",
+    "schools": [
+      {
+        "id": 4,
+        "type": "school"
+      }
     ]
   },
   {
     "title": "Dr.",
-    "firstName": "Teszt",
-    "lastName": "Elek3",
+    "firstName": "Katalin",
+    "lastName": "Balogh",
     "schools": [
-      { "id": 1, "type": "school" }
+      {
+        "id": 2,
+        "type": "school"
+      }
+    ]
+  },
+  {
+    "firstName": "Tamás",
+    "lastName": "Kiss",
+    "schools": [
+      {
+        "id": 3,
+        "type": "school"
+      }
+    ]
+  },
+  {
+    "title": "Prof.",
+    "firstName": "Márton",
+    "lastName": "Horváth",
+    "schools": [
+      {
+        "id": 1,
+        "type": "school"
+      }
+    ]
+  },
+  {
+    "firstName": "Zsófia",
+    "lastName": "Molnár",
+    "schools": [
+      {
+        "id": 4,
+        "type": "school"
+      }
     ]
   },
   {
     "title": "Dr.",
-    "firstName": "Teszt",
-    "lastName": "Elek4",
+    "firstName": "István",
+    "lastName": "Lakatos",
     "schools": [
-      { "id": 1, "type": "school" }
+      {
+        "id": 5,
+        "type": "school"
+      }
+    ]
+  },
+  {
+    "firstName": "Réka",
+    "lastName": "Veres",
+    "schools": [
+      {
+        "id": 2,
+        "type": "school"
+      }
     ]
   },
   {
     "title": "Dr.",
-    "firstName": "Teszt",
-    "lastName": "Elek5",
+    "firstName": "Erik",
+    "lastName": "Halász",
     "schools": [
-      { "id": 1, "type": "school" }
+      {
+        "id": 3,
+        "type": "school"
+      }
+    ]
+  },
+  {
+    "firstName": "Csaba",
+    "lastName": "Barna",
+    "schools": [
+      {
+        "id": 2,
+        "type": "school"
+      }
+    ]
+  },
+  {
+    "title": "Prof.",
+    "firstName": "Mária",
+    "lastName": "Németh",
+    "schools": [
+      {
+        "id": 2,
+        "type": "school"
+      }
     ]
   }
 ]

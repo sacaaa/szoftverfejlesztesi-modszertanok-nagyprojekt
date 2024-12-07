@@ -6,12 +6,15 @@
     "email": "student1@example.com",
     "emailVerified": true,
     "role": "STUDENT",
-    "lastLoggedIn": "2024-04-01T12:34:56",
-    "firstName": "Student",
-    "lastName": "User",
-    "birthDate": "2000-01-01",
-    "school": { "id": 1, "type": "school"  },
-    "schoolId": 1
+    "lastLoggedIn": "2024-11-18T11:00:00.182140",
+    "firstName": "Diák 1",
+    "lastName": "Vezetéknév 1",
+    "birthDate": "2004-01-28",
+    "school": {
+      "id": 4,
+      "type": "school"
+    },
+    "schoolId": 5
   },
   {
     "type": "student",
@@ -20,11 +23,235 @@
     "email": "student2@example.com",
     "emailVerified": true,
     "role": "STUDENT",
-    "lastLoggedIn": "2024-04-01T12:34:56",
-    "firstName": "Student",
-    "lastName": "User",
-    "birthDate": "2000-01-01",
-    "school": { "id": 2, "type": "school" },
+    "lastLoggedIn": "2024-10-06T11:00:00.182178",
+    "firstName": "Diák 2",
+    "lastName": "Vezetéknév 2",
+    "birthDate": "2006-04-21",
+    "school": {
+      "id": 3,
+      "type": "school"
+    },
+    "schoolId": 1
+  },
+  {
+    "type": "student",
+    "username": "studentuser3",
+    "password": "hashedpassword3",
+    "email": "student3@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-04-20T11:00:00.182198",
+    "firstName": "Diák 3",
+    "lastName": "Vezetéknév 3",
+    "birthDate": "2004-08-24",
+    "school": {
+      "id": 1,
+      "type": "school"
+    },
+    "schoolId": 1
+  },
+  {
+    "type": "student",
+    "username": "studentuser4",
+    "password": "hashedpassword4",
+    "email": "student4@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-07-25T11:00:00.182214",
+    "firstName": "Diák 4",
+    "lastName": "Vezetéknév 4",
+    "birthDate": "2006-06-26",
+    "school": {
+      "id": 2,
+      "type": "school"
+    },
+    "schoolId": 2
+  },
+  {
+    "type": "student",
+    "username": "studentuser5",
+    "password": "hashedpassword5",
+    "email": "student5@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-04-11T11:00:00.182225",
+    "firstName": "Diák 5",
+    "lastName": "Vezetéknév 5",
+    "birthDate": "2003-04-22",
+    "school": {
+      "id": 1,
+      "type": "school"
+    },
+    "schoolId": 1
+  },
+  {
+    "type": "student",
+    "username": "studentuser6",
+    "password": "hashedpassword6",
+    "email": "student6@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-10-24T11:00:00.182236",
+    "firstName": "Diák 6",
+    "lastName": "Vezetéknév 6",
+    "birthDate": "2006-10-28",
+    "school": {
+      "id": 4,
+      "type": "school"
+    },
+    "schoolId": 1
+  },
+  {
+    "type": "student",
+    "username": "studentuser7",
+    "password": "hashedpassword7",
+    "email": "student7@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-08-07T11:00:00.182248",
+    "firstName": "Diák 7",
+    "lastName": "Vezetéknév 7",
+    "birthDate": "2007-04-18",
+    "school": {
+      "id": 1,
+      "type": "school"
+    },
+    "schoolId": 2
+  },
+  {
+    "type": "student",
+    "username": "studentuser8",
+    "password": "hashedpassword8",
+    "email": "student8@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-10-30T11:00:00.182260",
+    "firstName": "Diák 8",
+    "lastName": "Vezetéknév 8",
+    "birthDate": "2004-03-27",
+    "school": {
+      "id": 3,
+      "type": "school"
+    },
+    "schoolId": 4
+  },
+  {
+    "type": "student",
+    "username": "studentuser9",
+    "password": "hashedpassword9",
+    "email": "student9@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-07-29T11:00:00.182274",
+    "firstName": "Diák 9",
+    "lastName": "Vezetéknév 9",
+    "birthDate": "2006-01-06",
+    "school": {
+      "id": 2,
+      "type": "school"
+    },
+    "schoolId": 2
+  },
+  {
+    "type": "student",
+    "username": "studentuser10",
+    "password": "hashedpassword10",
+    "email": "student10@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-05-07T11:00:00.182293",
+    "firstName": "Diák 10",
+    "lastName": "Vezetéknév 10",
+    "birthDate": "2006-04-13",
+    "school": {
+      "id": 2,
+      "type": "school"
+    },
+    "schoolId": 2
+  },
+  {
+    "type": "student",
+    "username": "studentuser11",
+    "password": "hashedpassword11",
+    "email": "student11@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-01-10T11:00:00.182313",
+    "firstName": "Diák 11",
+    "lastName": "Vezetéknév 11",
+    "birthDate": "2003-09-21",
+    "school": {
+      "id": 3,
+      "type": "school"
+    },
+    "schoolId": 3
+  },
+  {
+    "type": "student",
+    "username": "studentuser12",
+    "password": "hashedpassword12",
+    "email": "student12@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-07-08T11:00:00.182327",
+    "firstName": "Diák 12",
+    "lastName": "Vezetéknév 12",
+    "birthDate": "2007-05-30",
+    "school": {
+      "id": 2,
+      "type": "school"
+    },
+    "schoolId": 3
+  },
+  {
+    "type": "student",
+    "username": "studentuser13",
+    "password": "hashedpassword13",
+    "email": "student13@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-03-29T11:00:00.182338",
+    "firstName": "Diák 13",
+    "lastName": "Vezetéknév 13",
+    "birthDate": "2006-09-10",
+    "school": {
+      "id": 1,
+      "type": "school"
+    },
+    "schoolId": 1
+  },
+  {
+    "type": "student",
+    "username": "studentuser14",
+    "password": "hashedpassword14",
+    "email": "student14@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-09-14T11:00:00.182349",
+    "firstName": "Diák 14",
+    "lastName": "Vezetéknév 14",
+    "birthDate": "2005-02-11",
+    "school": {
+      "id": 3,
+      "type": "school"
+    },
+    "schoolId": 4
+  },
+  {
+    "type": "student",
+    "username": "studentuser15",
+    "password": "hashedpassword15",
+    "email": "student15@example.com",
+    "emailVerified": true,
+    "role": "STUDENT",
+    "lastLoggedIn": "2024-07-24T11:00:00.182361",
+    "firstName": "Diák 15",
+    "lastName": "Vezetéknév 15",
+    "birthDate": "2007-09-10",
+    "school": {
+      "id": 2,
+      "type": "school"
+    },
     "schoolId": 2
   }
 ]

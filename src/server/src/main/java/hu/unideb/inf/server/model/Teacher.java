@@ -23,7 +23,7 @@ public class Teacher extends BaseEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
-    @Column(name = "title", nullable = false)
+    @Column(name = "title", nullable = true)
     @Enumerated(EnumType.STRING)
     private Title title;
 

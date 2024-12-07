@@ -12,11 +12,11 @@
     "title": "DE",
     "description": "A description of the first school.",
     "address": {
-      "street": "Main St 2",
+      "street": "Egyetem tér",
       "city": "Debrecen",
-      "postalCode": "5678",
-      "country": "Hungary",
-      "houseNumber": "2"
+      "postalCode": "4032",
+      "country": "Magyarország",
+      "houseNumber": "1"
     }
   },
   {
@@ -32,11 +32,191 @@
     "title": "ELTE",
     "description": "A description of the first school.",
     "address": {
-      "street": "Main St 2",
+      "street": "Múzeum körút",
       "city": "Budapest",
-      "postalCode": "5678",
-      "country": "Hungary",
-      "houseNumber": "2"
+      "postalCode": "1111",
+      "country": "Magyarország",
+      "houseNumber": "4/A"
+    }
+  },
+  {
+    "type": "school",
+    "username": "schooluser3",
+    "password": "hashedpassword3",
+    "email": "school3@example.com",
+    "emailVerified": true,
+    "role": "SCHOOL",
+    "lastLoggedIn": "2024-04-01T12:34:56",
+    "institutionId": "inst123",
+    "name": "Budapesti Műszaki Egyetem",
+    "title": "BME",
+    "description": "A description of the first school.",
+    "address": {
+      "street": "Műegyetem rkp.",
+      "city": "Budapest",
+      "postalCode": "1111",
+      "country": "Magyarország",
+      "houseNumber": "3"
+    }
+  },
+  {
+    "type": "school",
+    "username": "schooluser4",
+    "password": "hashedpassword4",
+    "email": "school4@example.com",
+    "emailVerified": true,
+    "role": "SCHOOL",
+    "lastLoggedIn": "2024-04-01T12:34:56",
+    "institutionId": "inst124",
+    "name": "Debreceni Egyetem Kossuth Lajos Gyakorló Gimnáziuma",
+    "title": "DEKLGYG",
+    "description": "A description of the first school.",
+    "address": {
+      "street": "Csengő utca",
+      "city": "Debrecen",
+      "postalCode": "4032",
+      "country": "Magyarország",
+      "houseNumber": "4"
+    }
+  },
+  {
+    "type": "school",
+    "username": "schooluser5",
+    "password": "hashedpassword5",
+    "email": "school5@example.com",
+    "emailVerified": true,
+    "role": "SCHOOL",
+    "lastLoggedIn": "2024-04-01T12:34:56",
+    "institutionId": "inst125",
+    "name": "Szegedi Tudományegyetem",
+    "title": "SZTE",
+    "description": "A description of the first school.",
+    "address": {
+      "street": "Honvéd tér",
+      "city": "Szeged",
+      "postalCode": "6722",
+      "country": "Magyarország",
+      "houseNumber": "6"
+    }
+  },
+  {
+    "type": "school",
+    "username": "schooluser6",
+    "password": "hashedpassword6",
+    "email": "school6@example.com",
+    "emailVerified": true,
+    "role": "SCHOOL",
+    "lastLoggedIn": "2024-04-01T12:34:56",
+    "institutionId": "inst126",
+    "name": "Pécsi Tudományegyetem",
+    "title": "PTE",
+    "description": "A description of the first school.",
+    "address": {
+      "street": "48-as tér",
+      "city": "Pécs",
+      "postalCode": "7622",
+      "country": "Magyarország",
+      "houseNumber": "1"
+    }
+  },
+  {
+    "type": "school",
+    "username": "schooluser7",
+    "password": "hashedpassword7",
+    "email": "school7@example.com",
+    "emailVerified": true,
+    "role": "SCHOOL",
+    "lastLoggedIn": "2024-04-01T12:34:56",
+    "institutionId": "inst127",
+    "name": "Miskolci Egyetem",
+    "title": "ME",
+    "description": "A description of the first school.",
+    "address": {
+      "street": "Egyetem út",
+      "city": "Miskolc",
+      "postalCode": "3515",
+      "country": "Magyarország",
+      "houseNumber": "1"
+    }
+  },
+  {
+    "type": "school",
+    "username": "schooluser8",
+    "password": "hashedpassword8",
+    "email": "school8@example.com",
+    "emailVerified": true,
+    "role": "SCHOOL",
+    "lastLoggedIn": "2024-04-01T12:34:56",
+    "institutionId": "inst128",
+    "name": "Magyar Agrár- és Élettudományi Egyetem",
+    "title": "MAÉE",
+    "description": "A description of the first school.",
+    "address": {
+      "street": "Páter Károly utca",
+      "city": "Gödöllő",
+      "postalCode": "2100",
+      "country": "Magyarország",
+      "houseNumber": "1"
+    }
+  },
+  {
+    "type": "school",
+    "username": "schooluser9",
+    "password": "hashedpassword9",
+    "email": "school9@example.com",
+    "emailVerified": true,
+    "role": "SCHOOL",
+    "lastLoggedIn": "2024-04-01T12:34:56",
+    "institutionId": "inst129",
+    "name": "Óbudai Egyetem",
+    "title": "ÓE",
+    "description": "A description of the first school.",
+    "address": {
+      "street": "Bécsi út",
+      "city": "Budapest",
+      "postalCode": "1034",
+      "country": "Magyarország",
+      "houseNumber": "96/B"
+    }
+  },
+  {
+    "type": "school",
+    "username": "schooluser10",
+    "password": "hashedpassword10",
+    "email": "school10@example.com",
+    "emailVerified": true,
+    "role": "SCHOOL",
+    "lastLoggedIn": "2024-04-01T12:34:56",
+    "institutionId": "inst1210",
+    "name": "MATE Kaposvári Campus",
+    "title": "MATE KC",
+    "description": "A description of the first school.",
+    "address": {
+      "street": "Guba Sándor utca",
+      "city": "Kaposvár",
+      "postalCode": "7400",
+      "country": "Magyarország",
+      "houseNumber": "40"
+    }
+  },
+  {
+    "type": "school",
+    "username": "schooluser11",
+    "password": "hashedpassword11",
+    "email": "school11@example.com",
+    "emailVerified": true,
+    "role": "SCHOOL",
+    "lastLoggedIn": "2024-04-01T12:34:56",
+    "institutionId": "inst1211",
+    "name": "Széchenyi István Egyetem",
+    "title": "SZE",
+    "description": "A description of the first school.",
+    "address": {
+      "street": "Egyetem tér",
+      "city": "Győr",
+      "postalCode": "9026",
+      "country": "Magyarország",
+      "houseNumber": "1"
     }
   }
 ]
