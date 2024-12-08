@@ -19,7 +19,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Component
 public class DataLoader {
@@ -69,6 +73,16 @@ public class DataLoader {
                 MyLogger.log.warn(String.format("Nem található objektum a(z) %s fájlban.", resourcePath));
                 return;
             }
+            if (Review.class.isAssignableFrom(clazz.getComponentType())) {
+                Arrays.stream(objects)
+                        .map(review -> (Review) review)
+                        .forEach(review -> {
+                            if (review.getCreatedAt() == null) {
+                                review.setCreatedAt(generateRandomDate());
+                                System.out.println(review.getCreatedAt());
+                            }
+                        });
+            }
             if (User.class.isAssignableFrom(clazz.getComponentType())) {
                 Arrays.stream(objects)
                         .forEach(user -> ((User) user)
@@ -82,4 +96,10 @@ public class DataLoader {
         }
     }
 
+    private LocalDateTime generateRandomDate() {
+        LocalDateTime startDate = LocalDateTime.now().minus(1, ChronoUnit.YEARS); // Egy évvel korábban
+        LocalDateTime endDate = LocalDateTime.now();
+        long randomEpochSecond = ThreadLocalRandom.current().nextLong(startDate.toEpochSecond(ZoneOffset.UTC), endDate.toEpochSecond(ZoneOffset.UTC));
+        return LocalDateTime.ofEpochSecond(randomEpochSecond, 0, ZoneOffset.UTC);
+    }
 }

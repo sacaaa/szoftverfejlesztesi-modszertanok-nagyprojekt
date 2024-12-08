@@ -5,7 +5,7 @@
     "lastName": "Kovács",
     "schools": [
       {
-        "id": 2,
+        "id": 6,
         "type": "school"
       }
     ]
@@ -121,7 +121,7 @@
     "lastName": "Veres",
     "schools": [
       {
-        "id": 2,
+        "id": 9,
         "type": "school"
       }
     ]
@@ -142,7 +142,7 @@
     "lastName": "Barna",
     "schools": [
       {
-        "id": 2,
+        "id": 8,
         "type": "school"
       }
     ]
@@ -153,9 +153,53 @@
     "lastName": "Németh",
     "schools": [
       {
-        "id": 2,
+        "id": 7,
+        "type": "school"
+      }
+    ]
+  },
+  {
+    "firstName": "Zsófia",
+    "lastName": "Kundrák",
+    "schools": [
+      {
+        "id": 10,
+        "type": "school"
+      }
+    ]
+  },
+  {
+    "title": "Dr.",
+    "firstName": "Albert",
+    "lastName": "Nagy",
+    "schools": [
+      {
+        "id": 10,
+        "type": "school"
+      }
+    ]
+  },
+  {
+    "title": "Prof.",
+    "firstName": "Sándor",
+    "lastName": "Barabás",
+    "schools": [
+      {
+        "id": 11,
+        "type": "school"
+      }
+    ]
+  },
+  {
+    "title": "Dr.",
+    "firstName": "Marianna",
+    "lastName": "Kis",
+    "schools": [
+      {
+        "id": 11,
         "type": "school"
       }
     ]
   }
+
 ]

@@ -10,7 +10,7 @@
     "institutionId": "inst123",
     "name": "Debreceni Egyetem",
     "title": "DE",
-    "description": "A description of the first school.",
+    "description": "Kelet-Magyarország vezető intézménye, amely erős kutatási fókuszáról ismert.",
     "address": {
       "street": "Egyetem tér",
       "city": "Debrecen",
@@ -30,7 +30,7 @@
     "institutionId": "inst122",
     "name": "Eötvös Loránd Tudományegyetem",
     "title": "ELTE",
-    "description": "A description of the first school.",
+    "description": "Budapest egyik rangos egyeteme, amely a bölcsészettudományi képzéseiről híres.",
     "address": {
       "street": "Múzeum körút",
       "city": "Budapest",
@@ -50,7 +50,7 @@
     "institutionId": "inst123",
     "name": "Budapesti Műszaki Egyetem",
     "title": "BME",
-    "description": "A description of the first school.",
+    "description": "Egy mérnöki központ Budapest szívében.",
     "address": {
       "street": "Műegyetem rkp.",
       "city": "Budapest",
@@ -70,7 +70,7 @@
     "institutionId": "inst124",
     "name": "Debreceni Egyetem Kossuth Lajos Gyakorló Gimnáziuma",
     "title": "DEKLGYG",
-    "description": "A description of the first school.",
+    "description": "Egy gimnázium, amely kiváló természettudományi és matematikai tantervéről ismert.",
     "address": {
       "street": "Csengő utca",
       "city": "Debrecen",
@@ -90,7 +90,7 @@
     "institutionId": "inst125",
     "name": "Szegedi Tudományegyetem",
     "title": "SZTE",
-    "description": "A description of the first school.",
+    "description": "Dél-Magyarország egyik legjobb egyeteme, amely a mezőgazdasági képzésekben kiemelkedő.",
     "address": {
       "street": "Honvéd tér",
       "city": "Szeged",
@@ -110,7 +110,7 @@
     "institutionId": "inst126",
     "name": "Pécsi Tudományegyetem",
     "title": "PTE",
-    "description": "A description of the first school.",
+    "description": "Egy történelmi egyetem Pécsen, változatos hallgatói körrel.",
     "address": {
       "street": "48-as tér",
       "city": "Pécs",
@@ -130,7 +130,7 @@
     "institutionId": "inst127",
     "name": "Miskolci Egyetem",
     "title": "ME",
-    "description": "A description of the first school.",
+    "description": "Egy modern intézmény Miskolcon, amely a mérnöki képzésekre fókuszál.",
     "address": {
       "street": "Egyetem út",
       "city": "Miskolc",
@@ -150,7 +150,7 @@
     "institutionId": "inst128",
     "name": "Magyar Agrár- és Élettudományi Egyetem",
     "title": "MAÉE",
-    "description": "A description of the first school.",
+    "description": "Egyetemi szintű képzések az élettudományok és a mezőgazdaság területén.",
     "address": {
       "street": "Páter Károly utca",
       "city": "Gödöllő",
@@ -170,7 +170,7 @@
     "institutionId": "inst129",
     "name": "Óbudai Egyetem",
     "title": "ÓE",
-    "description": "A description of the first school.",
+    "description": "Egy élvonalbeli műszaki egyetem Budapesten.",
     "address": {
       "street": "Bécsi út",
       "city": "Budapest",
@@ -190,7 +190,7 @@
     "institutionId": "inst1210",
     "name": "MATE Kaposvári Campus",
     "title": "MATE KC",
-    "description": "A description of the first school.",
+    "description": "Egy regionális campus széles körű képzési kínálattal Kaposváron.",
     "address": {
       "street": "Guba Sándor utca",
       "city": "Kaposvár",
@@ -210,7 +210,7 @@
     "institutionId": "inst1211",
     "name": "Széchenyi István Egyetem",
     "title": "SZE",
-    "description": "A description of the first school.",
+    "description": "Egy innovatív intézmény Győrben, erős ipari kapcsolatokkal.",
     "address": {
       "street": "Egyetem tér",
       "city": "Győr",

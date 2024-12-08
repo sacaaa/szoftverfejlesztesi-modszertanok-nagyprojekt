@@ -3,21 +3,231 @@
     "teacher": { "id": 1 },
     "teacherId": 1,
     "subject": { "id": 1 },
-    "school": { "id": 1, "type": "school" },
-    "schoolId": 1
+    "school": { "id": 2, "type": "school" },
+    "schoolId": 2
   },
   {
     "teacher": { "id": 1 },
     "teacherId": 1,
-    "subject": { "id": 2 },
-    "school": { "id": 1, "type": "school" },
-    "schoolId": 1
+    "subject": { "id": 3 },
+    "school": { "id": 2, "type": "school" },
+    "schoolId": 2
   },
   {
     "teacher": { "id": 2 },
     "teacherId": 2,
-    "subject": { "id": 3 },
+    "subject": { "id": 4 },
+    "school": { "id": 2, "type": "school" },
+    "schoolId": 2
+  },
+  {
+    "teacher": { "id": 2 },
+    "teacherId": 2,
+    "subject": { "id": 6 },
+    "school": { "id": 2, "type": "school" },
+    "schoolId": 2
+  },
+  {
+    "teacher": { "id": 3 },
+    "teacherId": 3,
+    "subject": { "id": 5 },
+    "school": { "id": 5, "type": "school" },
+    "schoolId": 5
+  },
+  {
+    "teacher": { "id": 3 },
+    "teacherId": 3,
+    "subject": { "id": 7 },
+    "school": { "id": 5, "type": "school" },
+    "schoolId": 5
+  },
+  {
+    "teacher": { "id": 4 },
+    "teacherId": 4,
+    "subject": { "id": 10 },
     "school": { "id": 1, "type": "school" },
     "schoolId": 1
+  },
+  {
+    "teacher": { "id": 5 },
+    "teacherId": 5,
+    "subject": { "id": 8 },
+    "school": { "id": 2, "type": "school" },
+    "schoolId": 2
+  },
+  {
+    "teacher": { "id": 5 },
+    "teacherId": 5,
+    "subject": { "id": 9 },
+    "school": { "id": 2, "type": "school" },
+    "schoolId": 2
+  },
+  {
+    "teacher": { "id": 6 },
+    "teacherId": 6,
+    "subject": { "id": 11 },
+    "school": { "id": 4, "type": "school" },
+    "schoolId": 4
+  },
+  {
+    "teacher": { "id": 6 },
+    "teacherId": 6,
+    "subject": { "id": 13 },
+    "school": { "id": 4, "type": "school" },
+    "schoolId": 4
+  },
+  {
+    "teacher": { "id": 7 },
+    "teacherId": 7,
+    "subject": { "id": 2 },
+    "school": { "id": 2, "type": "school" },
+    "schoolId": 2
+  },
+  {
+    "teacher": { "id": 8 },
+    "teacherId": 8,
+    "subject": { "id": 1 },
+    "school": { "id": 3, "type": "school" },
+    "schoolId": 3
+  },
+  {
+    "teacher": { "id": 8 },
+    "teacherId": 8,
+    "subject": { "id": 12 },
+    "school": { "id": 3, "type": "school" },
+    "schoolId": 3
+  },
+  {
+    "teacher": { "id": 9 },
+    "teacherId": 9,
+    "subject": { "id": 14 },
+    "school": { "id": 1, "type": "school" },
+    "schoolId": 1
+  },
+  {
+    "teacher": { "id": 10 },
+    "teacherId": 10,
+    "subject": { "id": 5 },
+    "school": { "id": 4, "type": "school" },
+    "schoolId": 4
+  },
+  {
+    "teacher": { "id": 10 },
+    "teacherId": 10,
+    "subject": { "id": 15 },
+    "school": { "id": 4, "type": "school" },
+    "schoolId": 4
+  },
+  {
+    "teacher": { "id": 11 },
+    "teacherId": 11,
+    "subject": { "id": 9 },
+    "school": { "id": 5, "type": "school" },
+    "schoolId": 5
+  },
+  {
+    "teacher": { "id": 11 },
+    "teacherId": 11,
+    "subject": { "id": 13 },
+    "school": { "id": 5, "type": "school" },
+    "schoolId": 5
+  },
+  {
+    "teacher": { "id": 12 },
+    "teacherId": 12,
+    "subject": { "id": 6 },
+    "school": { "id": 2, "type": "school" },
+    "schoolId": 2
+  },
+  {
+    "teacher": { "id": 12 },
+    "teacherId": 12,
+    "subject": { "id": 3 },
+    "school": { "id": 2, "type": "school" },
+    "schoolId": 2
+  },
+  {
+    "teacher": { "id": 13 },
+    "teacherId": 13,
+    "subject": { "id": 2 },
+    "school": { "id": 3, "type": "school" },
+    "schoolId": 3
+  },
+  {
+    "teacher": { "id": 13 },
+    "teacherId": 13,
+    "subject": { "id": 11 },
+    "school": { "id": 3, "type": "school" },
+    "schoolId": 3
+  },
+  {
+    "teacher": { "id": 14 },
+    "teacherId": 14,
+    "subject": { "id": 7 },
+    "school": { "id": 2, "type": "school" },
+    "schoolId": 2
+  },
+  {
+    "teacher": { "id": 15 },
+    "teacherId": 15,
+    "subject": { "id": 8 },
+    "school": { "id": 2, "type": "school" },
+    "schoolId": 2
+  },
+  {
+    "teacher": { "id": 16 },
+    "teacherId": 16,
+    "subject": { "id": 8 },
+    "school": { "id": 10, "type": "school" },
+    "schoolId": 10
+  },
+  {
+    "teacher": { "id": 16 },
+    "teacherId": 16,
+    "subject": { "id": 11 },
+    "school": { "id": 10, "type": "school" },
+    "schoolId": 10
+  },
+  {
+    "teacher": { "id": 17 },
+    "teacherId": 17,
+    "subject": { "id": 5 },
+    "school": { "id": 10, "type": "school" },
+    "schoolId": 10
+  },
+  {
+    "teacher": { "id": 17 },
+    "teacherId": 17,
+    "subject": { "id": 1 },
+    "school": { "id": 10, "type": "school" },
+    "schoolId": 10
+  },
+  {
+    "teacher": { "id": 18 },
+    "teacherId": 18,
+    "subject": { "id": 7 },
+    "school": { "id": 11, "type": "school" },
+    "schoolId": 11
+  },
+  {
+    "teacher": { "id": 18 },
+    "teacherId": 18,
+    "subject": { "id": 2 },
+    "school": { "id": 11, "type": "school" },
+    "schoolId": 11
+  },
+  {
+    "teacher": { "id": 19 },
+    "teacherId": 19,
+    "subject": { "id": 9 },
+    "school": { "id": 11, "type": "school" },
+    "schoolId": 11
+  },
+  {
+    "teacher": { "id": 19 },
+    "teacherId": 19,
+    "subject": { "id": 8 },
+    "school": { "id": 11, "type": "school" },
+    "schoolId": 11
   }
 ]

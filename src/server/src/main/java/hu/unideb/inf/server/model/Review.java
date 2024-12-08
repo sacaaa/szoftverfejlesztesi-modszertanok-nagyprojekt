@@ -6,12 +6,14 @@ import hu.unideb.inf.server.model.users.Student;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "reviews")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Review extends BaseEntity {
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,5 +38,16 @@ public class Review extends BaseEntity {
 
     @Column(name = "rating", nullable = false)
     private int rating;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
 
 }
