@@ -279,14 +279,15 @@ Az EduStats rendszer menüje az alábbi hierarchiát követi:
 
 - Az alábbiakban bemutatjuk a főbb képernyők terveit:
 
-![Bejelentkezés](Screenshots\Login.png)
-![Regisztráció](Screenshots\SignIn.png)
-![Főoldal](Screenshots\MainPage.png)
-![Iskolák listája](Screenshots\SchoolList.png)
-![Iskolák listája kártya](Screenshots\SchoolsListCard.png)
-![Tanárok listája](Screenshots\TeacherList.png)
-![Tanárok listája kártya](Screenshots\TeacherListCard.png)
-![Tanárok értékelése](Screenshots\RateTeacher.png)
+![Bejelentkezés](..\design\EduStats_Login.png)
+![Regisztráció](..\design\EduStats_Register.png)
+![Főoldal](..\design\EduStats_Homepage.png)
+![Iskolák listája](..\design\EduStats_School_List1.png)
+![Iskolák listája kártya](..\design\EduStats_School_List2.png)
+![Tanárok listája](..\design\EduStats_Teacher_List1.png)
+![Tanárok listája kártya](..\design\EduStats_Teacher_List2.png)
+![Tanárok értékelése](..\design\EduStats_Teacher_Rating_Page.png)
+![Iskola oldal](..\design\EduStats_School_Page.png)
 
 ## 6. Fizikai környezet
 
