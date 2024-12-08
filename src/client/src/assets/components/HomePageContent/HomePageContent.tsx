@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './HomePageContent.css';
 
@@ -63,7 +63,7 @@ const HomePageContent = () => {
             <section className="about-section" id='about'>
                 <h3>{t('about')}</h3>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lacus turpis, tincidunt tempor nisi nec, ornare rutrum leo. Suspendisse semper vehicula quam. Sed quis condimentum lectus. Donec convallis tristique justo, eu posuere justo congue sed.
+                Az EduStats egy innovatív online platform, amely lehetőséget kínál diákoknak arra, hogy értékeljék tanáraikat és tantárgyaikat, valamint megoszthassák tapasztalataikat másokkal. Küldetésünk, hogy átláthatóvá és könnyen elérhetővé tegyük a tanárokról és iskolákról szóló információkat, segítve ezzel a diákokat a tudatos választásban, és ösztönözve a tanárokat a folyamatos fejlődésre.
                 </p>
             </section>
         </div>
