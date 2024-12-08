@@ -36,7 +36,9 @@ const TeacherList: React.FC = () => {
                         id: teacher.id,
                         name: `${teacher.title || ''} ${teacher.lastName} ${teacher.firstName}`,
                         logo: 'avatar.png', // Default logo
-                        rating: teacher.avg_rating,
+                        rating: teacher.avg_rating !== null && teacher.avg_rating !== undefined && !isNaN(teacher.avg_rating)
+                            ? teacher.avg_rating.toFixed(2)
+                            : '0',
                         additionalInfo: teacher.subjectAtSchools.map((subject: any) =>
                             `${subject.subject.name}`
                         ),
@@ -100,7 +102,7 @@ const TeacherList: React.FC = () => {
                                 ) : (
                                     <SimpleTeacherCard
                                         name={teacher.name}
-                                        rating={Math.round(teacher.rating)}
+                                        rating={teacher.rating}
                                         additionalInfo={teacher.additionalInfo}
                                         type="teacher"
                                     />

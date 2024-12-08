@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
 import { useTranslation } from 'react-i18next';
@@ -13,8 +13,21 @@ interface OpinionFormProps {
 const OpinionForm: React.FC<OpinionFormProps> = ({ subjects, teacherSubjectIds, onReviewSubmitted }) => {
     const [subjectIndex, setSubjectIndex] = useState<number>(0);
     const [rating, setRating] = useState<number>(5);
+    const [alertMessage, setAlertMessage] = useState<string | null>(null);
+    const [lastSubmittedAt, setLastSubmittedAt] = useState<Date | null>(null);
+    const cooldownTime = 5 * 60 * 1000; // 5 perc cooldown
     const navigate = useNavigate();
     const { t } = useTranslation();
+
+    useEffect(() => {
+        if (alertMessage) {
+            const timer = setTimeout(() => {
+                setAlertMessage(null);
+            }, 5000);
+
+            return () => clearTimeout(timer);
+        }
+    }, [alertMessage]);
 
     const getStudentIdFromToken = () => {
         const token = localStorage.getItem('token');
@@ -32,16 +45,23 @@ const OpinionForm: React.FC<OpinionFormProps> = ({ subjects, teacherSubjectIds, 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
+        // Cooldown ellenőrzés
+        const now = new Date();
+        if (lastSubmittedAt && now.getTime() - lastSubmittedAt.getTime() < cooldownTime) {
+            setAlertMessage(`Várjon még ${Math.ceil((cooldownTime - (now.getTime() - lastSubmittedAt.getTime())) / 1000)} másodpercet az újabb vélemény küldéséhez.`);
+            return;
+        }
+
         const token = localStorage.getItem('token');
         if (!token) {
-            alert("A vélemény küldéséhez be kell jelentkeznie!");
+            setAlertMessage("A vélemény küldéséhez be kell jelentkeznie!");
             navigate('/login');
             return;
         }
 
         const studentId = getStudentIdFromToken();
         if (!studentId) {
-            alert("Érvénytelen token! Jelentkezzen be újra.");
+            setAlertMessage("Érvénytelen token! Jelentkezzen be újra.");
             navigate('/login');
             return;
         }
@@ -53,6 +73,7 @@ const OpinionForm: React.FC<OpinionFormProps> = ({ subjects, teacherSubjectIds, 
             teacherSubjectAtSchoolId: teacherSubjectIds[subjectIndex],
             rating,
             comment: "",
+            createdAt: new Date().toISOString()
         };
 
         try {
@@ -65,49 +86,53 @@ const OpinionForm: React.FC<OpinionFormProps> = ({ subjects, teacherSubjectIds, 
             });
 
             if (response.ok) {
-                alert("Értékelés sikeresen elküldve!");
+                setAlertMessage("Értékelés sikeresen elküldve!");
+                setLastSubmittedAt(new Date()); // Frissítjük az utolsó beküldési időt
                 onReviewSubmitted();
             } else {
-                alert("Hiba történt az értékelés elküldése során.");
+                setAlertMessage("Hiba történt az értékelés elküldése során.");
             }
         } catch (error) {
             console.error("Error submitting review:", error);
-            alert("Hiba történt az értékelés elküldése során.");
+            setAlertMessage("Hiba történt az értékelés elküldése során.");
         }
     };
 
     return (
-        <form className="review-form" onSubmit={handleSubmit}>
-            <div className="review-form-controls">
-                <select
-                    className="review-form-select"
-                    value={subjectIndex}
-                    onChange={(e) => setSubjectIndex(Number(e.target.value))}
-                >
-                    {subjects.map((subject, index) => (
-                        <option key={index} value={index}>
-                            {subject}
-                        </option>
-                    ))}
-                </select>
+        <div>
+            {alertMessage && <div className="custom-alert">{alertMessage}</div>}
+            <form className="review-form" onSubmit={handleSubmit}>
+                <div className="review-form-controls">
+                    <select
+                        className="review-form-select"
+                        value={subjectIndex}
+                        onChange={(e) => setSubjectIndex(Number(e.target.value))}
+                    >
+                        {subjects.map((subject, index) => (
+                            <option key={index} value={index}>
+                                {subject}
+                            </option>
+                        ))}
+                    </select>
 
-                <select
-                    className="review-form-select rating-select"
-                    value={rating}
-                    onChange={(e) => setRating(Number(e.target.value))}
-                >
-                    <option value={5}>5 - {t('Excellent')}</option>
-                    <option value={4}>4 - {t('Good')}</option>
-                    <option value={3}>3 - {t('Average')}</option>
-                    <option value={2}>2 - {t('Poor')}</option>
-                    <option value={1}>1 - {t('Insufficient')}</option>
-                </select>
-            </div>
+                    <select
+                        className="review-form-select rating-select"
+                        value={rating}
+                        onChange={(e) => setRating(Number(e.target.value))}
+                    >
+                        <option value={5}>5 - {t('Excellent')}</option>
+                        <option value={4}>4 - {t('Good')}</option>
+                        <option value={3}>3 - {t('Average')}</option>
+                        <option value={2}>2 - {t('Poor')}</option>
+                        <option value={1}>1 - {t('Insufficient')}</option>
+                    </select>
+                </div>
 
-            <button type="submit" className="review-form-submit">
-                {t('Submit')}
-            </button>
-        </form>
+                <button type="submit" className="review-form-submit">
+                    {t('Submit')}
+                </button>
+            </form>
+        </div>
     );
 };
 

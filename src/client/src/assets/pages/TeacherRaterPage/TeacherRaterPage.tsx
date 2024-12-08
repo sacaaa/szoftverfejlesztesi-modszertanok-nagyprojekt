@@ -3,10 +3,9 @@ import Navbar from "../../components/Navbar/Navbar";
 import OpinionComponent from "../../components/OpinionComponent/OpinionComponent";
 import OpinionForm from "../../components/OpinionForm/OpinionForm";
 import TeacherCard from "../../components/TeacherCard/TeacherCard";
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
 import './TeacherRaterPage.css';
 import Footer2 from "../../components/Footer2/Footer2";
-
 
 interface Review {
     id: number;
@@ -32,13 +31,15 @@ const TeacherRaterPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [teacher, setTeacher] = useState<Teacher | null>(null);
     const [loading, setLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const reviewsPerPage = 10;
 
     const fetchTeacher = async () => {
         try {
             const response = await fetch(`http://localhost:8080/api/teachers/${id}`);
             if (response.ok) {
                 const data = await response.json();
-    
+
                 const schoolDetails = await Promise.all(
                     data.school_ids.map(async (schoolId: number) => {
                         const schoolResponse = await fetch(`http://localhost:8080/api/schools/${schoolId}`);
@@ -46,7 +47,7 @@ const TeacherRaterPage: React.FC = () => {
                         return { id: schoolData.id, name: schoolData.name };
                     })
                 );
-    
+
                 const reviewsWithDetails = data.subjectAtSchools.flatMap((subjectAtSchool: any) =>
                     subjectAtSchool.reviewsReceived.map((review: any) => ({
                         id: review.id,
@@ -56,7 +57,9 @@ const TeacherRaterPage: React.FC = () => {
                         schoolName: schoolDetails.find(s => s.id === subjectAtSchool.schoolId)?.name,
                     }))
                 );
-                
+
+                reviewsWithDetails.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
                 const formattedTeacher: Teacher = {
                     id: data.id,
                     name: `${data.title ? data.title + ' ' : ''}${data.lastName} ${data.firstName}`,
@@ -67,7 +70,7 @@ const TeacherRaterPage: React.FC = () => {
                     reviews: reviewsWithDetails,
                     subjectAtSchoolIds: data.subjectAtSchools.map((s: any) => s.id),
                 };
-    
+
                 setTeacher(formattedTeacher);
             } else {
                 console.error("Failed to fetch teacher data.");
@@ -91,6 +94,12 @@ const TeacherRaterPage: React.FC = () => {
         return <p>A tanár nem található.</p>;
     }
 
+    const indexOfLastReview = currentPage * reviewsPerPage;
+    const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+    const currentReviews = teacher.reviews.slice(indexOfFirstReview, indexOfLastReview);
+
+    const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
     return (
         <div className="teacher-rater-page-container">
             <Navbar />
@@ -106,7 +115,7 @@ const TeacherRaterPage: React.FC = () => {
                     teacherSubjectIds={teacher.subjectAtSchoolIds}
                     onReviewSubmitted={fetchTeacher}
                 />
-                {teacher.reviews.map((review) => (
+                {currentReviews.map((review) => (
                     <OpinionComponent
                         key={review.id}
                         title={review.title}
@@ -115,11 +124,17 @@ const TeacherRaterPage: React.FC = () => {
                         schoolName={review.schoolName}
                     />
                 ))}
+                <div className="pagination">
+                    {Array.from({ length: Math.ceil(teacher.reviews.length / reviewsPerPage) }, (_, index) => (
+                        <button key={index + 1} onClick={() => paginate(index + 1)}>
+                            {index + 1}
+                        </button>
+                    ))}
+                </div>
             </div>
             <Footer2 />
         </div>
     );
 };
-
 
 export default TeacherRaterPage;

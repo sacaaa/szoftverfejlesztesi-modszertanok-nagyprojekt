@@ -41,8 +41,6 @@ const TeacherCard: React.FC<TeacherCardProps> = ({ name, rating, subjects, schoo
                             <a
                                 key={school.id}
                                 href={`/schools/${school.id}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
                                 className="school-link"
                             >
                                 {school.name}
@@ -54,6 +52,5 @@ const TeacherCard: React.FC<TeacherCardProps> = ({ name, rating, subjects, schoo
         </div>
     );
 };
-
 
 export default TeacherCard;

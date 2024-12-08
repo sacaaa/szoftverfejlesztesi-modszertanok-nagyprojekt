@@ -50,7 +50,7 @@ const SchoolRaterPage: React.FC = () => {
                         id: teacherData.id,
                         subjects: teacherData.subjectAtSchools.map((s: any) => s.subject.name),
                         avgRating: `${teacherData.avg_rating ?? 0}`,
-                        name: `${teacherData.title ?? ""} ${teacherData.firstName} ${teacherData.lastName}`,
+                        name: `${teacherData.title ?? ""} ${teacherData.lastName} ${teacherData.firstName}`,
                         subjectAtSchools: teacherData.subjectAtSchools
                     }));
 
@@ -61,7 +61,7 @@ const SchoolRaterPage: React.FC = () => {
                 const dataForDownload = teacherDetails.flatMap((teacher: any) => {
                     return teacher.subjectAtSchools.flatMap((subject: any) => {
                         return subject.reviewsReceived.map((review: any) => ({
-                            teacherName: `${teacher.title} ${teacher.firstName} ${teacher.lastName}`,
+                            teacherName: `${teacher.title} ${teacher.lastName} ${teacher.firstName}`,
                             teacherId: teacher.id,
                             subjectName: subject.subject?.name || "Ismeretlen tantárgy",
                             reviewRating: review.rating,

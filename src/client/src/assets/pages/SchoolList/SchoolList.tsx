@@ -36,7 +36,7 @@ const SchoolList: React.FC = () => {
                         rating: calculateAverageRating(school.teachers),
                         description: school.description,
                         additionalInfo: [
-                            `${school.address.street}, ${school.address.city}, ${school.address.country}`
+                            `${school.address.city}, ${school.address.street} ${school.address.houseNumber}`
                         ],
                     }));
                     setSchoolData(formattedData);
@@ -60,7 +60,7 @@ const SchoolList: React.FC = () => {
             .filter((teacher) => teacher.avg_rating)
             .map((teacher) => teacher.avg_rating);
         const sum = ratings.reduce((acc, rating) => acc + rating, 0);
-        return (sum / ratings.length).toFixed(1); // Egy tizedesjegy
+        return (sum / ratings.length).toFixed(2); // Egy tizedesjegy
     };
 
     const handleCardClick = (id: number) => {

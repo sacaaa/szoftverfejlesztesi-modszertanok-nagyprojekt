@@ -15,14 +15,11 @@ const TeacherUnderSchoolCard: React.FC<ReviewCardProps> = ({id, subjects, rating
             <div className="review-card-content">
                 <a 
                     href={`/teachers/${id}`} // Dinamikusan generált URL az id alapján
-                    target="_blank" 
-                    rel="noopener noreferrer" 
                     className="review-teacher-school"
                 >
                     {teacherName}
                 </a>
                 <p className="review-subject">{subjects.join(', ')}</p>
-
             </div>
 
             <div className="review-rating">
