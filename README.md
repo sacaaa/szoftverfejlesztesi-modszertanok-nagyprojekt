@@ -10,7 +10,7 @@ Fejlesztők:
 - Leírás: Tanárokat értékelő webalkalmazás, ahol a diákok szabadon véleményezhetik tanáraikat.
 - Megrendelő: XY Kft.
 - Dokumentumok:
-  - [Funkcionális specifikáció](docs/funkcionalis-specifikacio.md)
+  - [Funkcionális specifikáció](docs/funckionalis-specifikacio.md.md)
   - [Követelmény specifikáció](docs/kovetelmeny-specifikacio.md)
   - [Rendszerterv](docs/rendszerterv/rendszerterv.md)
   - [Indítási útmutató](docs/inditasi-utmutato.md)
