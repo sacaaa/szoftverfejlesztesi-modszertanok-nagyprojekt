@@ -10,6 +10,7 @@ const resources = {
             "school": "Iskola",
             "school_search": "Iskola keresés",
             "about": "Rólunk",
+            "about_desc": "Az EduStats egy innovatív online platform, amely lehetőséget kínál diákoknak arra, hogy értékeljék tanáraikat és tantárgyaikat, valamint megoszthassák tapasztalataikat másokkal. Küldetésünk, hogy átláthatóvá és könnyen elérhetővé tegyük a tanárokról és iskolákról szóló információkat, segítve ezzel a diákokat a tudatos választásban, és ösztönözve a tanárokat a folyamatos fejlődésre.",
             "rating": "Értékelés",
             "login": "Bejelentkezés",
             "LOGIN": "BEJELENTKEZÉS",
@@ -46,7 +47,8 @@ const resources = {
             "Average": "Közepes",
             "Poor": "Gyenge",
             "Insufficient": "Elégtelen",
-            "Details": "Részletek"
+            "Details": "Részletek",
+            
         }
     },
     en: {
@@ -56,6 +58,7 @@ const resources = {
             "school": "School",
             "school_search": "School search",
             "about": "About",
+            "about_desc": "EduStats is an innovative online platform that enables students to rate their teachers and subjects while sharing their experiences with others. Our mission is to make information about teachers and schools transparent and easily accessible, helping students make informed choices and encouraging teachers to pursue continuous improvement.",
             "rating": "Rating",
             "login": "Login",
             "LOGIN": "LOGIN",
@@ -70,7 +73,7 @@ const resources = {
             "Contact": "Contact",
             "Terms_of_Use": "Terms of Use",
             "footer_long": "EduStats is not responsible for the content of user reviews. Information shared by users does not necessarily reflect the views of EduStats.",
-            "username": "Username",
+            "username": "Email",
             "password": "Password",
             "password_again": "Password Again",
             "Remember_login_credentials": "Remember login credentials",

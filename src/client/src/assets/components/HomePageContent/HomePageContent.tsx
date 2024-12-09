@@ -63,7 +63,7 @@ const HomePageContent = () => {
             <section className="about-section" id='about'>
                 <h3>{t('about')}</h3>
                 <p>
-                Az EduStats egy innovatív online platform, amely lehetőséget kínál diákoknak arra, hogy értékeljék tanáraikat és tantárgyaikat, valamint megoszthassák tapasztalataikat másokkal. Küldetésünk, hogy átláthatóvá és könnyen elérhetővé tegyük a tanárokról és iskolákról szóló információkat, segítve ezzel a diákokat a tudatos választásban, és ösztönözve a tanárokat a folyamatos fejlődésre.
+                    {t('about_desc')}
                 </p>
             </section>
         </div>

@@ -55,11 +55,11 @@ const SchoolCard: React.FC<SchoolCardProps> = ({ name, rating, address, dataForD
                 </div>
                 <p className="address">{t('Address')} {address}</p>
             </div>   
-            <div className="download">
+            {/* <div className="download">
                 <button onClick={downloadCSV} className="download-icon">
                     <MdDownload /> 
                 </button>
-            </div>
+            </div> */}
         </div>
     );
 };
